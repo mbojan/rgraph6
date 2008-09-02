@@ -1,0 +1,31 @@
+info <- help(package="rgraph6")$info[[1]] # info on package
+
+x <- unlist( strsplit(info[2], " ") )
+ver <- x[length(x)]
+
+x <- unlist(strsplit(info[3], " " ))
+d <- x[length(x)]
+yr <- substr(d, 1, 4)
+
+citHeader("To cite package 'rgraph6' in publications use:")
+
+citEntry(entry="Manual",
+	 title = "rgraph6: an interface to graph6 format for R",
+         author = person(first="Michal", last="Bojanowski",
+	    email="mbojan@ifispan.waw.pl"),
+         year         = yr,
+         url          = "http://www.bojan.prv.pl",
+	 note= paste("R package version", ver),
+
+	 textVersion=paste("Bojanowski, Michal (", yr, "). ",
+	    "rgraph6: an interface to graph6 format for R. ",
+	    "R package version ", ver, ". ",
+	    "URL http://www.bojan.prv.pl.",
+	    sep="")
+         )
+
+citFooter("I have invested some time and effort in creating this package,",          
+    "please cite it when using it for data analysis or other tasks.")
+
+rm(x, ver, yr, info)
+

@@ -1,0 +1,12 @@
+Package: rgraph6
+Version: 1.2
+Date: 2007-11-19
+Title: Interface to graph6 format for R
+Author: Michal Bojanowski <mbojan@ifispan.waw.pl>
+Maintainer: Michal Bojanowski <mbojan@ifispan.waw.pl>
+Depends: R (>= 2.2.1), methods
+Suggests: sna
+Description: This package contains implementation of methods that allow
+	to represent undirected graphs in a compact 'graph6' format
+License: GPL version 2 or newer
+Packaged: Mon Nov 19 23:58:27 2007; michal
