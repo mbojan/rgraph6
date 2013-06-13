@@ -8,5 +8,4 @@ Depends: R (>= 2.2.1), methods
 Suggests: sna
 Description: This package contains implementation of methods that allow
 	to represent undirected graphs in a compact 'graph6' format
-License: GPL version 2 or newer
-Packaged: Mon Nov 19 23:58:27 2007; michal
+License: GPL-3
