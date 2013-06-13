@@ -49,9 +49,10 @@ bytes \eqn{126 R(x)}, where \eqn{x} is the bigendian 18-bit binary form of
 Examples:  
 \deqn{N(30) = 93}
 \deqn{N(12345) = N(000011 000000 111001) = 126 69 63 120}
+}
 
 
-\section{Description of graph6 format}
+\section{Description of graph6 format}{
 
 
 Data type:  simple undirected graphs of order 0 to 262143.
@@ -78,7 +79,7 @@ Then \eqn{N(n) = 68} and \eqn{R(x) = R(010010 100100) = 81 99}.
 So, the graph is  \eqn{68 81 99}.
 }
 \references{\url{http://cs.anu.edu.au/people/bdm/data/formats.txt}}
-\author{Michal Bojanowski \email{mbojan@ifispan.waw.pl} based on the above webpage}
+\author{Michal Bojanowski based on the above webpage}
 \seealso{\code{\link{asAMatrix}} and \code{\link{asGraph6}} for
 conversion functions.}
 \keyword{manip}
