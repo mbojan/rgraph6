@@ -3,7 +3,7 @@ Version: 1.2
 Date: 2007-11-19
 Title: Interface to graph6 Format for Undirected Graphs
 Authors@R: person("Michal", "Bojanowski", role=c("aut", "cre"), email="michal2992@gmail.com")
-Depends: R (>= 2.2.1), methods
+Depends: R (>= 2.2.1), testthat, methods
 Suggests: sna
 Description: This package contains implementation of methods that allow
 	to represent undirected graphs in a compact 'graph6' format.
