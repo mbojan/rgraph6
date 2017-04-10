@@ -2,17 +2,13 @@
 #' 
 #' This function converts a graph adjacency matrix to a graph6 symbol.
 #' 
-#' If necessary, more details than the description above
-#' 
 #' @param object a square adjacency matrix containing 0s and 1s
 #' @param x a vector of graph6 symbols (of class "graph6")
 #' @param ... other arguments
 #' 
-#' @return A graph6 symbol.
+#' See \code{\link{rgraph6}} for graph6 format description.
 #' 
-#' @note This function aim at implementing format and methods originally
-#' created by Brendan McKay, \email{bdm@cs.anu.edu.au} and
-#' \url{http://cs.anu.edu.au/~bdm}.
+#' @return A vector of class \code{graph6} extending \code{character} with graph6 symbols.
 #' 
 #' @export
 

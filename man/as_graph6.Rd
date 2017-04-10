@@ -20,19 +20,13 @@ as_graph6(object)
 
 \item{x}{a vector of graph6 symbols (of class "graph6")}
 
-\item{...}{other arguments}
+\item{...}{other arguments
+
+See \code{\link{rgraph6}} for graph6 format description.}
 }
 \value{
-A graph6 symbol.
+A vector of class \code{graph6} extending \code{character} with graph6 symbols.
 }
 \description{
 This function converts a graph adjacency matrix to a graph6 symbol.
-}
-\details{
-If necessary, more details than the description above
-}
-\note{
-This function aim at implementing format and methods originally
-created by Brendan McKay, \email{bdm@cs.anu.edu.au} and
-\url{http://cs.anu.edu.au/~bdm}.
 }
