@@ -3,7 +3,7 @@ Version: 2.0-0
 Date: 2017-04-10
 Title: Representing Undirected Graphs as graph6 Strings
 Authors@R: person("Michal", "Bojanowski", role=c("aut", "cre"), email="michal2992@gmail.com")
-Depends: R (>= 2.2.1), methods
+Depends: R (>= 2.2.1)
 Suggests: testthat
 Description: This package contains implementation of methods that allow
 	to represent undirected graphs in a compact 'graph6' format.
