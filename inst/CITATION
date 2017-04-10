@@ -1,31 +1,15 @@
-info <- help(package="rgraph6")$info[[1]] # info on package
+year <- sub("-.*", "", meta$Date)
 
-x <- unlist( strsplit(info[2], " ") )
-ver <- x[length(x)]
+note <- sprintf("R package version: %s", meta$Version)
 
-x <- unlist(strsplit(info[3], " " ))
-d <- x[length(x)]
-yr <- substr(d, 1, 4)
-
-citHeader("To cite package 'rgraph6' in publications use:")
-
-citEntry(entry="Manual",
-	 title = "rgraph6: an interface to graph6 format for R",
-         author = person(first="Michal", last="Bojanowski",
-	    email="mbojan@ifispan.waw.pl"),
-         year         = yr,
-         url          = "http://www.bojan.prv.pl",
-	 note= paste("R package version", ver),
-
-	 textVersion=paste("Bojanowski, Michal (", yr, "). ",
-	    "rgraph6: an interface to graph6 format for R. ",
-	    "R package version ", ver, ". ",
-	    "URL http://www.bojan.prv.pl.",
-	    sep="")
-         )
-
-citFooter("I have invested some time and effort in creating this package,",          
-    "please cite it when using it for data analysis or other tasks.")
-
-rm(x, ver, yr, info)
-
+bibentry( 
+  bibtype="Manual",
+  title="{rgraph6}: Representing Undirected Graphs as graph6 Strings",
+  author= person("Michal", "Bojanowski")
+  year = year,
+  note = note,
+  url = "https://github.com/mbojan/rgraph6",
+  mheader="To cite package 'rgraph6' in publications use:",
+  mfooter= paste("We have invested some time and effort in creating this package,",
+                "please cite it when using it for data analysis or other tasks.", sep = " ")
+)
