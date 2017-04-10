@@ -13,19 +13,15 @@ as_adjacency(object)
 \method{as_adjacency}{graph6}(object)
 }
 \arguments{
-\item{object}{character, a graph6 symbol}
+\item{object}{character vector of graph6 symbols}
 }
 \value{
-A square symmetric adjacency matrix representing the graph.
+A list of length \code{length(object)} of square symmetric
+adjacency matrices corresponding to input graph6 symbols.
 }
 \description{
-This function takes a graph6 symbol and converts it to a symmetric square
-adjacency matrix.
-}
-\note{
-This function aim at implementing format and methods originally
-created by Brendan McKay, \email{bdm@cs.anu.edu.au} and
-\url{http://cs.anu.edu.au/~bdm}.
+This function takes a  vector of graph6 symbols and converts them into symmetric square
+adjacency matrices.
 }
 \references{
 \url{http://cs.anu.edu.au/people/bdm/data/formats.txt}

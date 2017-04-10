@@ -1,15 +1,13 @@
 #' Convert a graph6 symbol to adjacency matrix
 #' 
-#' This function takes a graph6 symbol and converts it to a symmetric square
-#' adjacency matrix.
+#' This function takes a  vector of graph6 symbols and converts them into symmetric square
+#' adjacency matrices.
 #' 
-#' @param object character, a graph6 symbol
+#' @param object character vector of graph6 symbols
 #' 
-#' @return A square symmetric adjacency matrix representing the graph.
-#' 
-#' @note This function aim at implementing format and methods originally
-#' created by Brendan McKay, \email{bdm@cs.anu.edu.au} and
-#' \url{http://cs.anu.edu.au/~bdm}.
+#' @return
+#' A list of length \code{length(object)} of square symmetric
+#' adjacency matrices corresponding to input graph6 symbols.
 #' 
 #' @references \url{http://cs.anu.edu.au/people/bdm/data/formats.txt}
 #' 
