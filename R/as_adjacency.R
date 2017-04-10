@@ -23,7 +23,12 @@ as_adjacency <- function(object) UseMethod("as_adjacency")
 #' @method as_adjacency default
 #' @export
 as_adjacency.default <- function(object) {
-  stop("don't know how to handle ", data.class(object))
+  as_adjacency.graph6(
+    structure(
+      as.character(object),
+      class=c("graph6", "character")
+    )
+  )
 }
 
 
@@ -51,7 +56,7 @@ as_amatrix <- function(object) {
   }
   n <- as.numeric(rn) - 63
   g <- sapply(as.numeric(rg)-63, function(x)
-    expandToLength( dec2bin(x), l=ceiling(length(x)/6)*6, what=0, where="start") )
+    expandToLength( d2b(x), l=ceiling(length(x)/6)*6, what=0, where="start") )
   g <- g[ seq(1, n*(n-1)/2) ]
   trval <- matrix(0, ncol=n, nrow=n)
   trval[ upper.tri(trval) ] <- g
