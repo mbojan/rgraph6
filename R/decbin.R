@@ -10,6 +10,7 @@
 #' list of numeric vectors. In both cases the length is equal to the length of 
 #' \code{dec}.
 #' 
+#' @name decbin
 #' @export
 d2b <- function(dec, as=c("character", "numeric")) {
   as <- match.arg(as)
