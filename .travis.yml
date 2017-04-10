@@ -1,0 +1,12 @@
+language: r
+r:
+- release
+- devel
+sudo: false
+cache: packages
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+  slack:
+    secure: ACFh2Qz0xMXVkJ80bAANcIq7Bl+dcmDtquqozWx/c4QVmwHOr6WANVWBotHlEj9J5deBZ9s8nQZmiCuo60uZuNEdxPLpckeA9+tTOf39Zjzwv/7aS7yjqkrI+nbVIy/QPMi4y7NdVE0QR12c9acg9/ZZDfjzFgZl2wh8diP6zKW+WOYSbBEPv6+rmrOkHFmdCc5JeVkudhEwG+v1Rgj6QwYC+6d+3dgf291xOGIviBsfDkXhlaT79oH66mAwPa9OtXvNlpeSN7AoGL7p8lJ65FU2bXR4vLXEpX8G8c04B6/Q+23Co99/cDifXu5litcghDCJNLb4w0WwN/U826rsCevUFMeqNPhxVpYmBzSWYtbongt2RRpgvpQruQFKeV+TMn4UoBYwFlRR2ngiZTngoS5UIOYkbQazMdhPhElGaYRTSe5uC7G/yUqX/0FItkLrAwumin393pMRqKqFSblljlgVUSMI4oSEPskgsPCayGHNJcwyBDAOTbZTzvBHM56KkCvBIPVHSIQ+7+Ui1xv95Gwl+cBptQDtf8azm+yayMR+M8IRpMs6Cpm5f+WrkmHyR+A90qR2BzKn688XKJHYxaJCPTFiQnL/z+KTbkAd0jyeyUltP9otW7/d9WxcnKsAfhVRwRiJOba4NRHplFNi0mzVNxevvwKGAJSF64a28bk=
