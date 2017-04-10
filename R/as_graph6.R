@@ -6,6 +6,7 @@
 #' 
 #' @param object a square adjacency matrix containing 0s and 1s
 #' @param x a vector of graph6 symbols (of class "graph6")
+#' @param ... other arguments
 #' 
 #' @return A graph6 symbol.
 #' 
