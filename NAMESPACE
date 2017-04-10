@@ -1,9 +1,0 @@
-useDynLib("rgraph6")
-
-import(methods)
-
-exportMethods("asAMatrix")
-exportMethods("asGraph6")
-
-export(b2d,d2b)
-export(dec2bin,bin2dec)
