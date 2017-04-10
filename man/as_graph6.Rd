@@ -4,6 +4,7 @@
 \alias{as_graph6}
 \alias{as_graph6.default}
 \alias{as_graph6.matrix}
+\alias{print.graph6}
 \title{Convert adjacency matrix to a graph6 symbol}
 \usage{
 as_graph6(object)
@@ -11,6 +12,8 @@ as_graph6(object)
 \method{as_graph6}{default}(object)
 
 \method{as_graph6}{matrix}(object)
+
+\method{print}{graph6}(x, ...)
 }
 \arguments{
 \item{object}{a square adjacency matrix containing 0s and 1s}

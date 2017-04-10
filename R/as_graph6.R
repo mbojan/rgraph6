@@ -50,7 +50,7 @@ fN <- function(x) {
   if( x >= 0 && x <= 62 ) {
     return(x+63)
   } else {
-    e <- dec2bin(x) # convert to binary
+    e <- d2b(x) # convert to binary
     v <- expandToLength(e, l=ceiling(length(x)/6)*6, what=0, where="start")
   }
   rval <- splitInto(v, 6)
@@ -73,9 +73,19 @@ fR <- function(object) {
   # get the names as collapsed binary numbers
   nams <- sapply(rval, paste, collapse="")
   # convert the vectors into decimal numbers adding 63 beforehand
-  rval <- sapply(rval, function(x) bin2dec(x) + 63 )
+  rval <- b2d(rval) + 63
   names(rval) <- nams
   return(rval)
 }
 
 
+
+
+
+#' @rdname as_graph6
+#' @method print graph6
+#' @export
+print.graph6 <- function(x, ...) {
+  cat("<graph6>\n")
+  print.default(unclass(x), ...)
+}
