@@ -4,13 +4,13 @@ library(rgraph6)
 
 
 test_that("Decimal -> binary works for selected numbers", {
-  expect_equal( d2b(0), 0)
-  expect_equal( d2b(1), 1)
+  expect_equal( d2b(0), "0")
+  expect_equal( d2b(1), "1")
 })
 
 test_that("Binary -> decimal work for selected numbers", {
-  expect_equal(b2d(1), 1)
-  expect_equal(b2d(0), 0)
+  expect_equal(b2d("1"), 1)
+  expect_equal(b2d("0"), 0)
 })
 
 test_that("Binary -> decimal works for character input", {

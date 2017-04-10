@@ -60,6 +60,7 @@ b2d <- function(bin) UseMethod("b2d")
 
 #' @rdname decbin
 #' @method b2d character
+#' @export
 b2d.character <- function(bin) {
   l <- lapply( strsplit(bin, ""), as.integer)
   b2d.list(l)
@@ -67,6 +68,7 @@ b2d.character <- function(bin) {
 
 #' @rdname decbin
 #' @method b2d list
+#' @export
 b2d.list <- function(bin) {
   vapply(bin, b2d_c, integer(1))
 }
