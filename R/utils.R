@@ -26,26 +26,29 @@ expand_to_length <- function(x, l=ceiling(length(x)/6)*6, what=0, where=c("end",
 }
 
 
-expandToLength <- expand_to_length###-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+expandToLength <- expand_to_length
+
+
+
+
+###-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # split a vector into subvectors of length 'l' and return a list
 ###-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-setGeneric("splitInto", function(x, l) standardGeneric("splitInto"))
+split_into <- function(x, l) UseMethod("split_into")
 
-setMethod("splitInto", "character",
-function(x, l)
-{
-    f <- seq(1, length(x), by=l)
-    rval <- substring(x, f, f+l-1)
-    rval
-} )
+splitInto <- split_into
 
-setMethod("splitInto", "numeric",
-function(x, l)
-{
+split_into.character <- function(x, l) {
+  f <- seq(1, length(x), by=l)
+  rval <- substring(x, f, f+l-1)
+  rval
+}
+
+split_into.numeric <- function(x, l) {
     ch <- paste(x, collapse="")
     rval <- splitInto( ch, l=l)
     as.numeric( unlist(strsplit(rval, "")) )
-} )
+}
 	
 
