@@ -33,5 +33,49 @@ as_graph6.matrix <- function(object) {
   n <- ncol(object)
   v <- object[ upper.tri(object) ]
   r <- c( fN(n),  fR( v ) )
-  rawToChar(as.raw(r))
+  structure(
+    rawToChar(as.raw(r)),
+    class=c("graph6", "character")
+  )
 }
+
+
+
+
+
+
+fN <- function(x) {
+  # x = integer
+  if( x < 0 )  stop("'x' must be non-negative")
+  if( x >= 0 && x <= 62 ) {
+    return(x+63)
+  } else {
+    e <- dec2bin(x) # convert to binary
+    v <- expandToLength(e, l=ceiling(length(x)/6)*6, what=0, where="start")
+  }
+  rval <- splitInto(v, 6)
+  rval
+}
+
+
+fR <- function(object) {
+  if( !all( object %in% c(0,1) ) )
+    stop("argument must contain only 0s or 1s")
+  k <- length(object)
+  # make 'v' be of length divisible by 6 by adding 0s at the end
+  if( (k %% 6) == 0 ) {
+    v <- object
+  } else {
+    v <- expandToLength(object, l=ceiling(k/6)*6, what=0, where="end")
+  }
+  # split 'v' to vectors of length 6
+  rval <- split(v, rep( seq(1, length(v)/6), each=6))
+  # get the names as collapsed binary numbers
+  nams <- sapply(rval, paste, collapse="")
+  # convert the vectors into decimal numbers adding 63 beforehand
+  rval <- sapply(rval, function(x) bin2dec(x) + 63 )
+  names(rval) <- nams
+  return(rval)
+}
+
+
