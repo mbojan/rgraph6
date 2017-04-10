@@ -17,6 +17,8 @@ as_graph6(object)
 }
 \arguments{
 \item{object}{a square adjacency matrix containing 0s and 1s}
+
+\item{x}{a vector of graph6 symbols (of class "graph6")}
 }
 \value{
 A graph6 symbol.
