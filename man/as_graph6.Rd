@@ -4,6 +4,7 @@
 \alias{as_graph6}
 \alias{as_graph6.default}
 \alias{as_graph6.matrix}
+\alias{as_graph6.list}
 \alias{print.graph6}
 \title{Convert adjacency matrix to a graph6 symbol}
 \usage{
@@ -13,10 +14,12 @@ as_graph6(object)
 
 \method{as_graph6}{matrix}(object)
 
+\method{as_graph6}{list}(object)
+
 \method{print}{graph6}(x, ...)
 }
 \arguments{
-\item{object}{a square adjacency matrix containing 0s and 1s}
+\item{object}{a square binary adjacency matrix or a list of thereof}
 
 \item{x}{a vector of graph6 symbols (of class "graph6")}
 
@@ -28,5 +31,5 @@ See \code{\link{rgraph6}} for graph6 format description.}
 A vector of class \code{graph6} extending \code{character} with graph6 symbols.
 }
 \description{
-This function converts a graph adjacency matrix to a graph6 symbol.
+This function converts a graph(s) as adjacency matrices to a graph6 symbol(s).
 }

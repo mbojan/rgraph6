@@ -1,8 +1,8 @@
 #' Convert adjacency matrix to a graph6 symbol
 #' 
-#' This function converts a graph adjacency matrix to a graph6 symbol.
+#' This function converts a graph(s) as adjacency matrices to a graph6 symbol(s).
 #' 
-#' @param object a square adjacency matrix containing 0s and 1s
+#' @param object a square binary adjacency matrix or a list of thereof
 #' @param x a vector of graph6 symbols (of class "graph6")
 #' @param ... other arguments
 #' 
@@ -38,7 +38,19 @@ as_graph6.matrix <- function(object) {
 }
 
 
-
+#' @rdname as_graph6
+#' @method as_graph6 list
+#' @export
+as_graph6.list <- function(object) {
+  vapply(
+    object, 
+    function(x) {
+      stopifnot(is.matrix(x))
+      as_graph6.matrix(x)
+    },
+    character(1)
+  )
+}
 
 
 
