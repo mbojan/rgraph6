@@ -9,3 +9,4 @@ Description: This package contains implementation of methods that allow
 	to represent undirected graphs in a compact 'graph6' format.
 License: MIT + file LICENSE
 RoxygenNote: 6.0.1
+VignetteBuilder: knitr
