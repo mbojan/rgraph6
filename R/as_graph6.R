@@ -45,11 +45,20 @@ as_graph6.list <- function(object) {
   vapply(
     object, 
     function(x) {
-      stopifnot(is.matrix(x))
-      as_graph6.matrix(x)
+      as_graph6(x)
     },
     character(1)
   )
+}
+
+
+
+#' @rdname as_graph6
+#' @method as_graph6 igraph
+#' @export
+as_graph6.igraph <- function(object) {
+  stopifnot(!igraph::is_directed(object))
+  as_graph6.matrix( igraph::as_adjacency_matrix(object, sparse=FALSE))
 }
 
 

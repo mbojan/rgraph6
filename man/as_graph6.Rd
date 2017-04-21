@@ -5,6 +5,7 @@
 \alias{as_graph6.default}
 \alias{as_graph6.matrix}
 \alias{as_graph6.list}
+\alias{as_graph6.igraph}
 \alias{print.graph6}
 \title{Convert adjacency matrix to a graph6 symbol}
 \usage{
@@ -15,6 +16,8 @@ as_graph6(object)
 \method{as_graph6}{matrix}(object)
 
 \method{as_graph6}{list}(object)
+
+\method{as_graph6}{igraph}(object)
 
 \method{print}{graph6}(x, ...)
 }
