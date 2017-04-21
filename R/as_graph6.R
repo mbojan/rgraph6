@@ -61,6 +61,14 @@ as_graph6.igraph <- function(object) {
   as_graph6.matrix( igraph::as_adjacency_matrix(object, sparse=FALSE))
 }
 
+#' @rdname as_graph6
+#' @method as_graph6 network
+#' @export
+as_graph6.network <- function(object) {
+  stopifnot(!network::is.directed(object))
+  as_graph6.matrix( as.matrix(n, type="adjacency"))
+}
+
 
 
 fN <- function(x) {
