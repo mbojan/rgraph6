@@ -39,7 +39,8 @@ d2b_c <- function(dec)
     "dec2bin",
     decimal=as.integer(dec),
     binary=raw(len),
-    len=as.integer(len) 
+    len=as.integer(len),
+    PACKAGE="rgraph6"
   )
   rawToChar(rval$binary)
 }
@@ -83,7 +84,8 @@ b2d_c <- function(bin) {
     "bin2dec",
     binary=as.integer(bin),
     decimal=as.integer(0),
-    len=as.integer(length(bin)) 
+    len=as.integer(length(bin)),
+    PACKAGE="rgraph6"
   )
   return(rval$decimal)
 }
