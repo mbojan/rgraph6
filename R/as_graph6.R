@@ -19,14 +19,17 @@ as_graph6 <- function(object) UseMethod("as_graph6")
 #' @method as_graph6 default
 #' @export
 as_graph6.default <- function(object) {
-  stop("don't know how to handle", data.class(object))
+  stop("don't know how to handle class ", dQuote(data.class(object)))
 }
 
 #' @rdname as_graph6
 #' @method as_graph6 matrix
 #' @export
 as_graph6.matrix <- function(object) {
-  if( ncol(object) != nrow(object) )
+  n <- ncol(object)
+  if( n < 2 | n > 62)
+    stop("as_graph6 handles networks of sizes 2-62 only")
+  if( n != nrow(object) )
     stop("'object' must be square matrix")
   n <- ncol(object)
   v <- object[ upper.tri(object) ]
