@@ -60,6 +60,7 @@ as_graph6.list <- function(object) {
 #' @method as_graph6 igraph
 #' @export
 as_graph6.igraph <- function(object) {
+  requireNamespace("igraph")
   stopifnot(!igraph::is_directed(object))
   as_graph6.matrix( igraph::as_adjacency_matrix(object, sparse=FALSE))
 }
@@ -68,6 +69,7 @@ as_graph6.igraph <- function(object) {
 #' @method as_graph6 network
 #' @export
 as_graph6.network <- function(object) {
+  requireNamespace("network")
   stopifnot(!network::is.directed(object))
   as_graph6.matrix( as.matrix(n, type="adjacency"))
 }
