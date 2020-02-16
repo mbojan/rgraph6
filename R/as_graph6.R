@@ -71,7 +71,7 @@ as_graph6.igraph <- function(object) {
 as_graph6.network <- function(object) {
   requireNamespace("network")
   stopifnot(!network::is.directed(object))
-  as_graph6.matrix( as.matrix(n, type="adjacency"))
+  as_graph6.matrix( as.matrix(object, type="adjacency"))
 }
 
 
