@@ -1,6 +1,6 @@
+#include "decbin.h"
 #include <stdio.h>
 #include <stdlib.h>
-
 
 // Binary to Decimal, Hexadecimal and Octal conversion program
 // tested with Pelles C     vegaseat     15dec2004
@@ -45,5 +45,3 @@ void dec2bin(int *decimal, char *binary, int *len)
     binary[n++] = temp[--k];
   free(temp);
 }
-
-
