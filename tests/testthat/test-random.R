@@ -1,13 +1,21 @@
 set.seed(666)
 
-# how many networks to test
-howmany <- 20
+# How many networks to test
+howmany <- 66
 
-# network sizes to test
-sizes <- round(seq(2, 62, length=15))
 
-# create a random un-directed graph matrix of given size and given tie
-# probability
+context(paste0("Testing matrix <-> graph6 conversion on ", howmany, " random graphs"))
+
+
+
+
+# Network sizes to test
+sizes <- c(2, 3, round(seq(4, 62, length= howmany - 2)))
+
+# Create a random adjacency matrix of given size and tie probability.
+# 
+# @param size network size
+# @param p tie probability
 makeg <- function(size, p)
 {
   # vector for lower triangle
@@ -23,32 +31,18 @@ makeg <- function(size, p)
 
 
 for( s in sizes ) {
-  
-  context(paste("Converting", howmany, "random graphs of size", s, "(matrix <-> graph6)"))
-  
-  # list of graphs
-  matlist <- lapply( 
-    seq(1, howmany), 
-    function(x) makeg(s, runif(1)) 
+  m <- makeg(s, p = runif(1)) # adjacency matrix
+  mname <- paste(m[lower.tri(m)], collapse="")
+  expect_silent(
+    g6 <- as_graph6(m)
   )
-  names(matlist) <- vapply(matlist, function(m) paste(m[lower.tri(m)], collapse=""), character(1))
-  for(i in seq(along=matlist)) {
-    g6 <- try(as_graph6(matlist[[i]]))
-    test_that(
-      paste0("Running as_graph6 on ", names(matlist[i])), {
-        expect_s3_class(g6, "graph6")
-      }
-    )
-    
-    m <- try(as_adjacency(g6)[[1]])
-    test_that(
-      paste0("Running as_adjacency on ", g6), {
-        expect_is(m, "matrix")
-        expect_true(ncol(m) == nrow(m))
-        expect_type(m, "double")
-        expect_identical(matlist[[i]], m)
-      }
-    )
-  }
+  expect_s3_class(g6, "graph6")
   
+  expect_silent(
+    m2 <- as_adjacency(g6)[[1]]
+  )
+  expect_is(m2, "matrix")
+  expect_true(ncol(m2) == nrow(m2))
+  expect_type(m2, "double")
+  expect_identical(m, m2)
 }
