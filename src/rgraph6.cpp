@@ -65,5 +65,6 @@ NumericVector d2b(int x) {
 
 /*** R
 d2b(42)
-b2d(c(1,0,1))
+set.seed(666)
+b2d(sample(0:1, 62*61/2, replace=TRUE))
 */

@@ -1,12 +1,7 @@
 set.seed(666)
 
 # How many networks to test
-howmany <- 66
-
-
-context(paste0("Testing matrix <-> graph6 conversion on ", howmany, " random graphs"))
-
-
+howmany <- 40
 
 
 # Network sizes to test
@@ -31,13 +26,19 @@ makeg <- function(size, p)
 
 
 for( s in sizes ) {
-  m <- makeg(s, p = runif(1)) # adjacency matrix
+  p <- runif(1)
+  
+  m <- makeg(s, p) # adjacency matrix
   mname <- paste(m[lower.tri(m)], collapse="")
+
+  context(paste0("Testing matrix -> graph6 conversion on graph ", paste(deparse(m), collapse=" ")))
+
   expect_silent(
     g6 <- as_graph6(m)
   )
   expect_s3_class(g6, "graph6")
   
+  context(paste0("Testing matrix <- graph6 conversion on graph ", g6))
   expect_silent(
     m2 <- as_adjacency(g6)[[1]]
   )
