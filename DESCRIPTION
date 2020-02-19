@@ -2,7 +2,11 @@ Package: rgraph6
 Version: 2.0-0
 Date: 2017-04-10
 Title: Representing Undirected Graphs as graph6 Strings
-Authors@R: person("Michal", "Bojanowski", role=c("aut", "cre"), email="michal2992@gmail.com")
+Authors@R: person(given = "Michal",
+           family = "Bojanowski",
+           role = c("aut", "cre"),
+           email = "michal2992@gmail.com",
+           comment = c(ORCID = "0000-0001-7503-852X"))
 Depends: R (>= 2.2.1)
 Imports: Rcpp (>= 1.0.3)
 LinkingTo: Rcpp
