@@ -105,7 +105,6 @@ fR <- function(object) {
   # get the names as collapsed binary numbers
   nams <- sapply(rval, paste, collapse="")
   # convert the vectors into decimal numbers adding 63 beforehand
-  # rval <- b2d2(rval) + 63
   rval <- lapply(rval, function(x) b2d(x) + 63)
   names(rval) <- nams
   return(rval)
