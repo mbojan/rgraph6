@@ -35,7 +35,7 @@ d2b_c <- function(dec)
   }
   # length of the output
   len <- floor(log(dec, 2)+1)
-  rval <- .C(
+  rval <- .Call(
     "dec2bin",
     decimal=as.integer(dec),
     binary=raw(len),
@@ -80,7 +80,7 @@ b2d_c <- function(bin) {
   if(!is.vector(bin)) stop("'bin' must be a vector, got", class(bin))
   if( !all(bin %in% c(0,1)) ) stop("'bin' must contain only 0s and 1s")
   # call C code
-  rval <- .C(
+  rval <- .Call(
     "bin2dec",
     binary=as.integer(bin),
     decimal=as.integer(0),
