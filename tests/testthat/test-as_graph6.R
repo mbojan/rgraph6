@@ -12,5 +12,5 @@ test_that("errors are given for improper input",{
 
 test_that("works for simple matrices", {
   m <- matrix(c(0,1,1,0), 2, 2) # complete size 2
-  as_graph6(m)
+  expect_silent(as_graph6(m))
 })

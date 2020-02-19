@@ -17,21 +17,20 @@ BEGIN_RCPP
 END_RCPP
 }
 // d2b
-NumericVector d2b(int x, int len);
-RcppExport SEXP _rgraph6_d2b(SEXP xSEXP, SEXP lenSEXP) {
+NumericVector d2b(int x);
+RcppExport SEXP _rgraph6_d2b(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< int >::type x(xSEXP);
-    Rcpp::traits::input_parameter< int >::type len(lenSEXP);
-    rcpp_result_gen = Rcpp::wrap(d2b(x, len));
+    rcpp_result_gen = Rcpp::wrap(d2b(x));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
     {"_rgraph6_b2d", (DL_FUNC) &_rgraph6_b2d, 1},
-    {"_rgraph6_d2b", (DL_FUNC) &_rgraph6_d2b, 2},
+    {"_rgraph6_d2b", (DL_FUNC) &_rgraph6_d2b, 1},
     {NULL, NULL, 0}
 };
 

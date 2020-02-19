@@ -32,11 +32,18 @@ double b2d(NumericVector x) {
 }
 
 // [[Rcpp::export]]
-NumericVector d2b(int x, int len) {
+NumericVector d2b(int x) {
   int  k = 0, n = 0;
   int  remain;
+  int  len;
+  if(x == 0) {
+    len = 1;
+  } else {
+    len = floor( (log10(x)/log10(2)) + 1);
+  }
   NumericVector binary(len);
   NumericVector temp(len);
+  
   
   do 
   {

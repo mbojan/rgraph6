@@ -5,7 +5,7 @@ b2d <- function(x) {
     .Call('_rgraph6_b2d', PACKAGE = 'rgraph6', x)
 }
 
-d2b <- function(x, len) {
-    .Call('_rgraph6_d2b', PACKAGE = 'rgraph6', x, len)
+d2b <- function(x) {
+    .Call('_rgraph6_d2b', PACKAGE = 'rgraph6', x)
 }
 
