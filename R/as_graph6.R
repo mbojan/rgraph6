@@ -82,8 +82,8 @@ fN <- function(x) {
   if( x >= 0 && x <= 62 ) {
     return(x+63)
   } else {
-    e <- d2b(x) # convert to binary
-    v <- expandToLength(e, l=ceiling(length(x)/6)*6, what=0, where="start")
+    e <- d2b2(x) # convert to binary
+    v <- expand_to_length(e, l=ceiling(length(x)/6)*6, what=0, where="start")
   }
   rval <- splitInto(v, 6)
   rval
@@ -98,14 +98,15 @@ fR <- function(object) {
   if( (k %% 6) == 0 ) {
     v <- object
   } else {
-    v <- expandToLength(object, l=ceiling(k/6)*6, what=0, where="end")
+    v <- expand_to_length(object, l=ceiling(k/6)*6, what=0, where="end")
   }
   # split 'v' to vectors of length 6
   rval <- split(v, rep( seq(1, length(v)/6), each=6))
   # get the names as collapsed binary numbers
   nams <- sapply(rval, paste, collapse="")
   # convert the vectors into decimal numbers adding 63 beforehand
-  rval <- b2d(rval) + 63
+  # rval <- b2d2(rval) + 63
+  rval <- lapply(rval, function(x) b2d2(x) + 63)
   names(rval) <- nams
   return(rval)
 }
