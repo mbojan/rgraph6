@@ -83,5 +83,6 @@
 #' 
 #' @docType package
 #' @name rgraph6
+#' @import Rcpp
 #' @useDynLib rgraph6
 NULL
