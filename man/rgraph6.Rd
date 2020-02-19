@@ -3,7 +3,6 @@
 \docType{package}
 \name{rgraph6}
 \alias{rgraph6}
-\alias{rgraph6-package}
 \title{rgraph6: Representing Undirected Graphs as graph6 Strings}
 \description{
 This implements of methods for representing undirected

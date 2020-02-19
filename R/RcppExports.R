@@ -2,10 +2,10 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 b2d2 <- function(x) {
-    .Call(`_rgraph6_b2d2`, x)
+    .Call('_rgraph6_b2d2', PACKAGE = 'rgraph6', x)
 }
 
 d2b2 <- function(x, len) {
-    .Call(`_rgraph6_d2b2`, x, len)
+    .Call('_rgraph6_d2b2', PACKAGE = 'rgraph6', x, len)
 }
 
