@@ -12,7 +12,7 @@ using namespace Rcpp;
 //
 
 // [[Rcpp::export]]
-double b2d2(NumericVector x) {
+double b2d(NumericVector x) {
   int len = x.size();
   int  b, k, m, n;
   int  total = 0;
@@ -32,7 +32,7 @@ double b2d2(NumericVector x) {
 }
 
 // [[Rcpp::export]]
-NumericVector d2b2(int x, int len) {
+NumericVector d2b(int x, int len) {
   int  k = 0, n = 0;
   int  remain;
   NumericVector binary(len);
@@ -57,5 +57,6 @@ NumericVector d2b2(int x, int len) {
 //
 
 /*** R
-d2b2(42)
+d2b(42)
+b2d(c(1,0,1))
 */

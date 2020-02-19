@@ -5,33 +5,33 @@
 
 using namespace Rcpp;
 
-// b2d2
-double b2d2(NumericVector x);
-RcppExport SEXP _rgraph6_b2d2(SEXP xSEXP) {
+// b2d
+double b2d(NumericVector x);
+RcppExport SEXP _rgraph6_b2d(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(b2d2(x));
+    rcpp_result_gen = Rcpp::wrap(b2d(x));
     return rcpp_result_gen;
 END_RCPP
 }
-// d2b2
-NumericVector d2b2(int x, int len);
-RcppExport SEXP _rgraph6_d2b2(SEXP xSEXP, SEXP lenSEXP) {
+// d2b
+NumericVector d2b(int x, int len);
+RcppExport SEXP _rgraph6_d2b(SEXP xSEXP, SEXP lenSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< int >::type x(xSEXP);
     Rcpp::traits::input_parameter< int >::type len(lenSEXP);
-    rcpp_result_gen = Rcpp::wrap(d2b2(x, len));
+    rcpp_result_gen = Rcpp::wrap(d2b(x, len));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_rgraph6_b2d2", (DL_FUNC) &_rgraph6_b2d2, 1},
-    {"_rgraph6_d2b2", (DL_FUNC) &_rgraph6_d2b2, 2},
+    {"_rgraph6_b2d", (DL_FUNC) &_rgraph6_b2d, 1},
+    {"_rgraph6_d2b", (DL_FUNC) &_rgraph6_d2b, 2},
     {NULL, NULL, 0}
 };
 
