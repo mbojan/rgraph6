@@ -82,7 +82,7 @@ fN <- function(x) {
   if( x >= 0 && x <= 62 ) {
     return(x+63)
   } else {
-    e <- d2b2(x) # convert to binary
+    e <- d2b(x) # convert to binary
     v <- expand_to_length(e, l=ceiling(length(x)/6)*6, what=0, where="start")
   }
   rval <- splitInto(v, 6)
