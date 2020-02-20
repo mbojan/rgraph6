@@ -1,16 +1,6 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-// This is a simple example of exporting a C++ function to R. You can
-// source this function into an R session using the Rcpp::sourceCpp 
-// function (or via the Source button on the editor toolbar). Learn
-// more about Rcpp at:
-//
-//   http://www.rcpp.org/
-//   http://adv-r.had.co.nz/Rcpp.html
-//   http://gallery.rcpp.org/
-//
-
 // [[Rcpp::export]]
 double b2d(NumericVector x) {
   int len = x.size();
@@ -32,39 +22,25 @@ double b2d(NumericVector x) {
 }
 
 // [[Rcpp::export]]
-NumericVector d2b(int x) {
-  int  k = 0, n = 0;
-  int  remain;
+std::vector<double> d2b(int x){
+  int  k = 0;
+  int  remainder;
   int  len;
   if(x == 0) {
     len = 1;
   } else {
-    len = floor( (log10(x)/log10(2)) + 1);
+    len = (int) floor( (log10(x)/log10(2)) + 1);
   }
-  NumericVector binary(len);
-  NumericVector temp(len);
-  
-  
-  do 
+  std::vector<double> binary(len);
+
+  while (x!=0)
   {
-    remain    = x % 2;
-    // whittle down the decimal number
-    x   = x / 2;
-    temp[k++] = remain;
-  } while (x > 0);
-  // reverse the order
-  while (k >= 0)
-    binary[n++] = temp[--k];
+    remainder = x%2;
+    x /= 2;
+    binary[k] = remainder;
+    k+=1;
+  }
+
+  std::reverse(binary.begin(), binary.end()); 
   return binary;
 }
-
-// You can include R code blocks in C++ files processed with sourceCpp
-// (useful for testing and development). The R code will be automatically 
-// run after the compilation.
-//
-
-/*** R
-d2b(42)
-set.seed(666)
-b2d(sample(0:1, 62*61/2, replace=TRUE))
-*/

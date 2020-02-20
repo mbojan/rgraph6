@@ -27,11 +27,11 @@ as_graph6.default <- function(object) {
 #' @export
 as_graph6.matrix <- function(object) {
   n <- ncol(object)
-  if( n < 2 | n > 62)
-    stop("as_graph6 handles networks of sizes 2-62 only")
+  if( n < 2)
+    stop("as_graph6 handles networks of size greater 1")
   if( n != nrow(object) )
     stop("'object' must be square matrix")
-  n <- ncol(object)
+
   v <- object[ upper.tri(object) ]
   r <- c( fN(n),  fR( v ) )
   structure(
@@ -76,17 +76,19 @@ as_graph6.network <- function(object) {
 
 
 
-fN <- function(x) {
-  # x = integer
-  if( x < 0 )  stop("'x' must be non-negative")
+fN <- function(x){
+  if(x < 0)  stop("'x' must be non-negative")
   if( x >= 0 && x <= 62 ) {
     return(x+63)
-  } else {
-    e <- d2b(x) # convert to binary
-    v <- expand_to_length(e, l=ceiling(length(x)/6)*6, what=0, where="start")
+  } else if( x >= 63 & x<= 258047){
+    e <- d2b(x)
+    e <- expand_to_length(e, l=18, what=0, where="start")
+    return(c(126,fR(e)))
+  } else if( x > 258047 ){
+    e <- d2b(x)
+    e <- expand_to_length(e, l=36, what=0, where="start")
+    return(c(126,126,fR(e)))
   }
-  rval <- splitInto(v, 6)
-  rval
 }
 
 

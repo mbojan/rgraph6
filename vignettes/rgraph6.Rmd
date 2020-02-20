@@ -34,7 +34,7 @@ cat("
 
 # What is graph6?
 
-Graph6 is a compact format for representing undirected graphs as strings of printable ASCII characters due to [Brendan McKay](https://en.wikipedia.org/wiki/Brendan_McKay). See [here](http://users.cecs.anu.edu.au/~bdm/data/formats.txt) for format specifcation.
+Graph6 is a compact format for representing undirected graphs as strings of printable ASCII characters due to [Brendan McKay](https://en.wikipedia.org/wiki/Brendan_McKay). See [here](http://users.cecs.anu.edu.au/~bdm/data/formats.txt) for format specification.
 
 
 

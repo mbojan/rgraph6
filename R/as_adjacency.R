@@ -45,14 +45,24 @@ as_adjacency.graph6 <- function(object) {
 
 as_amatrix <- function(object) {
   r <- charToRaw(object)
-  if( as.numeric(r[1]) == 126 ) # number of actors larger than 63
-    stop("networks larger than 63 nodes not yet supported")
-  else
-  {
+  if( as.numeric(r[1]) == 126 & as.numeric(r[2]==126)){ #n>= 258048
+    rn <- r[3:8]
+    n <- b2d(unlist(lapply(as.numeric(rn)-63, 
+                           function(x) expand_to_length( d2b(x), l=ceiling(length(x)/6)*6, 
+                                                         what=0, where="start") )))
+    rg <- r[seq(9,length(r))]    
+  } else if(as.numeric(r[1]) == 126 & as.numeric(r[2]!=126)){ #n>=63 & n<=258047
+    rn <- r[2:4]
+    n <- b2d(unlist(lapply(as.numeric(rn)-63, 
+                           function(x) expand_to_length( d2b(x), l=ceiling(length(x)/6)*6, 
+                                                         what=0, where="start") )))
+    rg <- r[seq(5,length(r))]
+  }    
+  else{ #n<63
     rn <- r[1]
     rg <- r[ seq(2, length(r)) ]
+    n <- as.numeric(rn) - 63
   }
-  n <- as.numeric(rn) - 63
   g <- sapply(as.numeric(rg)-63, function(x)
     expand_to_length( d2b(x), l=ceiling(length(x)/6)*6, what=0, where="start") )
   g <- g[ seq(1, n*(n-1)/2) ]
