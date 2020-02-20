@@ -17,7 +17,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // d2b
-NumericVector d2b(int x);
+std::vector<double> d2b(int x);
 RcppExport SEXP _rgraph6_d2b(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

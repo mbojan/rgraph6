@@ -5,7 +5,7 @@ howmany <- 40
 
 
 # Network sizes to test
-sizes <- c(2, 3, round(seq(4, 62, length= howmany - 2)))
+sizes <- c(2, 3, round(seq(4, 128, length= howmany - 2)))
 
 # Create a random adjacency matrix of given size and tie probability.
 # 
