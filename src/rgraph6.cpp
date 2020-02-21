@@ -22,7 +22,7 @@ double b2d(NumericVector x) {
 }
 
 // [[Rcpp::export]]
-std::vector<double> d2b(int x){
+std::vector<double> d2b(unsigned long int x){
   int  k = 0;
   int  remainder;
   int  len;

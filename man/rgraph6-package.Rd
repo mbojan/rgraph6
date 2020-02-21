@@ -4,10 +4,10 @@
 \name{rgraph6-package}
 \alias{rgraph6-package}
 \alias{rgraph6}
-\title{rgraph6: Representing Undirected Graphs as graph6 Strings}
+\title{rgraph6: Representing Graphs as graph6 Strings}
 \description{
 This package implements methods for representing undirected graphs in a
-compact 'graph6' format. Main functions are \code{\link[=as_graph6]{as_graph6()}} and
+compact 'graph6' format. Main functions are \code{\link[=as_graph6]{as_graph6()}}, \code{\link[=as_dgraph6]{as_dgraph6()}}
 \code{\link[=as_adjacency]{as_adjacency()}}. The format is due to Brendan McKay
 (\url{http://cs.anu.edu.au/~bdm}).
 }
@@ -76,6 +76,32 @@ Suppose \eqn{n=5} and \eqn{G} has edges 0-2, 0-4, 1-3 and 3-4.
 
 Then \eqn{N(n) = 68} and \eqn{R(x) = R(010010 100100) = 81 99}. So, the
 graph is \eqn{68 81 99}.
+}
+
+\section{Description of dgraph6 format}{
+
+Data type: simple directed graphs (allowing loops) of order 0 to 68719476735.
+
+Optional Header: \code{>>dgraph6<<} (without end of line!)
+
+File name extension: \code{.d6}
+
+One graph:
+
+Suppose \eqn{G} has \eqn{n} vertices. Write the adjacency matrix of \eqn{G}
+as a bit vector x of length \eqn{n^2}, row by row.
+
+Then the graph is represented as '&' \eqn{N(n) R(x)}.
+The character '&' (decimal \eqn{38}) appears as the first character.
+
+Example:
+
+Suppose \eqn{n=5} and \eqn{G} has edges 0->2, 0->4, 3->1 and 3->4.
+
+\deqn{x = 00101 00000 00000 01001 00000}
+
+Then \eqn{N(n) = 68} and
+\eqn{R(x) = R(00101 00000 00000 01001 00000) = 73  63  65  79  63}. So, the graph is  \eqn{38 68 73  63  65  79  63}.
 }
 
 \references{
