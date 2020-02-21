@@ -9,5 +9,6 @@
 as_network <- function(object, ...) {
   stopifnot(inherits(object, "graph6"))
   requireNamespace("network", quietly=TRUE)
-  lapply(object, function(g6) network::as.network(as_adjacency(g6), directed=FALSE, ...))
+  amlist <- as_adjacency(object)
+  lapply(amlist, network::as.network, directed=FALSE, ...)
 }

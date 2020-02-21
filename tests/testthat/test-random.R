@@ -30,4 +30,22 @@ for( s in sizes ) {
     expect_type(m2, "double")
     expect_identical(m, m2)
   })
+  
+  test_that("Converting igraph <-> graph6", {
+    requireNamespace("igraph", quietly=TRUE)
+    ig <- igraph::graph_from_adjacency_matrix(m, mode="undirected")
+    ig6 <- as_graph6(ig)
+    ig2 <- as_igraph(ig6)
+    expect_true(
+      igraph::identical_graphs(ig, ig2[[1]])
+    )
+  })
+  
+  test_that("Converting network <-> graph6", {
+    requireNamespace("network", quietly=TRUE)
+    net <- network::as.network(m, directed=FALSE)
+    ng6 <- as_graph6(net)
+    net2 <- as_network(ng6)
+    expect_identical(net, net2[[1]])
+  })
 }

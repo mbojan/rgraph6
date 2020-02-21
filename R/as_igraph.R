@@ -9,5 +9,6 @@
 as_igraph <- function(object, ...) {
   stopifnot(inherits(object, "graph6"))
   requireNamespace("igraph", quietly=TRUE)
-  lapply(object, function(g6) igraph::graph_from_adjacency_matrix(as_adjacency(g6), mode="undirected", ...))
+  amlist <- as_adjacency(object)
+  lapply(amlist, igraph::graph_from_adjacency_matrix, mode="undirected", ...)
 }
