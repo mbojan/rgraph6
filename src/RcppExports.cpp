@@ -17,12 +17,12 @@ BEGIN_RCPP
 END_RCPP
 }
 // d2b
-std::vector<double> d2b(int x);
+std::vector<double> d2b(unsigned long int x);
 RcppExport SEXP _rgraph6_d2b(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type x(xSEXP);
+    Rcpp::traits::input_parameter< unsigned long int >::type x(xSEXP);
     rcpp_result_gen = Rcpp::wrap(d2b(x));
     return rcpp_result_gen;
 END_RCPP

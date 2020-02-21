@@ -4,6 +4,7 @@
 \alias{as_adjacency}
 \alias{as_adjacency.default}
 \alias{as_adjacency.graph6}
+\alias{as_adjacency.dgraph6}
 \title{Convert graph6 symbols to adjacency matrices}
 \usage{
 as_adjacency(object)
@@ -11,6 +12,8 @@ as_adjacency(object)
 \method{as_adjacency}{default}(object)
 
 \method{as_adjacency}{graph6}(object)
+
+\method{as_adjacency}{dgraph6}(object)
 }
 \arguments{
 \item{object}{character vector of graph6 symbols}
