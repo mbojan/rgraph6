@@ -1,0 +1,155 @@
+---
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+library(rgraph6)
+requireNamespace("igraph", quietly = TRUE)
+
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# rgraph6: Representing Undirected Graphs as graph6 Strings
+
+<!-- badges: start -->
+[![Build Status](https://travis-ci.org/mbojan/rgraph6.png?branch=master)](https://travis-ci.org/mbojan/rgraph6) [![Build Status](https://ci.appveyor.com/api/projects/status/4jl7qg3etk9g8eo0?svg=true)](https://ci.appveyor.com/project/mbojan/rgraph6) [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/rgraph6?color=2ED968)](http://cranlogs.r-pkg.org/) [![cran version](http://www.r-pkg.org/badges/version/rgraph6)](https://cran.r-project.org/package=rgraph6)
+<!-- badges: end -->
+
+
+Functions in this package allow for converting network data (undirected graphs of size up to 128 nodes) to compact graph6 symbols and back. Graph6 symbols are convenient in a number of contexts, especially when working with large number of graphs.
+
+
+
+## What is graph6?
+
+Graph6 is a compact format for representing undirected graphs as strings of printable ASCII characters due to [Brendan McKay](https://en.wikipedia.org/wiki/Brendan_McKay). See [here](http://users.cecs.anu.edu.au/~bdm/data/formats.txt) for format specification.
+
+
+
+
+
+## Installation
+
+```{r installation, eval=FALSE}
+devtools::install_github("mbojan/rgraph6", build_vignettes=TRUE)
+```
+
+
+
+## Usage
+
+At this moment there are the following functions available:
+
+```{r summary-table, echo=FALSE}
+m <- matrix(c(
+  "adjacency matrix", "graph6", "as_graph6()",
+  "igraph", "graph6", "as_graph6()",
+  "network", "graph6", "as_graph6()",
+  "graph6", "igraph", "as_igraph()",
+  "graph6", "network", "as_network()",
+  "graph6", "adjacency matrix", "as_adjacency()"
+), ncol=3, byrow=TRUE)
+colnames(m) <- c("from", "to", "fun")
+r <- tapply(m[,"fun"], list(m[,"from"], m[,"to"]), identity)
+names(dimnames(r)) <- c("from", "to")
+r[is.na(r)] <- "--"
+
+ig <- igraph::graph_from_data_frame(as.data.frame(m, stringsAsFactors = FALSE), directed=TRUE)
+set.seed(666)
+plot(
+  ig,
+  edge.curved=.3,
+  vertex.size = 25,
+  vertex.color = par("bg"),
+  vertex.frame.color = par("bg"),
+  edge.color = "black",
+  edge.label = igraph::E(ig)$fun,
+  vertex.label.family = "sans",
+  edge.label.family = "mono"
+)
+```
+
+For example:
+
+```{r gen-example, include=FALSE, eval=FALSE}
+igraph::random.graph.game(12, .5, directed=FALSE) %>%
+  igraph::as_adjacency_matrix(sparse=FALSE) %>%
+  deparse() %>%
+  cat(sep="\n")
+```
+
+
+```{r example}
+# Some adjacency matrix
+am <- structure(c(0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 
+1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 
+0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 
+0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 
+1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 
+0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 
+1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 
+0), .Dim = c(12L, 12L))
+
+# Corresponding graph6 symbol
+(g6 <- as_graph6(am))
+
+# To igraph
+(ig <- as_igraph(g6)[[1]])
+
+# To network
+(net <- as_network(g6)[[1]])
+
+# Back to adjacency matrix
+am2 <- as_adjacency(g6)[[1]]
+
+identical(am, am2)
+```
+
+
+
+### Tidy graph databases
+
+The graph6 format shines if we need to store large number of graphs in a data frame. Let's generate a list of random graphs as igraph objects and store them in a data frame column of graph6 symbols:
+
+```{r}
+library("dplyr")
+
+# Generate list of igraph objects
+set.seed(666)
+
+d <- tibble::tibble(
+  g6 = replicate(
+    10,
+    igraph::random.graph.game(sample(3:12, replace=TRUE), p=.5, directed=FALSE),
+    simplify=FALSE
+  ) %>%
+    as_graph6() %>%
+    structure(class=c("graph6", "character"))
+)
+d
+```
+
+Nice and compact. Now we can do some computations and save the results together with graph data to a simple CSV file:
+
+```{r}
+d %>%
+  dplyr::mutate(
+    igraphs = as_igraph(g6),
+    vc = purrr::map_dbl(igraphs, igraph::vcount),
+    ec = purrr::map_dbl(igraphs, igraph::ecount),
+    density = purrr::map_dbl(igraphs, igraph::edge_density)
+  ) %>%
+  dplyr::select(-igraphs) %>%
+  write.csv(row.names = FALSE)
+```
+
