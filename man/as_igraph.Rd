@@ -9,7 +9,7 @@ as_igraph(object, ...)
 \arguments{
 \item{object}{vector of graph6 symbols}
 
-\item{...}{other arguments passed to \code{\link[igraph:graph_from_adjacency]{igraph::graph_from_adjacency()}}}
+\item{...}{other arguments passed to \code{\link[igraph:graph_from_adjacency_matrix]{igraph::graph_from_adjacency_matrix()}}}
 }
 \value{
 A list of igraph objects.
