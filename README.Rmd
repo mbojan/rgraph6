@@ -50,7 +50,7 @@ devtools::install_github("mbojan/rgraph6", build_vignettes=TRUE)
 
 At this moment there are the following functions available:
 
-```{r summary-table, echo=FALSE}
+```{r summary-table, echo=FALSE, fig.width=10, fig.asp=1}
 m <- matrix(c(
   "adjacency matrix", "graph6", "as_graph6()",
   "igraph", "graph6", "as_graph6()",
