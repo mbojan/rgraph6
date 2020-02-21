@@ -47,12 +47,15 @@ as_graph6.matrix <- function(object) {
 #' @method as_graph6 list
 #' @export
 as_graph6.list <- function(object) {
-  vapply(
-    object, 
-    function(x) {
-      as_graph6(x)
-    },
-    character(1)
+  structure(
+    vapply(
+      object, 
+      function(x) {
+        as_graph6(x)
+      },
+      character(1)
+    ),
+    class = c("graph6", "character")
   )
 }
 
