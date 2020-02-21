@@ -52,3 +52,25 @@ split_into.numeric <- function(x, l) {
 }
 	
 
+
+
+
+# Create random graphs for testing purposes -------------------------------
+
+# Create a random adjacency matrix of given size and tie probability.
+# 
+# @param size network size
+# @param p tie probability
+makeg <- function(size, p)
+{
+  # vector for lower triangle
+  v <- sample(0:1, size*(size-1)/2, replace=TRUE, prob=c(1-p, p))
+  # graph adjacency matrix
+  m <- matrix(0, ncol=size, nrow=size)
+  # fill-in the triangles
+  m[lower.tri(m)] <- v
+  tm <- t(m)
+  tm[lower.tri(tm)] <- v
+  t(tm)
+}
+
