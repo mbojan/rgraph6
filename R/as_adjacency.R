@@ -36,14 +36,24 @@ as_adjacency.default <- function(object) {
 #' @export
 as_adjacency.graph6 <- function(object) {
   structure(
-    lapply(object, as_amatrix),
+    lapply(object, as_amatrix_graph6),
+    names = object
+  )
+}
+
+#' @rdname as_adjacency
+#' @method as_adjacency dgraph6
+#' @export
+as_adjacency.dgraph6 <- function(object) {
+  structure(
+    lapply(object, as_amatrix_dgraph6),
     names = object
   )
 }
 
 
 
-as_amatrix <- function(object) {
+as_amatrix_graph6 <- function(object) {
   r <- charToRaw(object)
   if( as.numeric(r[1]) == 126 & as.numeric(r[2]==126)){ #n>= 258048
     rn <- r[3:8]
@@ -70,5 +80,32 @@ as_amatrix <- function(object) {
   trval[ upper.tri(trval) ] <- g
   rval <- t(trval)
   rval[ upper.tri(rval) ] <- g
+  rval
+}
+
+as_amatrix_dgraph6 <- function(object) {
+  r <- charToRaw(object)
+  if( as.numeric(r[2]) == 126 & as.numeric(r[3]==126)){ #n>= 258048
+    rn <- r[4:9]
+    n <- b2d(unlist(lapply(as.numeric(rn)-63, 
+                           function(x) expand_to_length( d2b(x), l=ceiling(length(x)/6)*6, 
+                                                         what=0, where="start") )))
+    rg <- r[seq(10,length(r))]    
+  } else if(as.numeric(r[2]) == 126 & as.numeric(r[3]!=126)){ #n>=63 & n<=258047
+    rn <- r[3:5]
+    n <- b2d(unlist(lapply(as.numeric(rn)-63, 
+                           function(x) expand_to_length( d2b(x), l=ceiling(length(x)/6)*6, 
+                                                         what=0, where="start") )))
+    rg <- r[seq(6,length(r))]
+  }    
+  else{ #n<63
+    rn <- r[2]
+    rg <- r[ seq(3, length(r)) ]
+    n <- as.numeric(rn) - 63
+  }
+  g <- sapply(as.numeric(rg)-63, function(x)
+    expand_to_length( d2b(x), l=ceiling(length(x)/6)*6, what=0, where="start") )
+  g <- g[ seq(1, n^2) ]
+  rval <- matrix(g,ncol = n, nrow = n, byrow = TRUE)
   rval
 }

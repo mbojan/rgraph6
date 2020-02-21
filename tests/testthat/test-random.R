@@ -1,7 +1,7 @@
 set.seed(666)
 
 # How many networks to test
-howmany <- 40
+howmany <- 25
 
 
 # Network sizes to test
@@ -39,6 +39,45 @@ for( s in sizes ) {
   expect_s3_class(g6, "graph6")
   
   context(paste0("Testing matrix <- graph6 conversion on graph ", g6))
+  expect_silent(
+    m2 <- as_adjacency(g6)[[1]]
+  )
+  expect_is(m2, "matrix")
+  expect_true(ncol(m2) == nrow(m2))
+  expect_type(m2, "double")
+  expect_identical(m, m2)
+}
+
+
+# Create a random directed adjacency matrix of given size and tie probability.
+# 
+# @param size network size
+# @param p tie probability
+maked <- function(size, p)
+{
+  # vector for lower triangle
+  v <- sample(0:1, size^2, replace=TRUE, prob=c(1-p, p))
+  # graph adjacency matrix
+  m <- matrix(v, ncol=size, nrow=size)
+  diag(m) <- 0
+  m
+}
+
+
+for( s in sizes ) {
+  p <- runif(1)
+  
+  m <- maked(s, p) # adjacency matrix
+  mname <- paste(m, collapse="")
+  
+  context(paste0("Testing matrix -> dgraph6 conversion on graph ", paste(deparse(m), collapse=" ")))
+  
+  expect_silent(
+    g6 <- as_dgraph6(m)
+  )
+  expect_s3_class(g6, "dgraph6")
+  
+  context(paste0("Testing matrix <- dgraph6 conversion on graph ", g6))
   expect_silent(
     m2 <- as_adjacency(g6)[[1]]
   )
