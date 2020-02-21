@@ -1,11 +1,13 @@
+context("Test graph6 <-> matrix conversions on some random graphs")
+
+
 set.seed(666)
 
 # How many networks to test
-howmany <- 40
-
+howmany <- 50
 
 # Network sizes to test
-sizes <- c(2, 3, round(seq(4, 128, length= howmany - 2)))
+sizes <- round(seq(2, 128, length=howmany))
 
 # Create a random adjacency matrix of given size and tie probability.
 # 
@@ -30,20 +32,18 @@ for( s in sizes ) {
   
   m <- makeg(s, p) # adjacency matrix
   mname <- paste(m[lower.tri(m)], collapse="")
-
-  context(paste0("Testing matrix -> graph6 conversion on graph ", paste(deparse(m), collapse=" ")))
-
-  expect_silent(
-    g6 <- as_graph6(m)
-  )
-  expect_s3_class(g6, "graph6")
   
-  context(paste0("Testing matrix <- graph6 conversion on graph ", g6))
-  expect_silent(
-    m2 <- as_adjacency(g6)[[1]]
-  )
-  expect_is(m2, "matrix")
-  expect_true(ncol(m2) == nrow(m2))
-  expect_type(m2, "double")
-  expect_identical(m, m2)
+  test_that(paste0("Converting matrix <-> graph6 on graph of size ", s), {
+    expect_silent(
+      g6 <- as_graph6(m)
+    )
+    expect_s3_class(g6, "graph6")
+    expect_silent(
+      m2 <- as_adjacency(g6)[[1]]
+    )
+    expect_is(m2, "matrix")
+    expect_true(ncol(m2) == nrow(m2))
+    expect_type(m2, "double")
+    expect_identical(m, m2)
+  })
 }
