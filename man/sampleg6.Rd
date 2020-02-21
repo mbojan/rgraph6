@@ -4,7 +4,7 @@
 \name{sampleg6}
 \alias{sampleg6}
 \title{A sample vector of g6 codes}
-\format{The format is: chr [1:9] "CR" "CJ" "CN" ...}
+\format{The format is: \verb{chr [1:9] "CR" "CJ" "CN" ...}}
 \usage{
 sampleg6
 }

@@ -1,14 +1,16 @@
-#' Convert adjacency matrix to a graph6 symbol
+#' Convert graphs to graph6 symbols
 #' 
-#' This function converts a graph(s) as adjacency matrices to a graph6 symbol(s).
+#' This function converts graphs to graph6 symbols. Implemented methods expect
+#' the graph to be an adjacency matrix, an igraph, or a network object.
 #' 
-#' @param object a square binary adjacency matrix or a list of thereof
+#' @param object a graph or a list of graphs
 #' @param x a vector of graph6 symbols (of class "graph6")
 #' @param ... other arguments
 #' 
-#' See \code{\link{rgraph6}} for graph6 format description.
+#' @details 
+#' See [rgraph6] for graph6 format description.
 #' 
-#' @return A vector of class \code{graph6} extending \code{character} with graph6 symbols.
+#' @return A vector of class `graph6` extending `character` with graph6 symbols.
 #' 
 #' @export
 

@@ -2,7 +2,7 @@
 #' 
 #' A vector of graph6 symbols each representing an undirected graph.
 #' 
-#' @format The format is: chr [1:9] "CR" "CJ" "CN" ...
+#' @format The format is: `chr [1:9] "CR" "CJ" "CN" ...`
 #' 
 #' @examples
 #' data(sampleg6)

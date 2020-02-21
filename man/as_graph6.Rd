@@ -8,7 +8,7 @@
 \alias{as_graph6.igraph}
 \alias{as_graph6.network}
 \alias{print.graph6}
-\title{Convert adjacency matrix to a graph6 symbol}
+\title{Convert graphs to graph6 symbols}
 \usage{
 as_graph6(object)
 
@@ -25,17 +25,19 @@ as_graph6(object)
 \method{print}{graph6}(x, ...)
 }
 \arguments{
-\item{object}{a square binary adjacency matrix or a list of thereof}
+\item{object}{a graph or a list of graphs}
 
 \item{x}{a vector of graph6 symbols (of class "graph6")}
 
-\item{...}{other arguments
-
-See \code{\link{rgraph6}} for graph6 format description.}
+\item{...}{other arguments}
 }
 \value{
 A vector of class \code{graph6} extending \code{character} with graph6 symbols.
 }
 \description{
-This function converts a graph(s) as adjacency matrices to a graph6 symbol(s).
+This function converts graphs to graph6 symbols. Implemented methods expect
+the graph to be an adjacency matrix, an igraph, or a network object.
+}
+\details{
+See \link{rgraph6} for graph6 format description.
 }

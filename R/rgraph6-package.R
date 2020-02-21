@@ -1,37 +1,31 @@
 #' rgraph6: Representing Undirected Graphs as graph6 Strings
 #' 
-#' This implements of methods for representing undirected
-#' graphs in a compact 'graph6' format. Main functions are \code{\link{as_graph6}},
-#' \code{\link{as_adjacency}}.
-#' 
-#' This package implements routines for reading and writing undirected graphs
-#' in graph6, a format due to Brendan McKay (\url{http://cs.anu.edu.au/~bdm}).
+#' This package implements methods for representing undirected graphs in a
+#' compact 'graph6' format. Main functions are [as_graph6()] and
+#' [as_adjacency()]. The format is due to Brendan McKay
+#' (\url{http://cs.anu.edu.au/~bdm}).
 #' 
 #' 
-#' 
-#' 
-#' @section graph6 format:
+#' @section The graph6 format:
 #' The description below is taken from \url{http://cs.anu.edu.au/people/bdm/data/formats.txt}.
 #' 
 #' General principles: 
-#' \itemize{ 
-#' \item All numbers in this description are in decimal unless obviously in binary.
-#' \item Apart from the header, there is one object per line.  Apart from the
-#' header and the end-of-line characters, all bytes have a value in the range
-#' 63-126 (which are all printable ASCII characters).  A file of objects is a
-#' text file, so whatever end-of-line convention is locally used is fine).
-#' }
+#' 
+#' - All numbers in this description are in decimal unless obviously in binary.
+#' - Apart from the header, there is one object per line.  Apart from the header
+#' and the end-of-line characters, all bytes have a value in the range 63-126
+#' (which are all printable ASCII characters).  A file of objects is a text
+#' file, so whatever end-of-line convention is locally used is fine).
+#'
 #' 
 #' Bit vectors:
 #' 
 #' A bit vector \eqn{x} of length \eqn{k} can be represented as follows.
 #' Example: 1000101100011100
 #' 
-#' \enumerate{ 
-#' \item Pad on the right with 0 to make the length a multiple of 6. Example: 100010110001110000
-#' \item Split into groups of 6 bits each.  Example: 100010 110001 110000
-#' \item Add 63 to each group, considering them as bigendian binary numbers. Example: 97 112 111
-#' }
+#' 1. Pad on the right with 0 to make the length a multiple of 6. Example: 100010110001110000
+#' 2. Split into groups of 6 bits each.  Example: 100010 110001 110000
+#' 3. Add 63 to each group, considering them as bigendian binary numbers. Example: 97 112 111
 #' 
 #' These values are then stored one per byte. So, the number of bytes is
 #' \eqn{ceiling(k/6)}.
@@ -50,12 +44,13 @@
 #' Examples: \deqn{N(30) = 93} \deqn{N(12345) = N(000011 000000 111001) = 126
 #' 69 63 120}
 #' 
-#' @section Description of graph6 format:
+#' Now we can describe the actual file format:
+#' 
 #' Data type: simple undirected graphs of order 0 to 262143.
 #' 
-#' Optional Header: \code{>>graph6<<} (without end of line!)
+#' Optional Header: `>>graph6<<` (without end of line!)
 #' 
-#' File name extension: \code{.g6}
+#' File name extension: `.g6`
 #' 
 #' One graph:
 #' 
@@ -82,7 +77,8 @@
 #' 
 #' 
 #' @docType package
-#' @name rgraph6
+#' @name rgraph6-package
+#' @aliases rgraph6
 #' @import Rcpp
 #' @useDynLib rgraph6
 NULL

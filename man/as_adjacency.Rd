@@ -4,7 +4,7 @@
 \alias{as_adjacency}
 \alias{as_adjacency.default}
 \alias{as_adjacency.graph6}
-\title{Convert a graph6 symbol to adjacency matrix}
+\title{Convert graph6 symbols to adjacency matrices}
 \usage{
 as_adjacency(object)
 
@@ -20,8 +20,8 @@ A list of length \code{length(object)} of square symmetric
 adjacency matrices corresponding to input graph6 symbols.
 }
 \description{
-This function takes a  vector of graph6 symbols and converts them into symmetric square
-adjacency matrices.
+This function takes a vector of graph6 symbols and converts them into
+symmetric square adjacency matrices.
 }
 \references{
 \url{http://cs.anu.edu.au/people/bdm/data/formats.txt}
