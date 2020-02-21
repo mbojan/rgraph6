@@ -60,8 +60,8 @@ am <- structure(c(0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
 
 # To igraph
 (ig <- as_igraph(g6)[[1]])
-#> IGRAPH 21c8705 U--- 12 27 -- 
-#> + edges from 21c8705:
+#> IGRAPH 7a34b6a U--- 12 27 -- 
+#> + edges from 7a34b6a:
 #>  [1]  1-- 3  1-- 5  1-- 7  2-- 3  2-- 4  2-- 6  2-- 8  2--10  2--11  2--12
 #> [11]  3-- 7  3--11  4--11  5-- 9  6-- 7  6--11  6--12  7-- 8  7-- 9  7--12
 #> [21]  8-- 9  8--10  8--11  8--12  9--12 10--12 11--12
@@ -117,8 +117,7 @@ d <- tibble::tibble(
     igraph::random.graph.game(sample(3:12, replace=TRUE), p=.5, directed=FALSE),
     simplify=FALSE
   ) %>%
-    as_graph6() %>%
-    structure(class=c("graph6", "character"))
+    as_graph6()
 )
 d
 #> # A tibble: 10 x 1
