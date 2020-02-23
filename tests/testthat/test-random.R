@@ -100,7 +100,7 @@ for( s in sizes ) {
     )
     expect_s3_class(g6, "sparse6")
     expect_silent(
-      m2 <- as_adjacency(g6)[[1]]
+      m2 <- as_elist(g6)[[1]]
     )
     m2 <- t(apply(m2,1,sort,decreasing= TRUE))
     m2 <- m2[order(m2[,1]),]
@@ -110,22 +110,4 @@ for( s in sizes ) {
     expect_true(all(m[,1]==m2[,1]))
     expect_true(all(m[,2]==m2[,2]))
   })
-  
-  # test_that("Converting igraph <-> graph6", {
-  #   requireNamespace("igraph", quietly=TRUE)
-  #   ig <- igraph::graph_from_adjacency_matrix(m, mode="undirected")
-  #   ig6 <- as_graph6(ig)
-  #   ig2 <- as_igraph(ig6)
-  #   expect_true(
-  #     igraph::identical_graphs(ig, ig2[[1]])
-  #   )
-  # })
-  # 
-  # test_that("Converting network <-> graph6", {
-  #   requireNamespace("network", quietly=TRUE)
-  #   net <- network::as.network(m, directed=FALSE)
-  #   ng6 <- as_graph6(net)
-  #   net2 <- as_network(ng6)
-  #   expect_identical(net, net2[[1]])
-  # })
 }

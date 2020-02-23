@@ -7,9 +7,10 @@
 #' @param ... other arguments
 #'
 #' See [rgraph6] for sparse6 format description.
-#'
+#' 
+#' @importFrom methods as
+#' 
 #' @return A vector of class `sparse6` extending `character` with sparse6 symbols.
-#'
 #' @export
 
 as_sparse6 <- function(object) UseMethod("as_sparse6")
@@ -32,18 +33,23 @@ as_sparse6.matrix <- function(object) {
   if(nr==0){
     stop("as_sparse6 only handles edgelists with more than 1 row")
   }
-  object <- t(apply(object,1,sort,decreasing= TRUE))
-  object <- object[order(object[,1]),]
+  # bring edgelist in right order if needed
+  if(!(all(object[,1]>object[,2]) & all(diff(object[,1])>=0))){
+    object <- t(apply(object, 1, sort, decreasing = TRUE))
+    object <- object[order(object[ ,1]), ]  
+  }
   
   n <- max(object)
-  k <- length(d2b(n-1))
+  k <- length(d2b(n - 1))
 
-  object <- object-1
-  lbit  <- diff(c(0,object[,1]))
+  object <- object - 1
+  lbit  <- diff(c(0, object[,1]))
   curv <- sum(lbit)
   
-  ubits <- t(sapply(object[,2],function(x) expand_to_length(d2b(x),l=k,what=0,where="start")))
-  bits <- c(t(cbind(lbit,ubits)))
+  # ubits <- t(sapply(object[ ,2], function(x) expand_to_length(d2b(x), l = k, what = 0,where = "start")))
+  # bits <- c(t(cbind(lbit,ubits)))
+  ubits <- sapply(object[ ,2], function(x) expand_to_length(d2b(x), l = k, what = 0,where = "start"))
+  bits <- c(rbind(lbit,ubits))
   
   if(any(lbit>1)){
     bits[bits>2] <- 2
@@ -51,7 +57,7 @@ as_sparse6.matrix <- function(object) {
     
     bits <- as.character(bits)
     
-    vbits <- t(sapply(object[lbit>1,1],function(x) expand_to_length(d2b(x),l=k,what=0,where="start")))  
+    vbits <- t(sapply(object[lbit > 1,1],function(x) expand_to_length(d2b(x),l = k,what = 0,where = "start")))  
     vbits <- cbind(1,vbits,0)
     vbits <- apply(vbits,1,paste0,collapse="")
     bits[idx] <- vbits
@@ -89,7 +95,16 @@ as_sparse6.list <- function(object) {
 as_sparse6.igraph <- function(object) {
   requireNamespace("igraph")
   stopifnot(!igraph::is_directed(object))
-  as_sparse6.matrix( igraph::as_edgelist(object, names = FALSE))
+  
+  if (requireNamespace("Matrix", quietly = TRUE)) {
+    A <- igraph::as_adj(object,type = "upper",sparse = TRUE)
+    B <- as(A, "dgTMatrix")
+    el <- cbind(B@j,B@i)+1
+  } else{
+    el <- igraph::as_edgelist(object, names = FALSE)
+  }
+  
+  as_sparse6.matrix(el)
 }
 
 #' @rdname as_sparse6
