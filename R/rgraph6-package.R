@@ -1,7 +1,7 @@
 #' rgraph6: Representing Graphs as graph6 Strings
 #' 
 #' This package implements methods for representing undirected graphs in a
-#' compact 'graph6' format. Main functions are [as_graph6()], [as_dgraph6()]
+#' compact 'graph6' format. Main functions are [as_graph6()], [as_dgraph6()], [as_sparse6()] and
 #' [as_adjacency()]. The format is due to Brendan McKay
 #' (\url{http://cs.anu.edu.au/~bdm}).
 #' 
@@ -70,7 +70,9 @@
 #' Then \eqn{N(n) = 68} and \eqn{R(x) = R(010010 100100) = 81 99}. So, the
 #' graph is \eqn{68 81 99}.
 #' 
+#' 
 #' @section Description of dgraph6 format:
+#' 
 #' Data type: simple directed graphs (allowing loops) of order 0 to 68719476735.
 #' 
 #' Optional Header: \code{>>dgraph6<<} (without end of line!)
@@ -93,6 +95,56 @@
 #' 
 #' Then \eqn{N(n) = 68} and
 #' \eqn{R(x) = R(00101 00000 00000 01001 00000) = 73  63  65  79  63}. So, the graph is  \eqn{38 68 73  63  65  79  63}.
+#' 
+#' 
+#' @section Description of sparse6 format:
+#' 
+#' Data type: Undirected graphs of order 0 to 68719476735. Loops and multiple edges are permitted.
+#' 
+#' Optional Header: \code{>>sparse6<<} (without end of line!)
+#' 
+#' File name extension: \code{.s6}
+#' 
+#' General structure:
+#' 
+#' Each graph occupies one text line. Except for the first character
+#' and end-of-line characters, each byte has the form \eqn{63+x}, where 
+#' \eqn{0 <= x <= 63}. The byte encodes the six bits of x.
+#'
+#'The encoded graph consists of:  
+#'
+#'(1) The character ':'.   (This is present to distinguish the code from graph6 format.)
+#'
+#'(2) The number of vertices.
+#'
+#'(3) A list of edges.
+#'
+#'(4) end-of-line
+#'
+#'Loops and multiple edges are supported, but not directed edges.
+#'
+#' Number of vertices \eqn{n}: Same as graph6 format 
+#' 
+#' List of edges:
+#' 
+#' Let k be the number of bits needed to represent n-1 in binary.
+#'
+#'The remaining bytes encode a sequence 
+#'\deqn{b[0] x[0] b[1] x[1] b[2] x[2] ... b[m] x[m]}
+#' 
+#' Each \eqn{b[i]} occupies 1 bit, and each \eqn{x[i]} occupies k bits.
+#' Pack them together in bigendian order, and pad up to a multiple of 6 as follows:
+#' 
+#' 1. If \eqn{(n,k) = (2,1), (4,2), (8,3) or (16,4)}, and vertex
+#'    \eqn{n-2} has an edge but \eqn{n-1} doesn't have an edge, and
+#'     there are \eqn{k+1} or more bits to pad, then pad with one
+#'     0-bit and enough 1-bits to complete the multiple of 6.
+#'     
+#' 2. Otherwise, pad with enough 1-bits to complete the
+#'     multiple of 6.
+#' 
+#' Then represent this bit-stream 6 bits per byte as indicated above.
+#' 
 #' 
 #' @references 
 #' Brendan McKay \url{http://cs.anu.edu.au/people/bdm/data/formats.txt}.

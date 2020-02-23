@@ -9,3 +9,7 @@ d2b <- function(x) {
     .Call('_rgraph6_d2b', PACKAGE = 'rgraph6', x)
 }
 
+decodeElist <- function(x, b) {
+    .Call('_rgraph6_decodeElist', PACKAGE = 'rgraph6', x, b)
+}
+

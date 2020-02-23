@@ -74,3 +74,16 @@ makeg <- function(size, p)
   t(tm)
 }
 
+# Create a random directed adjacency matrix of given size and tie probability.
+# 
+# @param size network size
+# @param p tie probability
+maked <- function(size, p)
+{
+  # vector for lower triangle
+  v <- sample(0:1, size^2, replace=TRUE, prob=c(1-p, p))
+  # graph adjacency matrix
+  m <- matrix(v, ncol=size, nrow=size)
+  diag(m) <- 0
+  m
+}
