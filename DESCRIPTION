@@ -13,9 +13,9 @@ Authors@R: c(
              role = c("ctb"))
             )
 Depends: R (>= 2.2.1)
-Imports: Rcpp (>= 1.0.3)
+Imports: methods, Rcpp (>= 1.0.3)
 LinkingTo: Rcpp
-Suggests: testthat, knitr, rmarkdown, igraph, network
+Suggests: testthat, knitr, rmarkdown, igraph, network, Matrix
 Description: This package contains implementation of methods that allow
 	to represent undirected graphs in a compact 'graph6' format.
 License: MIT + file LICENSE

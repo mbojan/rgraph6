@@ -44,3 +44,24 @@ std::vector<double> d2b(unsigned long int x){
   std::reverse(binary.begin(), binary.end()); 
   return binary;
 }
+
+// [[Rcpp::export]]
+IntegerVector decodeElist(IntegerVector x, IntegerVector b){
+  int m = x.size();
+  IntegerMatrix el(m,2);
+  int v = 0;
+  for(int i = 0; i < m; ++i){
+    if(b[i] == 1){
+      v+=1;
+    } 
+    if(x[i] > v){
+      v = x[i];
+      el(i,0) = -1;
+      el(i,1) = -1;
+    } else{
+      el(i,0) = x[i];
+      el(i,1) = v;
+    }
+  }
+  return(el);
+}

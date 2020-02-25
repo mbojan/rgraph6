@@ -51,6 +51,12 @@ as_adjacency.dgraph6 <- function(object) {
   )
 }
 
+#' @rdname as_adjacency
+#' @method as_adjacency sparse6
+#' @export
+as_adjacency.sparse6 <- function(object) {
+  stop("graph(s) are in sparse6 format. use 'as_elist()' instead.")
+}
 
 
 as_amatrix_graph6 <- function(object) {

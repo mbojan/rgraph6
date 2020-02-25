@@ -27,10 +27,23 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// decodeElist
+IntegerVector decodeElist(IntegerVector x, IntegerVector b);
+RcppExport SEXP _rgraph6_decodeElist(SEXP xSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(decodeElist(x, b));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_rgraph6_b2d", (DL_FUNC) &_rgraph6_b2d, 1},
     {"_rgraph6_d2b", (DL_FUNC) &_rgraph6_d2b, 1},
+    {"_rgraph6_decodeElist", (DL_FUNC) &_rgraph6_decodeElist, 2},
     {NULL, NULL, 0}
 };
 

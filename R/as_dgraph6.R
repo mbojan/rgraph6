@@ -1,14 +1,14 @@
-#' Convert adjacency matrix to a dgraph6 symbol
+#' Convert adjacency matrix to dgraph6 symbols
 #' 
 #' This function converts a graph(s) as adjacency matrices to a dgraph6 symbol(s).
 #' 
 #' @param object a square binary adjacency matrix or a list of thereof
-#' @param x a vector of graph6 symbols (of class "dgraph6")
+#' @param x a vector of dgraph6 symbols (of class "dgraph6")
 #' @param ... other arguments
 #' 
-#' See \code{\link{rgraph6}} for dgraph6 format description.
+#' See [rgraph6] for dgraph6 format description.
 #' 
-#' @return A vector of class \code{dgraph6} extending \code{character} with dgraph6 symbols.
+#' @return A vector of class `dgraph6` extending `character` with dgraph6 symbols.
 #' 
 #' @export
 
