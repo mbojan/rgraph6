@@ -4,7 +4,7 @@ context("Test graph6 <-> matrix conversions on some random graphs")
 set.seed(666)
 
 # How many networks to test
-howmany <- 50
+howmany <- 5
 
 # Network sizes to test
 sizes <- round(seq(2, 128, length=howmany))
@@ -19,72 +19,78 @@ for( s in sizes ) {
   
   test_that(paste0("Converting matrix <-> graph6 on graph of size ", s), {
     expect_silent(
-      g6 <- as_graph6(m)
+      g6 <- as_graph6(!!m)
     )
-    expect_s3_class(g6, "graph6")
+    expect_s3_class(!!g6, "graph6")
     expect_silent(
-      m2 <- as_adjacency(g6)[[1]]
+      m2 <- as_adjacency(!!g6)[[1]]
     )
-    expect_is(m2, "matrix")
-    expect_true(ncol(m2) == nrow(m2))
-    expect_type(m2, "double")
-    expect_identical(m, m2)
+    expect_is(!!m2, "matrix")
+    expect_true(ncol(!!m2) == nrow(!!m2))
+    expect_type(!!m2, "double")
+    expect_identical(!!m, m2)
   })
   
-  test_that("Converting igraph <-> graph6", {
+  test_that(paste0("Converting igraph <-> graph6 on graph of size ", s), {
     requireNamespace("igraph", quietly=TRUE)
     ig <- igraph::graph_from_adjacency_matrix(m, mode="undirected")
     ig6 <- as_graph6(ig)
     ig2 <- as_igraph(ig6)
     expect_true(
-      igraph::identical_graphs(ig, ig2[[1]])
+      igraph::identical_graphs(!!ig, ig2[[1]])
     )
   })
   
-  test_that("Converting network <-> graph6", {
+  test_that(paste0("Converting network <-> graph6 on graph of size ", s), {
     requireNamespace("network", quietly=TRUE)
     net <- network::as.network(m, directed=FALSE)
     ng6 <- as_graph6(net)
     net2 <- as_network(ng6)
-    expect_identical(net, net2[[1]])
+    expect_identical(!!net, net2[[1]])
   })
 }
 
 #-------------------------------------------------------------------------------
 #dgraph6 tests
 
+context("Test dgraph6 <-> matrix conversions on some random graphs")
+
 for( s in sizes ) {
   p <- runif(1)
   
   m <- maked(s, p) # adjacency matrix
   mname <- paste(m, collapse="")
-  
-  context(paste0("Testing matrix -> dgraph6 conversion on graph ", paste(deparse(m), collapse=" ")))
-  
-  expect_silent(
-    g6 <- as_dgraph6(m)
+
+  test_that(
+    paste0("matrix <-> dgraph6 works for ", paste(deparse(m), collapse=" ")), {
+      expect_silent(
+        g6 <- as_dgraph6(!!m)
+      )
+      expect_s3_class(!!g6, "dgraph6")
+      expect_silent(
+        m2 <- as_adjacency(!!g6)[[1]]
+      )
+      expect_is(m2, "matrix")
+      expect_true(ncol(m2) == nrow(m2))
+      expect_type(m2, "double")
+      expect_identical(!!m, m2)
+    }
   )
-  expect_s3_class(g6, "dgraph6")
-  
-  context(paste0("Testing matrix <- dgraph6 conversion on graph ", g6))
-  expect_silent(
-    m2 <- as_adjacency(g6)[[1]]
-  )
-  expect_is(m2, "matrix")
-  expect_true(ncol(m2) == nrow(m2))
-  expect_type(m2, "double")
-  expect_identical(m, m2)
 }
+
+
 
 #-------------------------------------------------------------------------------
 #sparse6 test
+
+context("Test sparse6 <-> edgelist conversions on some random graphs")
 
 howmany <- 5
 sizes <- round(seq(100, 200, length=howmany))
 
 for( s in sizes ) {
-  p <- runif(1,min=0.05,max=0.15) #only sparse networks
-  
+  # Generate
+  p <- runif(1, min=0.05, max=0.15) # only sparse networks
   m <- makeg(s, p) # adjacency matrix
   mname <- paste(m[lower.tri(m)], collapse="")
   m[lower.tri(m)] <- 0
@@ -94,7 +100,8 @@ for( s in sizes ) {
   colnames(m) <- NULL
   mode(m) <- "double"
   
-  test_that(paste0("Converting matrix <-> sparse6 on graph of size ", s), {
+  test_that(
+    paste0("Converting matrix <-> sparse6 on ", mname), {
     expect_silent(
       g6 <- as_sparse6(m)
     )
