@@ -1,22 +1,20 @@
 #' rgraph6: Representing Graphs as graph6 Strings
 #' 
-#' This package implements methods for representing undirected graphs in a
-#' compact 'graph6' format. Main functions are [as_graph6()], [as_dgraph6()], [as_sparse6()] and
-#' [as_adjacency()]. The format is due to Brendan McKay
-#' (\url{http://cs.anu.edu.au/~bdm}).
+#' This package implements methods for representing graphs in formats 'graph6',
+#' 'sparse6' and 'dgraph6'. The main functions are [as_graph6()],
+#' [as_dgraph6()], [as_sparse6()] together with [as_adjacency()]  and
+#' [as_elist()]. The formats are due to Brendan McKay
+#' (\url{http://cs.anu.edu.au/~bdm}). The description below is taken from
+#' \url{http://cs.anu.edu.au/people/bdm/data/formats.txt} for reference
+#' purposes.
 #' 
-#' 
-#' @section The graph6 format:
-#' The description below is taken from \url{http://cs.anu.edu.au/people/bdm/data/formats.txt}.
-#' 
-#' General principles: 
+#' @section General principles:
 #' 
 #' - All numbers in this description are in decimal unless obviously in binary.
 #' - Apart from the header, there is one object per line.  Apart from the header
 #' and the end-of-line characters, all bytes have a value in the range 63-126
-#' (which are all printable ASCII characters).  A file of objects is a text
+#' (which are all printable ASCII characters). A file of objects is a text
 #' file, so whatever end-of-line convention is locally used is fine).
-#'
 #' 
 #' Bit vectors:
 #' 
@@ -34,19 +32,27 @@
 #' 
 #' Small nonnegative integers:
 #' 
-#' Let \eqn{n} be an integer in the range 0-262143 (\eqn{262143 = 2^18-1}).
+#' Let \eqn{n} be an integer in the range 0-68719476735  (\eqn{2^36-1}).
 #' 
-#' If \eqn{0 \leq n \leq 62}{0 <= n <= 62}, define \eqn{N(n)} to be the single
-#' byte \eqn{n+63}.  If \eqn{n \geq 63}{n >= 63}, define \eqn{N(n)} to be the
+#' - If \eqn{0 \leq n \leq 62}{0 <= n <= 62}, define \eqn{N(n)} to be the single
+#' byte \eqn{n+63}.
+#' - If \eqn{63 \leq n \leq 258047}{63 <= n <= 258047}, define \eqn{N(n)} to be the
 #' four bytes \eqn{126 R(x)}, where \eqn{x} is the bigendian 18-bit binary form
 #' of \eqn{n}.
+#' - If \eqn{258048 \leq n \leq 68719476735}{258048 <= n <= 68719476735}, define
+#' \eqn{N(n)} to be the eight bytes 126 126 R(x), where \eqn{x} is the bigendian
+#' 36-bit binary form of \eqn{n}.
 #' 
-#' Examples: \deqn{N(30) = 93} \deqn{N(12345) = N(000011 000000 111001) = 126
-#' 66 63 120}
+#' Examples: \deqn{N(30) = 93}
+#' \deqn{N(12345) = N(000011 000000 111001) = 126 66 63 120}
+#' \deqn{N(460175067) = N(000000 011011 011011 011011 011011 011011) = 126 126 63 90 90 90 90 90}
 #' 
-#' Now we can describe the actual file format:
 #' 
-#' Data type: simple undirected graphs of order 0 to 262143.
+#' 
+#' 
+#' @section The graph6 format:
+#' 
+#' Data type: simple undirected graphs of order 0 to 68719476735
 #' 
 #' Optional Header: `>>graph6<<` (without end of line!)
 #' 
@@ -69,6 +75,9 @@
 #' 
 #' Then \eqn{N(n) = 68} and \eqn{R(x) = R(010010 100100) = 81 99}. So, the
 #' graph is \eqn{68 81 99}.
+#' 
+#' 
+#' 
 #' 
 #' 
 #' @section Description of dgraph6 format:
@@ -95,6 +104,9 @@
 #' 
 #' Then \eqn{N(n) = 68} and
 #' \eqn{R(x) = R(00101 00000 00000 01001 00000) = 73  63  65  79  63}. So, the graph is  \eqn{38 68 73  63  65  79  63}.
+#' 
+#' 
+#' 
 #' 
 #' 
 #' @section Description of sparse6 format:
