@@ -42,7 +42,7 @@
 #' of \eqn{n}.
 #' 
 #' Examples: \deqn{N(30) = 93} \deqn{N(12345) = N(000011 000000 111001) = 126
-#' 69 63 120}
+#' 66 63 120}
 #' 
 #' Now we can describe the actual file format:
 #' 
