@@ -87,3 +87,41 @@ maked <- function(size, p)
   diag(m) <- 0
   m
 }
+
+
+
+
+
+
+# -------------------------------------------------------------------------
+# Get graph size from a raw vector `r`. Essentially an inverse of fN().
+
+size_from_raw <- function(r) {
+  if( as.integer(r[1]) == 126L & as.integer(r[2]) == 126L){ # n >= 258048
+    assert(
+      length(r) >= 8L, 
+      paste0("graph size should occupy 8 bytes (got ", length(r), ") in ", rawToChar(r))
+    )
+    rn <- r[3:8]
+    n <- b2d(unlist(lapply(
+      as.integer(rn) - 63L,
+      function(x) expand_to_length( d2b(x), l=ceiling(length(x)/6)*6, what=0, where="start")
+    )))
+  } else if(as.integer(r[1]) == 126L & as.integer(r[2]) != 126L){ # n >= 63 & n <= 258047
+    assert(
+      length(r) >= 4L, 
+      paste0("graph size should occupy 4 bytes (got ", length(r), ") in ", rawToChar(r))
+    )
+    rn <- r[2:4]
+    n <- b2d(unlist(lapply(
+      as.integer(rn) - 63L,
+      function(x) expand_to_length( d2b(x), l=ceiling(length(x)/6)*6, what=0, where="start")
+    )))
+  }    
+  else{ # n < 63
+    rn <- r[1]
+    n <- as.integer(rn) - 63L
+  }
+  n
+}
+
