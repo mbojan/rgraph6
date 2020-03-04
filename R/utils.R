@@ -11,7 +11,7 @@
 # @return 
 # A vector of length \code{l}.
 # 
-expand_to_length <- function(x, l=ceiling(length(x)/6)*6, what=0, where=c("end", "start")) {
+expand_to_length <- function(x, l=ceiling(length(x)/6)*6L, what=0L, where=c("end", "start")) {
   where <- match.arg(where)
   if( length(x) == l )
     return(x)
