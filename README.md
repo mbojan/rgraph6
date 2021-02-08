@@ -5,10 +5,7 @@
 
 <!-- badges: start -->
 
-[![Build
-Status](https://travis-ci.org/mbojan/rgraph6.png?branch=master)](https://travis-ci.org/mbojan/rgraph6)
-[![Build
-Status](https://ci.appveyor.com/api/projects/status/4jl7qg3etk9g8eo0?svg=true)](https://ci.appveyor.com/project/mbojan/rgraph6)
+[![R-CMD-check](https://github.com/mbojan/rgraph6/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/rgraph6/actions)
 [![rstudio mirror
 downloads](http://cranlogs.r-pkg.org/badges/rgraph6?color=2ED968)](http://cranlogs.r-pkg.org/)
 [![cran
@@ -60,8 +57,8 @@ am <- structure(c(0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
 
 # To igraph
 (ig <- as_igraph(g6)[[1]])
-#> IGRAPH 82f400f U--- 12 27 -- 
-#> + edges from 82f400f:
+#> IGRAPH 4b8619b U--- 12 27 -- 
+#> + edges from 4b8619b:
 #>  [1]  1-- 3  1-- 5  1-- 7  2-- 3  2-- 4  2-- 6  2-- 8  2--10  2--11  2--12
 #> [11]  3-- 7  3--11  4--11  5-- 9  6-- 7  6--11  6--12  7-- 8  7-- 9  7--12
 #> [21]  8-- 9  8--10  8--11  8--12  9--12 10--12 11--12
@@ -122,7 +119,7 @@ d <- tibble::tibble(
 d
 #> # A tibble: 10 x 1
 #>    g6            
-#>    <chr>         
+#>    <graph6>      
 #>  1 "FblF_"       
 #>  2 "DFc"         
 #>  3 "HfTaMwk"     
