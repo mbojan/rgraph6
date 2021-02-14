@@ -5,6 +5,9 @@ library(tidygraph)
 library(ggraph)
 
 
+
+# 1 -----------------------------------------------------------------------
+
 dyad <- igraph::make_graph(~ a +--+ b)
 g <- igraph::make_graph(~ a -- b -- c -- d -- e -- f -- c)
 
@@ -68,3 +71,21 @@ sticker(
   filename = "man/figures/logo.png",
   dpi = 300
 )
+
+
+# 2 -----------------------------------------------------------------------
+
+set.seed(666)
+g <- igraph::sample_pa(48, power = 0.5, directed = FALSE)
+
+png("logo-graph.png")
+g %>%
+  ggraph(layout = "kk") +
+  geom_node_point() +
+  geom_edge_link() +
+  theme_void()
+dev.off()
+
+img <- png::readPNG("logo-graph.png")
+htc <- halftoner::halftone(img)
+plot(htc)
