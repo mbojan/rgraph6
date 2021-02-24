@@ -37,7 +37,7 @@ for( s in sizes ) {
     requireNamespace("igraph", quietly=TRUE)
     ig <- igraph::graph_from_adjacency_matrix(m, mode="undirected")
     ig6 <- as_graph6(ig)
-    ig2 <- as_igraph(ig6)
+    ig2 <- igraph_from_graph6(ig6)
     expect_true(
       igraph::identical_graphs(!!ig, ig2[[1]])
     )

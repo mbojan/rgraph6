@@ -9,7 +9,7 @@ as_network(object, ...)
 \arguments{
 \item{object}{vector of graph6 symbols}
 
-\item{...}{other arguments passed to \link[network:as.network]{network::as.network}}
+\item{...}{other arguments passed to \link[network:network]{network::as.network}}
 }
 \value{
 A list of network objects.
