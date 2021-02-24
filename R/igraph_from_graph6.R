@@ -1,6 +1,6 @@
 #' Convert graph6 symbols to igraph objects
 #' 
-#' @param object vector of graph6 symbols
+#' @param object character vector of graph6 symbols
 #' @param ... other arguments passed to [igraph::graph_from_adjacency_matrix()]
 #' 
 #' @return A list of igraph objects.
