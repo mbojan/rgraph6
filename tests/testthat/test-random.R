@@ -1,4 +1,6 @@
-context("Test graph6 <-> matrix conversions on some random graphs")
+
+# Test graph6 <-> matrix conversions on some random graphs ----------------
+
 
 
 set.seed(666)
@@ -50,10 +52,9 @@ for( s in sizes ) {
   })
 }
 
-#-------------------------------------------------------------------------------
-#dgraph6 tests
 
-context("Test dgraph6 <-> matrix conversions on some random graphs")
+# Test dgraph6 <-> matrix conversions on some random graphs ---------------
+
 
 for( s in sizes ) {
   p <- runif(1)
@@ -80,10 +81,7 @@ for( s in sizes ) {
 
 
 
-#-------------------------------------------------------------------------------
-#sparse6 test
-
-context("Test sparse6 <-> edgelist conversions on some random graphs")
+# Test sparse6 <-> edgelist conversions on some random graphs -------------
 
 howmany <- 5
 sizes <- round(seq(100, 200, length=howmany))

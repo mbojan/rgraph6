@@ -1,6 +1,3 @@
-context("Testing as_sparse6")
-
-
 
 test_that("errors are given for improper input",{
   expect_error( as_sparse6(matrix(1, 1, 1)), regexp="handles edgelists with 2 columns")

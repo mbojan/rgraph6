@@ -1,4 +1,5 @@
-context("Testing decimal -> binary conversion")
+# Testing decimal -> binary conversion ------------------------------------
+
 
 test_that("Decimal -> binary works for selected scalars", {
   expect_equal( d2b(0), 0)
@@ -23,7 +24,7 @@ test_that(paste0("Decimal -> binary returns proper numeric vectors for ", depars
 
 
 
-context("Testing binary -> decimal")
+# Testing binary -> decimal -----------------------------------------------
 
 test_that("Binary -> decimal work for selected numbers", {
   expect_equal(b2d(1), 1)
@@ -38,8 +39,7 @@ test_that("Binary -> decimal works for character input", {
 
 
 
-context("Testing decimal <-> binary conversion")
-
+# Testing decimal <-> binary conversion -----------------------------------
 
 s <- quote(1:256)
 test_that(paste0("Conversion works for numbers ", deparse(s)), {

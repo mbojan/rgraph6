@@ -1,5 +1,3 @@
-context("Testing as_adjacency")
-
 
 test_that("converting full network of size 2", {
   m <- matrix(c(0,1,1,0), 2, 2)
