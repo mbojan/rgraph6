@@ -4,3 +4,4 @@
 ^appveyor\.yml$
 ^README\.Rmd$
 ^\.github$
+^data-raw$
