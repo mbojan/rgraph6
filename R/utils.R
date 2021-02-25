@@ -124,29 +124,3 @@ size_from_raw <- function(r) {
   }
   n
 }
-
-
-
-
-
-# String checking ---------------------------------------------------------
-
-# Testing if a string is a valid graph6/dgraph6/sparse6 string using regular
-# expressions. Rather naive and might give false positive often.
-
-# Allowable characters:
-# paste( rawToChar(as.raw(63:126)), collapse="" )
-
-valid_graph6 <- function(x) {
-  grepl("^[][}{?@\\^_`|~a-zA-Z]+", x) &
-    grepl("^[^:]", x) &
-    grepl("^[^&]", x)
-}
-
-valid_sparse6 <- function(x) {
-  grepl(":[][}{?@\\^_`|~a-zA-Z]+", x)
-}
-
-valid_dgraph6 <- function(x) {
-  grepl("&[][}{?@\\^_`|~a-zA-Z]+", x)
-}
