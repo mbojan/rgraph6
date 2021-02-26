@@ -12,7 +12,8 @@ Authors@R: c(
              family = "Schoch",
              role = c("ctb"))
             )
-Depends: R (>= 2.2.1)
+Depends: 
+    R (>= 2.10)
 Imports: methods, Rcpp (>= 1.0.3)
 LinkingTo: Rcpp
 Suggests: testthat, knitr, rmarkdown, igraph, network, Matrix
