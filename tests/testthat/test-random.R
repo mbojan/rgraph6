@@ -24,7 +24,7 @@ for( s in sizes ) {
       g6 <- as_graph6(!!m)
     )
     expect_silent(
-      m2 <- as_adjacency(!!g6)[[1]]
+      m2 <- adjacency_from_graph6(!!g6)[[1]]
     )
     expect_is(!!m2, "matrix")
     expect_true(ncol(!!m2) == nrow(!!m2))
@@ -46,7 +46,7 @@ for( s in sizes ) {
     requireNamespace("network", quietly=TRUE)
     net <- network::as.network(m, directed=FALSE)
     ng6 <- as_graph6(net)
-    net2 <- as_network(ng6)
+    net2 <- network_from_graph6(ng6)
     expect_identical(!!net, net2[[1]])
   })
 }
@@ -64,10 +64,10 @@ for( s in sizes ) {
   test_that(
     paste0("matrix <-> dgraph6 works for ", paste(deparse(m), collapse=" ")), {
       expect_silent(
-        g6 <- as_dgraph6(!!m)
+        d6 <- as_dgraph6(!!m)
       )
       expect_silent(
-        m2 <- as_adjacency(!!g6)[[1]]
+        m2 <- adjacency_from_dgraph6(!!d6)[[1]]
       )
       expect_is(m2, "matrix")
       expect_true(ncol(m2) == nrow(m2))
@@ -99,10 +99,10 @@ for( s in sizes ) {
   test_that(
     paste0("Converting matrix <-> sparse6 on ", mname), {
     expect_silent(
-      g6 <- as_sparse6(m)
+      s6 <- as_sparse6(m)
     )
     expect_silent(
-      m2 <- as_elist(g6)[[1]]
+      m2 <- edgelist_from_sparse6(s6)[[1]]
     )
     m2 <- t(apply(m2,1,sort,decreasing= TRUE))
     m2 <- m2[order(m2[,1]),]

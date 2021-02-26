@@ -51,15 +51,3 @@ test_that("Graph example from documentation works", {
     as.list(c(81, 99))
   )
 })
-
-
-
-
-
-
-
-
-
-
-
-
