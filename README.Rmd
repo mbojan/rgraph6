@@ -54,7 +54,8 @@ Top level functions are
 Low-level functions
 
 ```{r functions-low, echo=FALSE}
-u <- c("adjacency", "edgelist", "network", "igraph", "digraph6", "sparse6", "graph6")
+u <- c("adjacency", "edgelist", "network", "igraph", "digraph6", 
+       "sparse6", "graph6")
 
 d <- tidyr::crossing(
   from = u,
@@ -74,7 +75,7 @@ d <- tidyr::crossing(
     ok = purrr::map_lgl(fun, exists, where=asNamespace("rgraph6"))
   )
 
-p <- d %>%
+d %>%
   filter(ok) %>%
   transmute(
     from, to,
@@ -83,11 +84,17 @@ p <- d %>%
   tidygraph::as_tbl_graph() %>%
   ggraph(layout = "stress") +
   geom_edge_parallel(
+    aes(label = fun),
     start_cap = circle(1),
     end_cap = circle(1),
-    arrow = arrow(length = unit(5, "mm"))
+    label_dodge = unit(5, "mm"),
+    label_push = unit(5, "mm"),
+    angle_calc = "along",
+    arrow = arrow(length = unit(3, "mm"))
   ) +
   geom_node_label(aes(label = name)) +
+  coord_cartesian(clip = "off") +
+  scale_y_continuous(expand = expansion(add = .1)) +
   theme_void()
 ```
 

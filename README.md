@@ -51,19 +51,19 @@ x <- c(g6[1], s6[2], d6[3])
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH b8acedd U--- 15 10 -- 
-#> + edges from b8acedd:
+#> IGRAPH c2017a8 U--- 15 10 -- 
+#> + edges from c2017a8:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH d1623bd U--- 15 13 -- 
-#> + edges from d1623bd:
+#> IGRAPH 4b930a1 U--- 15 13 -- 
+#> + edges from 4b930a1:
 #>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
 #> [11]  4--15 10--15 14--15
 #> 
 #> [[3]]
-#> IGRAPH 6cfd17f D--- 15 15 -- 
-#> + edges from 6cfd17f:
+#> IGRAPH 2745943 D--- 15 15 -- 
+#> + edges from 2745943:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 
