@@ -31,14 +31,20 @@ Format ‘digraph6’ is for directed graphs.
 
 ## Functions
 
-Top level functions are
+Main functions for encoding network data are:
 
--   `adjacency_from_text()`
--   `edgelist_from_text()`
--   `igraph_from_text()`
--   `network_from_text()`
+  - `as_graph6()`
+  - `as_sparse6()`
+  - `as_digraph6()`
 
-Low-level functions
+Main functions for decoding are:
+
+  - `adjacency_from_text()`
+  - `edgelist_from_text()`
+  - `igraph_from_text()`
+  - `network_from_text()`
+
+Low-level functions are shown on the following graph:
 
 <img src="man/figures/README-functions-low-1.png" width="100%" />
 
@@ -83,19 +89,19 @@ x
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH 7321e01 U--- 15 10 -- 
-#> + edges from 7321e01:
+#> IGRAPH 0940964 U--- 15 10 -- 
+#> + edges from 0940964:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH e46d70e U--- 15 13 -- 
-#> + edges from e46d70e:
+#> IGRAPH 2c1e2d2 U--- 15 13 -- 
+#> + edges from 2c1e2d2:
 #>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
 #> [11]  4--15 10--15 14--15
 #> 
 #> [[3]]
-#> IGRAPH 5d05bb3 D--- 15 15 -- 
-#> + edges from 5d05bb3:
+#> IGRAPH 2817c95 D--- 15 15 -- 
+#> + edges from 2817c95:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 
@@ -192,7 +198,7 @@ d
 
 Nice and compact. We can go further by doing some computations and
 saving the results together with the graph data, and even save it to a
-simple CSV file!
+simple CSV file\!
 
 ``` r
 d %>%

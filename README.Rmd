@@ -44,14 +44,20 @@ Functions in this package allow for encoding network data as strings of printabl
 
 ## Functions
 
-Top level functions are
+Main functions for encoding network data are:
+
+- `as_graph6()`
+- `as_sparse6()`
+- `as_digraph6()`
+
+Main functions for decoding are:
 
 - `adjacency_from_text()`
 - `edgelist_from_text()`
 - `igraph_from_text()`
 - `network_from_text()`
 
-Low-level functions
+Low-level functions are shown on the following graph:
 
 ```{r functions-low, echo=FALSE}
 u <- c("adjacency", "edgelist", "network", "igraph", "digraph6", 
