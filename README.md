@@ -89,19 +89,19 @@ x
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH baa5b48 U--- 15 10 -- 
-#> + edges from baa5b48:
+#> IGRAPH dba4b0c U--- 15 10 -- 
+#> + edges from dba4b0c:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH 6e66ca3 U--- 15 13 -- 
-#> + edges from 6e66ca3:
+#> IGRAPH e473f34 U--- 15 13 -- 
+#> + edges from e473f34:
 #>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
 #> [11]  4--15 10--15 14--15
 #> 
 #> [[3]]
-#> IGRAPH ba2c0b9 D--- 15 15 -- 
-#> + edges from ba2c0b9:
+#> IGRAPH 32939c0 D--- 15 15 -- 
+#> + edges from 32939c0:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 
@@ -249,14 +249,12 @@ University).
 
 **Co-authors**: David Schoch \[aut\]
 
-\[1\] "
+To cite this package please use:
 
 <p>
 
-Bojanowski M, Schoch D (2021).<em>rgraph6: Representing Undirected
-Graphs as graph6 Strings</em>.package version: 2.0-0,
-<a href=\"https://mbojan.github.com/rgraph6\">https://mbojan.github.com/rgraph6</a>.
+Bojanowski M, Schoch D (2021). <em>rgraph6: Representing Undirected
+Graphs as graph6 Strings</em>. R package version: 2.0-0,
+<a href="https://mbojan.github.com/rgraph6">https://mbojan.github.com/rgraph6</a>.
 
 </p>
-
-"
