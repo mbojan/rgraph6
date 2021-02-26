@@ -62,7 +62,7 @@ is_dgraph6 <- function(x) {
 #' x[seq(3, 20, by = 3)] <- d6[seq(3, 20, by = 3)]
 #' guess_format(x)
 guess_format <- function(x) {
-  mat <- cbind(g6 = is_graph6(x), s6 = is_sparse6(x), d6 = is_dgraph6(x))
+  mat <- cbind(graph6 = is_graph6(x), sparse6 = is_sparse6(x), dgraph6 = is_dgraph6(x))
   s <- apply(mat, 1, sum)
   res <- character(length(x))
   equiv <- s > 1
