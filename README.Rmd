@@ -1,7 +1,7 @@
 ---
 output: 
   github_document:
-    html_preview: true
+    html_preview: false
 editor_options: 
   chunk_output_type: console
 ---
@@ -93,7 +93,7 @@ d %>%
     aes(label = fun),
     start_cap = circle(1),
     end_cap = circle(1),
-    label_dodge = unit(5, "mm"),
+    label_dodge = unit(-5, "mm"),
     label_push = unit(5, "mm"),
     angle_calc = "along",
     arrow = arrow(length = unit(3, "mm"))
