@@ -5,15 +5,15 @@ test_that("this bug is fixed", {
     igraph::delete_graph_attr("type") %>%
     igraph::delete_graph_attr("loops") %>%
     igraph::delete_graph_attr("p")
-  
-  g6 <- as_graph6(g)
+
   s6 <- as_sparse6(g)
-  
-  expect_true(
-    igraph::identical_graphs(g, igraph_from_text(g6)[[1]])  
-  )
-  
+  edgelist_from_sparse6(s6)
   expect_true(
     igraph::identical_graphs(g, igraph_from_text(s6)[[1]])  
+  )
+  
+  g6 <- as_graph6(g)
+  expect_true(
+    igraph::identical_graphs(g, igraph_from_text(g6)[[1]])  
   )
 })
