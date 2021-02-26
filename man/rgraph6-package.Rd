@@ -4,10 +4,10 @@
 \name{rgraph6-package}
 \alias{rgraph6-package}
 \alias{rgraph6}
-\title{rgraph6: Representing Graphs as graph6 Strings}
+\title{rgraph6: Representing Graphs as graph6, dgraph6 or sparse6 Strings}
 \description{
 This package implements methods for representing graphs in formats 'graph6',
-'sparse6' and 'dgraph6'. The main functions are \code{\link[=as_graph6]{as_graph6()}},
+'sparse6' and 'digraph6'. The main functions are \code{\link[=as_graph6]{as_graph6()}},
 \code{\link[=as_dgraph6]{as_dgraph6()}}, \code{\link[=as_sparse6]{as_sparse6()}} together with \code{\link[=as_adjacency]{as_adjacency()}}  and
 \code{\link[=as_elist]{as_elist()}}. The formats are due to Brendan McKay
 (\url{http://cs.anu.edu.au/~bdm}). The description below is taken from

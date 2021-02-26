@@ -1,7 +1,7 @@
 Package: rgraph6
 Version: 2.0-0
 Date: 2017-04-10
-Title: Representing Undirected Graphs as graph6 Strings
+Title: Representing Graphs as graph6, dgraph6 or sparse6 Strings
 Authors@R: c(
              person(given = "Michal",
              family = "Bojanowski",
