@@ -221,3 +221,7 @@ is_author <- purrr::map_lgl(p, ~ "aut" %in% .x$role)
 
 **Co-authors**: `r paste(p[is_author & !is_maintainer], collapse=", ")`
 
+```{r, echo=FALSE, results = "asis"}
+format(readCitationFile("inst/CITATION"), style = "html")
+```
+
