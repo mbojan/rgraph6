@@ -1,5 +1,7 @@
 ---
-output: github_document
+output: 
+  github_document:
+    html_preview: true
 editor_options: 
   chunk_output_type: console
 ---
@@ -7,8 +9,12 @@ editor_options:
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r setup, include = FALSE}
-library(rgraph6)
-stopifnot(requireNamespace("igraph", quietly = TRUE))
+suppressPackageStartupMessages({
+  library(rgraph6)
+  library(dplyr)
+  library(ggraph)
+  library(igraph)
+})
 
 
 knitr::opts_chunk$set(
@@ -19,7 +25,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# `rgraph6`: Representing Graphs as graph6, dgraph6 or sparse6 Strings
+# `rgraph6`: Representing Graphs as graph6, digraph6 or sparse6 Strings
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/mbojan/rgraph6/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/rgraph6/actions)
@@ -28,38 +34,15 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 
-Functions in this package allow for converting network data (undirected graphs of size up to 128 nodes) to compact graph6 symbols and back. Graph6 symbols are convenient in a number of contexts, especially when working with large number of graphs.
+Functions in this package allow for encoding network data as strings of printable ASCII characters and back using 'graph6', 'sparse6', and 'digraph6' formats. This is convenient in a number of contexts, especially when working with large number of graphs. Provided functions allow to directly encode and decode graph data in the form of adjacency matrices, edgelists, network objects and igraph objects to and from these three formats.
 
 
+## What are 'graph6', 'sparse6' and 'digraph6' formats?
 
-## What are graph6, sparse6 and dgraph6 formats?
-
-Graph6 is a compact format for representing undirected graphs as strings of printable ASCII characters due to [Brendan McKay](https://en.wikipedia.org/wiki/Brendan_McKay). See [here](http://users.cecs.anu.edu.au/~bdm/data/formats.txt) for format specification.
-
+'graph6', 'sparse6' and 'digraph6' are formats for encoding graphs as strings of printable ASCII characters due to [Brendan McKay](https://en.wikipedia.org/wiki/Brendan_McKay). See [here](http://users.cecs.anu.edu.au/~bdm/data/formats.txt) for format specification. Formats 'graph6' and 'sparse6' are for undirected graphs. Format 'digraph6' is for directed graphs.
 
 
-
-
-## Installation
-
-<!--
-Install released version from CRAN with:
-
-```{r install-cran, eval=FALSE}
-install.packages("rgraph6")
-```
--->
-
-Install development version from GutHub with:
-
-```{r install-gh, eval=FALSE}
-# install.packages("remotes")
-remotes::install_github("mbojan/rgraph6", build_vignettes=TRUE)
-```
-
-
-
-## Usage
+## Functions
 
 Top level functions are
 
@@ -68,12 +51,57 @@ Top level functions are
 - `igraph_from_text()`
 - `network_from_text()`
 
-which try to guess the format used. For example:
+Low-level functions
+
+```{r functions-low, echo=FALSE}
+u <- c("adjacency", "edgelist", "network", "igraph", "digraph6", "sparse6", "graph6")
+
+d <- tidyr::crossing(
+  from = u,
+  to = u
+) %>%
+  filter(from != to) %>%
+  mutate(
+    fun = paste0(to, "_from_", from)
+  ) %>%
+  mutate(
+    fun = case_when(
+      to == "graph6" & (from %in% c("adjacency", "network", "igraph")) ~ "as_graph6",
+      to == "sparse6" & (from %in% c("edgelist", "network", "igraph")) ~ "as_sparse6",
+      to == "digraph6" & (from %in% c("adjacency", "network", "igraph")) ~ "as_digraph6",
+      TRUE ~ fun
+    ),
+    ok = purrr::map_lgl(fun, exists, where=asNamespace("rgraph6"))
+  )
+
+p <- d %>%
+  filter(ok) %>%
+  transmute(
+    from, to,
+    fun = paste0(fun, "()")
+  ) %>%
+  tidygraph::as_tbl_graph() %>%
+  ggraph(layout = "stress") +
+  geom_edge_parallel(
+    start_cap = circle(1),
+    end_cap = circle(1),
+    arrow = arrow(length = unit(5, "mm"))
+  ) +
+  geom_node_label(aes(label = name)) +
+  theme_void()
+```
+
+
+## Examples
 
 ```{r example-mixed}
-# Create a vector with a mixture of graph6, dgraph6 and sparse6 symbols
+# Create a vector with a mixture of 'graph6', 'digraph6' and 'sparse6' symbols
 x <- c(g6[1], s6[2], d6[3])
+
+# Parse to igraph objects (package igraph required)
 igraph_from_text(x)
+
+# Parse to network objects (package network required)
 network_from_text(x)
 ```
 
@@ -115,3 +143,22 @@ d %>%
   write.csv(row.names = FALSE)
 ```
 
+
+
+
+## Installation
+
+<!--
+Install released version from CRAN with:
+
+```{r install-cran, eval=FALSE}
+install.packages("rgraph6")
+```
+-->
+
+Install development version from GitHub with:
+
+```{r install-gh, eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("mbojan/rgraph6", build_vignettes=TRUE)
+```
