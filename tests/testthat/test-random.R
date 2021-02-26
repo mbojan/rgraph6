@@ -23,7 +23,6 @@ for( s in sizes ) {
     expect_silent(
       g6 <- as_graph6(!!m)
     )
-    expect_s3_class(!!g6, "graph6")
     expect_silent(
       m2 <- as_adjacency(!!g6)[[1]]
     )
