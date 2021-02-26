@@ -128,25 +128,31 @@ size_from_raw <- function(r) {
 
 
 
+# Wrapper for graph density -----------------------------------------------
 
-# String checking ---------------------------------------------------------
+gr_density <- function(object) UseMethod("gr_density")
 
-# Testing if a string is a valid graph6/dgraph6/sparse6 string using regular
-# expressions. Rather naive and might give false positive often.
-
-# Allowable characters:
-# paste( rawToChar(as.raw(63:126)), collapse="" )
-
-valid_graph6 <- function(x) {
-  grepl("^[][}{?@\\^_`|~a-zA-Z]+", x) &
-    grepl("^[^:]", x) &
-    grepl("^[^&]", x)
+gr_density.igraph <- function(object) {
+  requireNamespace("igraph")
+  igraph::edge_density(object)
 }
 
-valid_sparse6 <- function(x) {
-  grepl(":[][}{?@\\^_`|~a-zA-Z]+", x)
+gr_density.network <- function(object) {
+  requireNamespace("network")
+  network::network.density(object)
 }
 
-valid_dgraph6 <- function(x) {
-  grepl("&[][}{?@\\^_`|~a-zA-Z]+", x)
+
+# Wrapper for is directed -------------------------------------------------
+
+gr_directed <- function(object) UseMethod("gr_directed")
+
+gr_directed.igraph <- function(object) {
+  requireNamespace("igraph")
+  igraph::is_directed(object)
+}
+
+gr_directed.network <- function(object) {
+  requireNamespace("network")
+  network::is.directed(object)
 }

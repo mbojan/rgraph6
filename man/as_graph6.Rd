@@ -7,8 +7,7 @@
 \alias{as_graph6.list}
 \alias{as_graph6.igraph}
 \alias{as_graph6.network}
-\alias{print.graph6}
-\title{Convert graphs to graph6 symbols}
+\title{Convert undirected graphs to graph6 symbols}
 \usage{
 as_graph6(object)
 
@@ -21,22 +20,17 @@ as_graph6(object)
 \method{as_graph6}{igraph}(object)
 
 \method{as_graph6}{network}(object)
-
-\method{print}{graph6}(x, ...)
 }
 \arguments{
 \item{object}{a graph or a list of graphs}
-
-\item{x}{a vector of graph6 symbols (of class "graph6")}
-
-\item{...}{other arguments}
 }
 \value{
-A vector of class \code{graph6} extending \code{character} with graph6 symbols.
+A character vector of graph6 symbols.
 }
 \description{
-This function converts graphs to graph6 symbols. Implemented methods expect
-the graph to be an adjacency matrix, an igraph, or a network object.
+This function converts undirected graphs to graph6 symbols. Implemented
+methods expect the graph to be an adjacency matrix, an igraph, or a network
+object.
 }
 \details{
 See \link{rgraph6} for graph6 format description.

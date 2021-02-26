@@ -1,8 +1,8 @@
-#' rgraph6: Representing Graphs as graph6 Strings
+#' rgraph6: Representing Graphs as graph6, digraph6 or sparse6 Strings
 #' 
 #' This package implements methods for representing graphs in formats 'graph6',
-#' 'sparse6' and 'dgraph6'. The main functions are [as_graph6()],
-#' [as_dgraph6()], [as_sparse6()] together with [as_adjacency()]  and
+#' 'sparse6' and 'digraph6'. The main functions are [as_graph6()],
+#' [as_digraph6()], [as_sparse6()] together with [as_adjacency()]  and
 #' [as_elist()]. The formats are due to Brendan McKay
 #' (\url{http://cs.anu.edu.au/~bdm}). The description below is taken from
 #' \url{http://cs.anu.edu.au/people/bdm/data/formats.txt} for reference
@@ -80,11 +80,11 @@
 #' 
 #' 
 #' 
-#' @section Description of dgraph6 format:
+#' @section Description of digraph6 format:
 #' 
 #' Data type: simple directed graphs (allowing loops) of order 0 to 68719476735.
 #' 
-#' Optional Header: \code{>>dgraph6<<} (without end of line!)
+#' Optional Header: \code{>>digraph6<<} (without end of line!)
 #' 
 #' File name extension: \code{.d6}
 #' 

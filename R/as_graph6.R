@@ -1,16 +1,15 @@
-#' Convert graphs to graph6 symbols
+#' Convert undirected graphs to graph6 symbols
 #' 
-#' This function converts graphs to graph6 symbols. Implemented methods expect
-#' the graph to be an adjacency matrix, an igraph, or a network object.
+#' This function converts undirected graphs to graph6 symbols. Implemented
+#' methods expect the graph to be an adjacency matrix, an igraph, or a network
+#' object.
 #' 
 #' @param object a graph or a list of graphs
-#' @param x a vector of graph6 symbols (of class "graph6")
-#' @param ... other arguments
 #' 
 #' @details 
 #' See [rgraph6] for graph6 format description.
 #' 
-#' @return A vector of class `graph6` extending `character` with graph6 symbols.
+#' @return A character vector of graph6 symbols.
 #' 
 #' @export
 
@@ -25,7 +24,6 @@ as_graph6.default <- function(object) {
 }
 
 #' @rdname as_graph6
-#' @method as_graph6 matrix
 #' @export
 as_graph6.matrix <- function(object) {
   n <- ncol(object)
@@ -36,10 +34,7 @@ as_graph6.matrix <- function(object) {
 
   v <- object[ upper.tri(object) ]
   r <- c( fN(n),  fR( v ) )
-  structure(
-    rawToChar(as.raw(r)),
-    class=c("graph6", "character")
-  )
+  rawToChar(as.raw(r))
 }
 
 
@@ -47,16 +42,13 @@ as_graph6.matrix <- function(object) {
 #' @method as_graph6 list
 #' @export
 as_graph6.list <- function(object) {
-  structure(
     vapply(
       object, 
       function(x) {
         as_graph6(x)
       },
       character(1)
-    ),
-    class = c("graph6", "character")
-  )
+    )
 }
 
 
@@ -115,16 +107,4 @@ fR <- function(object) {
   rval <- lapply(rval, function(x) b2d(x) + 63)
   names(rval) <- nams
   return(rval)
-}
-
-
-
-
-
-#' @rdname as_graph6
-#' @method print graph6
-#' @export
-print.graph6 <- function(x, ...) {
-  cat("<graph6>\n")
-  print.default(unclass(x), ...)
 }

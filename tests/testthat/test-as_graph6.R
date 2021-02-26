@@ -1,6 +1,3 @@
-context("Testing as_graph6")
-
-
 
 test_that("errors are given for improper input",{
   expect_error( as_graph6(matrix(1, 1, 1)), regexp="handles networks of size greater 1")

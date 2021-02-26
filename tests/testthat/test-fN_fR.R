@@ -1,4 +1,3 @@
-context("Test fN() and fR()")
 
 test_that("Examples of fN() from documentation work", {
   expect_equal(fN(30), 93)
@@ -52,15 +51,3 @@ test_that("Graph example from documentation works", {
     as.list(c(81, 99))
   )
 })
-
-
-
-
-
-
-
-
-
-
-
-

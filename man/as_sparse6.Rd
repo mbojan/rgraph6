@@ -7,7 +7,6 @@
 \alias{as_sparse6.list}
 \alias{as_sparse6.igraph}
 \alias{as_sparse6.network}
-\alias{print.sparse6}
 \title{Convert edgelist to sparse6 symbols}
 \usage{
 as_sparse6(object)
@@ -21,20 +20,14 @@ as_sparse6(object)
 \method{as_sparse6}{igraph}(object)
 
 \method{as_sparse6}{network}(object)
-
-\method{print}{sparse6}(x, ...)
 }
 \arguments{
-\item{object}{an edgelist or a list of thereof}
-
-\item{x}{a vector of sparse6 symbols (of class "sparse6")}
-
-\item{...}{other arguments
+\item{object}{an edgelist, igraph, network object or a list thereof
 
 See \link{rgraph6} for sparse6 format description.}
 }
 \value{
-A vector of class \code{sparse6} extending \code{character} with sparse6 symbols.
+A character vector with sparse6 symbols.
 }
 \description{
 This function converts a graph(s) edgelist to a sparse6 symbol(s).
