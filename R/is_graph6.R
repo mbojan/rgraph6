@@ -80,3 +80,37 @@ guess_format <- function(x) {
   res[!equiv & !unk] <- colnames(mat)[apply(mat[!equiv & !unk, , drop = FALSE], 1, which)]
   res
 }
+
+
+
+
+
+
+
+
+
+# Test for valid symbols --------------------------------------------------
+
+# Test if symbols are valid and throw informative errors if they're not
+
+
+test_graph6 <- function(object) {
+  ok <- is_graph6(object)
+  if(any(!ok))
+    stop("some elements are not valid graph6 symbols: ", 
+         paste(which(!ok), collapse = ", "))
+}
+
+test_sparse6 <- function(object) {
+  ok <- is_sparse6(object)
+  if(any(!ok))
+    stop("some elements are not valid sparse6 symbols: ", 
+         paste(which(!ok), collapse = ", "))
+}
+
+test_dgraph6 <- function(object) {
+  ok <- is_dgraph6(object)
+  if(any(!ok))
+    stop("some elements are not valid dgraph6 symbols: ", 
+         paste(which(!ok), collapse = ", "))
+}
