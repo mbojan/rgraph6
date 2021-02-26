@@ -2,28 +2,24 @@
 #'
 #' This function converts a graph(s) edgelist to a sparse6 symbol(s).
 #'
-#' @param object an edgelist or a list of thereof
-#' @param x a vector of sparse6 symbols (of class "sparse6")
-#' @param ... other arguments
+#' @param object an edgelist, igraph, network object or a list thereof
 #'
 #' See [rgraph6] for sparse6 format description.
 #' 
 #' @importFrom methods as
 #' 
-#' @return A vector of class `sparse6` extending `character` with sparse6 symbols.
+#' @return A character vector with sparse6 symbols.
 #' @export
 
 as_sparse6 <- function(object) UseMethod("as_sparse6")
 
 #' @rdname as_sparse6
-#' @method as_sparse6 default
 #' @export
 as_sparse6.default <- function(object) {
   stop("don't know how to handle class ", dQuote(data.class(object)))
 }
 
 #' @rdname as_sparse6
-#' @method as_sparse6 matrix
 #' @export
 as_sparse6.matrix <- function(object) {
   nc <- ncol(object)
@@ -70,14 +66,10 @@ as_sparse6.matrix <- function(object) {
   v <- expand_to_length(bits, l=ceiling(length(bits)/6)*6, what=1, where="end")
   r <- c(58,fN(n),fR(v))
   
-  structure(
-    rawToChar(as.raw(r)),
-    class=c("sparse6", "character")
-  )
+  rawToChar(as.raw(r))
 }
 
 #' @rdname as_sparse6
-#' @method as_sparse6 list
 #' @export
 as_sparse6.list <- function(object) {
   vapply(
@@ -90,7 +82,6 @@ as_sparse6.list <- function(object) {
 }
 
 #' @rdname as_sparse6
-#' @method as_sparse6 igraph
 #' @export
 as_sparse6.igraph <- function(object) {
   requireNamespace("igraph")
@@ -108,18 +99,9 @@ as_sparse6.igraph <- function(object) {
 }
 
 #' @rdname as_sparse6
-#' @method as_sparse6 network
 #' @export
 as_sparse6.network <- function(object) {
   requireNamespace("network")
   stopifnot(!network::is.directed(object))
   as_sparse6.matrix( as.matrix(object, matrix.type = "edgelist"))
-}
-
-#' @rdname as_sparse6
-#' @method print sparse6
-#' @export
-print.sparse6 <- function(x, ...) {
-  cat("<sparse6>\n")
-  print.default(unclass(x), ...)
 }

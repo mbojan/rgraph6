@@ -102,7 +102,6 @@ for( s in sizes ) {
     expect_silent(
       g6 <- as_sparse6(m)
     )
-    expect_s3_class(g6, "sparse6")
     expect_silent(
       m2 <- as_elist(g6)[[1]]
     )
