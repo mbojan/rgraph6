@@ -52,7 +52,7 @@ for( s in sizes ) {
 }
 
 
-# Test dgraph6 <-> matrix conversions on some random graphs ---------------
+# Test digraph6 <-> matrix conversions on some random graphs ---------------
 
 
 for( s in sizes ) {
@@ -62,12 +62,12 @@ for( s in sizes ) {
   mname <- paste(m, collapse="")
 
   test_that(
-    paste0("matrix <-> dgraph6 works for ", paste(deparse(m), collapse=" ")), {
+    paste0("matrix <-> digraph6 works for ", paste(deparse(m), collapse=" ")), {
       expect_silent(
-        d6 <- as_dgraph6(!!m)
+        d6 <- as_digraph6(!!m)
       )
       expect_silent(
-        m2 <- adjacency_from_dgraph6(!!d6)[[1]]
+        m2 <- adjacency_from_digraph6(!!d6)[[1]]
       )
       expect_is(m2, "matrix")
       expect_true(ncol(m2) == nrow(m2))

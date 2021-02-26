@@ -1,6 +1,6 @@
-#' Infer or test for graph6, sparse6, and dgraph6 symbols
+#' Infer or test for graph6, sparse6, and digraph6 symbols
 #' 
-#' Functions [is_graph6()], [is_sparse6()]), and [is_dgraph6()] test if elements
+#' Functions [is_graph6()], [is_sparse6()]), and [is_digraph6()] test if elements
 #' of a character vector are valid symbols of particular type.
 #' 
 #' @param x character vector
@@ -35,8 +35,8 @@ is_sparse6 <- function(x) {
 #' @export
 #' 
 #' @examples 
-#' all(is_dgraph6(d6))
-is_dgraph6 <- function(x) {
+#' all(is_digraph6(d6))
+is_digraph6 <- function(x) {
   grepl("&[][}{?@\\^_`|~a-zA-Z]+", x)
 }
 
@@ -48,7 +48,7 @@ is_dgraph6 <- function(x) {
 #' used in `x`.
 #' 
 #' @return Function [guess_format()] returns a character vector of the same
-#'   length as `x` with values "graph6", "sparse6", or "dgraph6" depending on
+#'   length as `x` with values "graph6", "sparse6", or "digraph6" depending on
 #'   the type of symbol present, or `NA` if the symbol is unknown or matches
 #'   more than one type.
 #' 
@@ -62,7 +62,7 @@ is_dgraph6 <- function(x) {
 #' x[seq(3, 20, by = 3)] <- d6[seq(3, 20, by = 3)]
 #' guess_format(x)
 guess_format <- function(x) {
-  mat <- cbind(graph6 = is_graph6(x), sparse6 = is_sparse6(x), dgraph6 = is_dgraph6(x))
+  mat <- cbind(graph6 = is_graph6(x), sparse6 = is_sparse6(x), digraph6 = is_digraph6(x))
   s <- apply(mat, 1, sum)
   res <- character(length(x))
   equiv <- s > 1
@@ -108,9 +108,9 @@ test_sparse6 <- function(object) {
          paste(which(!ok), collapse = ", "))
 }
 
-test_dgraph6 <- function(object) {
-  ok <- is_dgraph6(object)
+test_digraph6 <- function(object) {
+  ok <- is_digraph6(object)
   if(any(!ok))
-    stop("some elements are not valid dgraph6 symbols: ", 
+    stop("some elements are not valid digraph6 symbols: ", 
          paste(which(!ok), collapse = ", "))
 }

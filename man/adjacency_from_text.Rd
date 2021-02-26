@@ -2,19 +2,19 @@
 % Please edit documentation in R/adjacency_from_text.R
 \name{adjacency_from_text}
 \alias{adjacency_from_text}
-\title{Create adjacency matrices from graph6, sparse6, or dgraph6 symbols}
+\title{Create adjacency matrices from graph6, sparse6, or digraph6 symbols}
 \usage{
 adjacency_from_text(object, ...)
 }
 \arguments{
-\item{object}{character vector with a mixture of graph6, sparse6 or dgraph6
+\item{object}{character vector with a mixture of graph6, sparse6 or digraph6
 symbols}
 }
 \value{
 A list of adjacency matrices.
 }
 \description{
-Create adjacency matrices from graph6, sparse6, or dgraph6 symbols
+Create adjacency matrices from graph6, sparse6, or digraph6 symbols
 }
 \details{
 If \code{object} contains sparse6 symbols, which are in fact encoded

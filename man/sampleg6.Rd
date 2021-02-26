@@ -3,7 +3,7 @@
 \docType{data}
 \name{sampleg6}
 \alias{sampleg6}
-\title{A sample vectors of graph6, sparse6, and dgraph6 codes}
+\title{A sample vectors of graph6, sparse6, and digraph6 codes}
 \format{
 All the three objects \code{g6}, \code{s6}, and \code{d6} are character vectors of
 length 20 corresponding to undirected (in case of \code{g6} and \code{s6}) and
@@ -23,7 +23,7 @@ sampleg6
 }
 \description{
 Objects \code{g6}, \code{s6}, and \code{d6} are, example vectors of codes in graph6,
-sparse6, and dgraph6 representations respectively. Object \code{sampleg6} is a
+sparse6, and digraph6 representations respectively. Object \code{sampleg6} is a
 vector of graph6 codes.
 }
 \details{

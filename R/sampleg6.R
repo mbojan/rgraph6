@@ -1,7 +1,7 @@
-#' A sample vectors of graph6, sparse6, and dgraph6 codes
+#' A sample vectors of graph6, sparse6, and digraph6 codes
 #' 
 #' Objects `g6`, `s6`, and `d6` are, example vectors of codes in graph6,
-#' sparse6, and dgraph6 representations respectively. Object `sampleg6` is a
+#' sparse6, and digraph6 representations respectively. Object `sampleg6` is a
 #' vector of graph6 codes.
 #' 
 #' @usage g6

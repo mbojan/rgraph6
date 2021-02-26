@@ -3,15 +3,15 @@
 \name{is_graph6}
 \alias{is_graph6}
 \alias{is_sparse6}
-\alias{is_dgraph6}
+\alias{is_digraph6}
 \alias{guess_format}
-\title{Infer or test for graph6, sparse6, and dgraph6 symbols}
+\title{Infer or test for graph6, sparse6, and digraph6 symbols}
 \usage{
 is_graph6(x)
 
 is_sparse6(x)
 
-is_dgraph6(x)
+is_digraph6(x)
 
 guess_format(x)
 }
@@ -23,12 +23,12 @@ Logical vector of length equal to \code{length(x)} with \code{TRUE} if an
 element is a valid symbol and \code{FALSE} otherwise.
 
 Function \code{\link[=guess_format]{guess_format()}} returns a character vector of the same
-length as \code{x} with values "graph6", "sparse6", or "dgraph6" depending on
+length as \code{x} with values "graph6", "sparse6", or "digraph6" depending on
 the type of symbol present, or \code{NA} if the symbol is unknown or matches
 more than one type.
 }
 \description{
-Functions \code{\link[=is_graph6]{is_graph6()}}, \code{\link[=is_sparse6]{is_sparse6()}}), and \code{\link[=is_dgraph6]{is_dgraph6()}} test if elements
+Functions \code{\link[=is_graph6]{is_graph6()}}, \code{\link[=is_sparse6]{is_sparse6()}}), and \code{\link[=is_digraph6]{is_digraph6()}} test if elements
 of a character vector are valid symbols of particular type.
 
 Function \code{\link[=guess_format]{guess_format()}} tries to guess the type of the symbols
@@ -41,7 +41,7 @@ Theoretically it may result in false positives.
 \examples{
 all(is_graph6(g6))
 all(is_sparse6(s6))
-all(is_dgraph6(d6))
+all(is_digraph6(d6))
 
 # Vector mixing graphs in various formats
 x <- g6

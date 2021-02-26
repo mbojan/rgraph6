@@ -1,35 +1,35 @@
-#' Functions parsing dgraph6 symbols
+#' Functions parsing digraph6 symbols
 #' 
-#' @description These functions take a vector of dgraph6 symbols and return a
+#' @description These functions take a vector of digraph6 symbols and return a
 #'   list of other types of objects:
 #'   
-#' @name from_dgraph6
+#' @name from_digraph6
 #' 
 #' @return The returned object is:
 #' 
-#' @seealso [as_dgraph6()] for saving objects as dgraph6 symbols.
+#' @seealso [as_digraph6()] for saving objects as digraph6 symbols.
 
 
 
-#' @rdname from_dgraph6
+#' @rdname from_digraph6
 #' 
-#' @description - [adjacency_from_dgraph6()] creates adjacency matrices
+#' @description - [adjacency_from_digraph6()] creates adjacency matrices
 #' 
-#' @param d6 character vector of dgraph6 symbols
+#' @param d6 character vector of digraph6 symbols
 #' 
-#' @return - for [adjacency_from_dgraph6()], a list of the same length as
+#' @return - for [adjacency_from_digraph6()], a list of the same length as
 #'   its input of square symmetric adjacency matrices.
 #' 
 #' @export
-adjacency_from_dgraph6 <- function(d6) {
+adjacency_from_digraph6 <- function(d6) {
   structure(
-    lapply(d6, as_amatrix_dgraph6),
+    lapply(d6, as_amatrix_digraph6),
     names = d6
   )
 }
 
 
-as_amatrix_dgraph6 <- function(object) {
+as_amatrix_digraph6 <- function(object) {
   r <- charToRaw(object)
   if( as.numeric(r[2]) == 126 & as.numeric(r[3]==126)){ #n>= 258048
     rn <- r[4:9]
@@ -59,22 +59,22 @@ as_amatrix_dgraph6 <- function(object) {
 
 
 
-#' @rdname from_dgraph6
+#' @rdname from_digraph6
 #' 
-#' @description - [igraph_from_dgraph6()] creates igraph objects. Requires
+#' @description - [igraph_from_digraph6()] creates igraph objects. Requires
 #'   package \pkg{igraph} to be installed.
 #'   
 #' @param ... other arguments, see Details. 
 #' 
-#' @details For [igraph_from_dgraph6()] additional arguments are passed to
+#' @details For [igraph_from_digraph6()] additional arguments are passed to
 #'   [igraph::graph_from_adjacency_matrix()]
 #' 
-#' @return - for [igraph_from_dgraph6()], a list of igraph objects
+#' @return - for [igraph_from_digraph6()], a list of igraph objects
 #' 
 #' @export
-igraph_from_dgraph6 <- function(d6, ...) {
+igraph_from_digraph6 <- function(d6, ...) {
   requireNamespace("igraph")
-  amlist <- adjacency_from_dgraph6(d6)
+  amlist <- adjacency_from_digraph6(d6)
   lapply(amlist, igraph::graph_from_adjacency_matrix, mode="directed", ...)
 }
 
@@ -86,19 +86,19 @@ igraph_from_dgraph6 <- function(d6, ...) {
 
 
 
-#' @rdname from_dgraph6
+#' @rdname from_digraph6
 #' 
-#' @description - [network_from_dgraph6()] creates network objects. Requires
+#' @description - [network_from_digraph6()] creates network objects. Requires
 #'   package \pkg{network} to be installed.
 #' 
-#' @details For [network_from_dgraph6()] additional arguments are passed to
+#' @details For [network_from_digraph6()] additional arguments are passed to
 #'   [network::as.network()]
 #' 
-#' @return - for [network_from_dgraph6()], a list of network objects
+#' @return - for [network_from_digraph6()], a list of network objects
 #' 
 #' @export
-network_from_dgraph6 <- function(d6, ...) {
+network_from_digraph6 <- function(d6, ...) {
   requireNamespace("network")
-  amlist <- adjacency_from_dgraph6(d6)
+  amlist <- adjacency_from_digraph6(d6)
   lapply(amlist, network::as.network, directed=TRUE, ...)
 }

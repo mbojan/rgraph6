@@ -4,11 +4,11 @@
 \name{rgraph6-package}
 \alias{rgraph6-package}
 \alias{rgraph6}
-\title{rgraph6: Representing Graphs as graph6, dgraph6 or sparse6 Strings}
+\title{rgraph6: Representing Graphs as graph6, digraph6 or sparse6 Strings}
 \description{
 This package implements methods for representing graphs in formats 'graph6',
 'sparse6' and 'digraph6'. The main functions are \code{\link[=as_graph6]{as_graph6()}},
-\code{\link[=as_dgraph6]{as_dgraph6()}}, \code{\link[=as_sparse6]{as_sparse6()}} together with \code{\link[=as_adjacency]{as_adjacency()}}  and
+\code{\link[=as_digraph6]{as_digraph6()}}, \code{\link[=as_sparse6]{as_sparse6()}} together with \code{\link[=as_adjacency]{as_adjacency()}}  and
 \code{\link[=as_elist]{as_elist()}}. The formats are due to Brendan McKay
 (\url{http://cs.anu.edu.au/~bdm}). The description below is taken from
 \url{http://cs.anu.edu.au/people/bdm/data/formats.txt} for reference
@@ -86,12 +86,12 @@ Then \eqn{N(n) = 68} and \eqn{R(x) = R(010010 100100) = 81 99}. So, the
 graph is \eqn{68 81 99}.
 }
 
-\section{Description of dgraph6 format}{
+\section{Description of digraph6 format}{
 
 
 Data type: simple directed graphs (allowing loops) of order 0 to 68719476735.
 
-Optional Header: \code{>>dgraph6<<} (without end of line!)
+Optional Header: \code{>>digraph6<<} (without end of line!)
 
 File name extension: \code{.d6}
 

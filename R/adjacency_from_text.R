@@ -1,6 +1,6 @@
-#' Create adjacency matrices from graph6, sparse6, or dgraph6 symbols
+#' Create adjacency matrices from graph6, sparse6, or digraph6 symbols
 #' 
-#' @param object character vector with a mixture of graph6, sparse6 or dgraph6
+#' @param object character vector with a mixture of graph6, sparse6 or digraph6
 #'   symbols
 #'   
 #' @details If `object` contains sparse6 symbols, which are in fact encoded
@@ -20,6 +20,6 @@ adjacency_from_text <- function(object, ...) {
     rval[fmt == "sparse6"] <- lapply(iglist, igraph::as_adjacency_matrix, sparse = FALSE)
   }
   rval[fmt == "graph6"] <- adjacency_from_graph6(object[fmt == "graph6"])
-  rval[fmt == "dgraph6"] <- adjacency_from_dgraph6(object[fmt == "dgraph6"])
+  rval[fmt == "digraph6"] <- adjacency_from_digraph6(object[fmt == "digraph6"])
   rval
 }
