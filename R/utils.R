@@ -124,3 +124,35 @@ size_from_raw <- function(r) {
   }
   n
 }
+
+
+
+
+# Wrapper for graph density -----------------------------------------------
+
+gr_density <- function(object) UseMethod("gr_density")
+
+gr_density.igraph <- function(object) {
+  requireNamespace("igraph")
+  igraph::edge_density(object)
+}
+
+gr_density.network <- function(object) {
+  requireNamespace("network")
+  network::network.density(object)
+}
+
+
+# Wrapper for is directed -------------------------------------------------
+
+gr_directed <- function(object) UseMethod("gr_directed")
+
+gr_directed.igraph <- function(object) {
+  requireNamespace("igraph")
+  igraph::is_directed(object)
+}
+
+gr_directed.network <- function(object) {
+  requireNamespace("network")
+  network::is.directed(object)
+}
