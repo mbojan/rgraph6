@@ -89,19 +89,19 @@ x
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH 071f570 U--- 15 10 -- 
-#> + edges from 071f570:
+#> IGRAPH a21386d U--- 15 10 -- 
+#> + edges from a21386d:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH 8dd62ac U--- 15 13 -- 
-#> + edges from 8dd62ac:
+#> IGRAPH bd918e1 U--- 15 13 -- 
+#> + edges from bd918e1:
 #>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
 #> [11]  4--15 10--15 14--15
 #> 
 #> [[3]]
-#> IGRAPH f5f1e3c D--- 15 15 -- 
-#> + edges from f5f1e3c:
+#> IGRAPH ad66a47 D--- 15 15 -- 
+#> + edges from ad66a47:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 
@@ -241,9 +241,10 @@ Install development version from GitHub with:
 remotes::install_github("mbojan/rgraph6", build_vignettes=TRUE)
 ```
 
-## Authors and contributors
+## Authors, contributors and citation
 
-Author and maintainer: Michal Bojanowski <michal2992@gmail.com> \[aut,
-cre\] (<https://orcid.org/0000-0001-7503-852X>, Kozminski University).
+**Author and maintainer**: Michal Bojanowski <michal2992@gmail.com>
+\[aut, cre\] (<https://orcid.org/0000-0001-7503-852X>, Kozminski
+University).
 
-Co-authors: David Schoch \[aut\]
+**Co-authors**: David Schoch \[aut\]
