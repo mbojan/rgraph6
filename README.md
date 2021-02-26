@@ -44,26 +44,58 @@ Low-level functions
 
 ## Examples
 
+### Encode list of igraph objects
+
+Generate a list of igraph objects:
+
+``` r
+set.seed(666)
+igraph_list <- replicate(5, igraph::sample_gnp(10, 0.1, directed=FALSE), 
+                         simplify = FALSE)
+```
+
+Encode as ‘graph6’ symbols:
+
+``` r
+as_graph6(igraph_list)
+#> [1] "ICG_@?W??" "I????@B?G" "I?@O????W" "I@@A?E???" "I?_?_@_??"
+```
+
+Encode as ‘sparse6’ symbols:
+
+``` r
+as_sparse6(igraph_list)
+#> [1] ":HeASjaeR" ":IoCp{^"   ":IiC]Rg"   ":HeIgWu`"  ":HgAo{@D"
+```
+
+### Decode a vector of different types of symbols
+
+Using example data `g6`, `d6`, and `s6` provided with the package:
+
 ``` r
 # Create a vector with a mixture of 'graph6', 'digraph6' and 'sparse6' symbols
 x <- c(g6[1], s6[2], d6[3])
+x
+#> [1] "N??E??G?e?G?????GGO"                     
+#> [2] ":NkF?XduSqiDRwYU~"                       
+#> [3] "&N?R_?E?C?D??U_A????????O???????????????"
 
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH c2017a8 U--- 15 10 -- 
-#> + edges from c2017a8:
+#> IGRAPH 7321e01 U--- 15 10 -- 
+#> + edges from 7321e01:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH 4b930a1 U--- 15 13 -- 
-#> + edges from 4b930a1:
+#> IGRAPH e46d70e U--- 15 13 -- 
+#> + edges from e46d70e:
 #>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
 #> [11]  4--15 10--15 14--15
 #> 
 #> [[3]]
-#> IGRAPH 2745943 D--- 15 15 -- 
-#> + edges from 2745943:
+#> IGRAPH 5d05bb3 D--- 15 15 -- 
+#> + edges from 5d05bb3:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 

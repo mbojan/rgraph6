@@ -101,9 +101,39 @@ d %>%
 
 ## Examples
 
+### Encode list of igraph objects
+
+Generate a list of igraph objects:
+
+```{r}
+set.seed(666)
+igraph_list <- replicate(5, igraph::sample_gnp(10, 0.1, directed=FALSE), 
+                         simplify = FALSE)
+```
+
+Encode as 'graph6' symbols:
+
+```{r}
+as_graph6(igraph_list)
+```
+
+Encode as 'sparse6' symbols:
+
+```{r}
+as_sparse6(igraph_list)
+```
+
+
+
+
+### Decode a vector of different types of symbols
+
+Using example data `g6`, `d6`, and `s6` provided with the package:
+
 ```{r example-mixed}
 # Create a vector with a mixture of 'graph6', 'digraph6' and 'sparse6' symbols
 x <- c(g6[1], s6[2], d6[3])
+x
 
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
