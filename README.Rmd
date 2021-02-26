@@ -205,3 +205,18 @@ Install development version from GitHub with:
 # install.packages("remotes")
 remotes::install_github("mbojan/rgraph6", build_vignettes=TRUE)
 ```
+
+
+
+## Authors and contributors
+
+```{r persons, echo=FALSE}
+pd <- read.dcf("DESCRIPTION")
+p <- eval(parse(text = pd[,"Authors@R"]))
+is_maintainer <- purrr::map_lgl(p, ~ "cre" %in% .x$role)
+is_author <- purrr::map_lgl(p, ~ "aut" %in% .x$role)
+```
+
+Author and maintainer: `r p[is_maintainer]`.
+
+Co-authors: `r paste(p[is_author & !is_maintainer], collapse=", ")`
