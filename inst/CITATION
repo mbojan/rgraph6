@@ -7,7 +7,7 @@ d <- read.dcf("DESCRIPTION")
 
 citEntry( 
   entry = "Manual",
-  title = "{rgraph6}: Representing Undirected Graphs as graph6 Strings",
+  title = paste0("{rgraph6}: ", d[,"Title"]),
   author= personList(
       person("Micha\\l{}", "Bojanowski"),
       person("David", "Schoch")
@@ -15,7 +15,11 @@ citEntry(
   year = 2021,
   note = paste0("R package version: ", d[,"Version"]),
   url = "https://mbojan.github.com/rgraph6",
-  textVersion = "gadery poluki"
+  textVersion = paste0(
+    "Bojanowski, Michał; David Schoch (2021) {rgraph6}: ",
+    d[,"Title"],
+    ". R package version: ", d[,"Version"]
+  )
 )
 
 

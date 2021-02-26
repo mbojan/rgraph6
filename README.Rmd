@@ -224,6 +224,9 @@ is_author <- purrr::map_lgl(p, ~ "aut" %in% .x$role)
 To cite this package please use:
 
 ```{r, echo=FALSE, results = "asis"}
-cat(format(readCitationFile("inst/CITATION")[[1]], style = "html"))
+cat(format(
+  readCitationFile("inst/CITATION", meta = list(Encoding = "UTF-8"))[[1]], 
+  style = "html"
+))
 ```
 
