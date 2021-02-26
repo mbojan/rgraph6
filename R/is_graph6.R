@@ -12,6 +12,9 @@
 #'   Theoretically it may result in false positives.
 #' 
 #' @export
+#' 
+#' @examples 
+#' all(is_graph6(g6))
 is_graph6 <- function(x) {
   grepl("^[][}{?@\\^_`|~a-zA-Z]+", x) &
     grepl("^[^:]", x) &
@@ -21,12 +24,18 @@ is_graph6 <- function(x) {
 
 #' @rdname is_graph6
 #' @export
+#' 
+#' @examples 
+#' all(is_sparse6(s6))
 is_sparse6 <- function(x) {
   grepl(":[][}{?@\\^_`|~a-zA-Z]+", x)
 }
 
 #' @rdname is_graph6
 #' @export
+#' 
+#' @examples 
+#' all(is_dgraph6(d6))
 is_dgraph6 <- function(x) {
   grepl("&[][}{?@\\^_`|~a-zA-Z]+", x)
 }
@@ -44,6 +53,14 @@ is_dgraph6 <- function(x) {
 #'   more than one type.
 #' 
 #' @export
+#' 
+#' @examples 
+#' 
+#' # Vector mixing graphs in various formats
+#' x <- g6
+#' x[seq(2, 20, by = 3)] <- s6[seq(2, 20, by = 3)]
+#' x[seq(3, 20, by = 3)] <- d6[seq(3, 20, by = 3)]
+#' guess_format(x)
 guess_format <- function(x) {
   mat <- cbind(g6 = is_graph6(x), s6 = is_sparse6(x), d6 = is_dgraph6(x))
   s <- apply(mat, 1, sum)

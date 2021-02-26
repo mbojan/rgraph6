@@ -38,3 +38,14 @@ used in \code{x}.
 At this moment the test is performed using regular expressions.
 Theoretically it may result in false positives.
 }
+\examples{
+all(is_graph6(g6))
+all(is_sparse6(s6))
+all(is_dgraph6(d6))
+
+# Vector mixing graphs in various formats
+x <- g6
+x[seq(2, 20, by = 3)] <- s6[seq(2, 20, by = 3)]
+x[seq(3, 20, by = 3)] <- d6[seq(3, 20, by = 3)]
+guess_format(x)
+}
