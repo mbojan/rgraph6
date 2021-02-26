@@ -7,7 +7,6 @@
 \alias{as_dgraph6.list}
 \alias{as_dgraph6.igraph}
 \alias{as_dgraph6.network}
-\alias{print.dgraph6}
 \title{Convert adjacency matrix to dgraph6 symbols}
 \usage{
 as_dgraph6(object)
@@ -21,20 +20,14 @@ as_dgraph6(object)
 \method{as_dgraph6}{igraph}(object)
 
 \method{as_dgraph6}{network}(object)
-
-\method{print}{dgraph6}(x, ...)
 }
 \arguments{
-\item{object}{a square binary adjacency matrix or a list of thereof}
-
-\item{x}{a vector of dgraph6 symbols (of class "dgraph6")}
-
-\item{...}{other arguments
+\item{object}{a square binary adjacency matrix or a list of thereof
 
 See \link{rgraph6} for dgraph6 format description.}
 }
 \value{
-A vector of class \code{dgraph6} extending \code{character} with dgraph6 symbols.
+A character vector of dgraph6 symbols.
 }
 \description{
 This function converts a graph(s) as adjacency matrices to a dgraph6 symbol(s).
