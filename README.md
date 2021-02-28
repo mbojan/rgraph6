@@ -33,16 +33,16 @@ Format ‘digraph6’ is for directed graphs.
 
 Main functions for encoding network data are:
 
-  - `as_graph6()`
-  - `as_sparse6()`
-  - `as_digraph6()`
+-   `as_graph6()`
+-   `as_sparse6()`
+-   `as_digraph6()`
 
 Main functions for decoding are:
 
-  - `adjacency_from_text()`
-  - `edgelist_from_text()`
-  - `igraph_from_text()`
-  - `network_from_text()`
+-   `adjacency_from_text()`
+-   `edgelist_from_text()`
+-   `igraph_from_text()`
+-   `network_from_text()`
 
 Low-level functions are shown on the following graph:
 
@@ -89,19 +89,19 @@ x
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH e71734b U--- 15 10 -- 
-#> + edges from e71734b:
+#> IGRAPH 11b8937 U--- 15 10 -- 
+#> + edges from 11b8937:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH 3cafb2a U--- 15 13 -- 
-#> + edges from 3cafb2a:
+#> IGRAPH 11b86c6 U--- 15 13 -- 
+#> + edges from 11b86c6:
 #>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
 #> [11]  4--15 10--15 14--15
 #> 
 #> [[3]]
-#> IGRAPH 8361753 D--- 15 15 -- 
-#> + edges from 8361753:
+#> IGRAPH 11b8ba8 D--- 15 15 -- 
+#> + edges from 11b8ba8:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 
@@ -198,7 +198,7 @@ d
 
 Nice and compact. We can go further by doing some computations and
 saving the results together with the graph data, and even save it to a
-simple CSV file\!
+simple CSV file!
 
 ``` r
 d %>%
@@ -244,17 +244,14 @@ remotes::install_github("mbojan/rgraph6", build_vignettes=TRUE)
 ## Authors, contributors and citation
 
 **Author and maintainer**: Michal Bojanowski <michal2992@gmail.com>
-\[aut, cre\] (<https://orcid.org/0000-0001-7503-852X>, Kozminski
-University).
+(<https://orcid.org/0000-0001-7503-852X>, Kozminski University).
 
-**Co-authors**: David Schoch \[aut\]
+**Co-authors**: David Schoch
 
 To cite this package please use:
 
 <p>
-
 Bojanowski M, Schoch D (2021). <em>rgraph6: Representing Graphs as
 graph6, dgraph6 or sparse6 Strings</em>. R package version: 2.0-0,
 <a href="https://mbojan.github.com/rgraph6">https://mbojan.github.com/rgraph6</a>.
-
 </p>

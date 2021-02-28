@@ -217,9 +217,9 @@ is_maintainer <- purrr::map_lgl(p, ~ "cre" %in% .x$role)
 is_author <- purrr::map_lgl(p, ~ "aut" %in% .x$role)
 ```
 
-**Author and maintainer**: `r p[is_maintainer]`.
+**Author and maintainer**: `r format(p[is_maintainer], include = c("given", "family", "email", "comment"))`.
 
-**Co-authors**: `r paste(p[is_author & !is_maintainer], collapse=", ")`
+**Co-authors**: `r paste(format(p[is_author & !is_maintainer], include = c("given", "family", "comment")), collapse=", ")`
 
 To cite this package please use:
 
@@ -229,4 +229,3 @@ cat(format(
   style = "html"
 ))
 ```
-
