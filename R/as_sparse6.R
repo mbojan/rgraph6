@@ -7,7 +7,7 @@
 #'   Methods section below.
 #' @param ... other arguments passed to/from other methods
 #' 
-#' @seealso See [sparse6] for 'sparse6' format description.
+#' @seealso See [rgraph6] for 'sparse6' format description.
 #' 
 #' @return A character vector with 'sparse6' symbols.
 #' 

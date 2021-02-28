@@ -55,5 +55,5 @@ one of the other methods.
 }}
 
 \seealso{
-See \link{sparse6} for 'sparse6' format description.
+See \link{rgraph6} for 'sparse6' format description.
 }
