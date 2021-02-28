@@ -1,25 +1,16 @@
-
 citHeader("To cite package 'rgraph6' in publications use:")
-
-d <- read.dcf("DESCRIPTION")
-# year <- sub("-.*", "", meta$Date)
-# note <- sprintf("R package version: %s", meta$Version)
 
 citEntry( 
   entry = "Manual",
-  title = paste0("{rgraph6}: ", d[,"Title"]),
+  title = "{rgraph6}: Representing Graphs as graph6, dgraph6 or sparse6 Strings",
   author= personList(
       person("Micha\\l{}", "Bojanowski"),
       person("David", "Schoch")
     ),
   year = 2021,
-  note = paste0("R package version: ", d[,"Version"]),
+  note = "R package version: 2.0-0",
   url = "https://mbojan.github.com/rgraph6",
-  textVersion = paste0(
-    "Bojanowski, Michał; David Schoch (2021) {rgraph6}: ",
-    d[,"Title"],
-    ". R package version: ", d[,"Version"]
-  )
+  textVersion = "Bojanowski M, Schoch D (2021). rgraph6: Representing Graphs as graph6, dgraph6 or sparse6 Strings. R package version: 2.0-0, URL: https://mbojan.github.com/rgraph6"
 )
 
 
