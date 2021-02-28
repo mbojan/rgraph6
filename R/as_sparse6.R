@@ -71,7 +71,7 @@ as_sparse6.matrix <- function(object, n, ...) {
   rawToChar(as.raw(r))
 }
 
-#' @describeIn as_sparse6 Encode [igraph](igraph::igraph) objects. If the graph
+#' @describeIn as_sparse6 Encode [igraph][igraph::igraph] objects. If the graph
 #'   is directed an error is thrown. Package \pkg{igraph} needs to be installed.
 #' @importFrom methods as
 #' @export
@@ -90,7 +90,7 @@ as_sparse6.igraph <- function(object, ...) {
   as_sparse6.matrix(el, n = igraph::gorder(object))
 }
 
-#' @describeIn as_sparse6 Encode [network](network::network()) objects. If the
+#' @describeIn as_sparse6 Encode [network][network::network()] objects. If the
 #'   network is directed and error is thrown. Package \pkg{network} needs
 #'   to be installed.
 #' @export

@@ -41,10 +41,10 @@ available methods.
 \item \code{matrix}: Encode edgelist. Requries additional argument \code{n} with
 the number of vertices of the graph.
 
-\item \code{igraph}: Encode \href{igraph::igraph}{igraph} objects. If the graph
+\item \code{igraph}: Encode \link[igraph:aaa-igraph-package]{igraph} objects. If the graph
 is directed an error is thrown. Package \pkg{igraph} needs to be installed.
 
-\item \code{network}: Encode \href{network::network()}{network} objects. If the
+\item \code{network}: Encode \link[network:network]{network} objects. If the
 network is directed and error is thrown. Package \pkg{network} needs
 to be installed.
 
