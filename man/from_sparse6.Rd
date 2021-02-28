@@ -5,25 +5,24 @@
 \alias{edgelist_from_sparse6}
 \alias{igraph_from_sparse6}
 \alias{network_from_sparse6}
-\title{Functions parsing sparse6 symbols}
+\title{Parsing 'sparse6' symbols}
 \usage{
 edgelist_from_sparse6(s6)
 
-igraph_from_sparse6(s6, ...)
+igraph_from_sparse6(s6)
 
-network_from_sparse6(s6, ...)
+network_from_sparse6(s6)
 }
 \arguments{
-\item{s6}{character vector of sparse6 symbols}
-
-\item{...}{other arguments, see Details.}
+\item{s6}{character vector of 'sparse6' symbols}
 }
 \value{
 The returned object is:
 
 \itemize{
-\item for \code{\link[=edgelist_from_sparse6]{edgelist_from_sparse6()}}, a list of the same length as
-its input of two-column edgelist matrices.
+\item for \code{\link[=edgelist_from_sparse6]{edgelist_from_sparse6()}}, a list of the same length as its
+input of two-column edgelist matrices. The matrix has a \code{gorder} attribute
+storing the number of vertices in the graph.
 }
 
 \itemize{
@@ -35,8 +34,8 @@ its input of two-column edgelist matrices.
 }
 }
 \description{
-These functions take a vector of sparse6 symbols and return a
-list of other types of objects:
+These functions take a character vector of 'sparse6' symbols and
+return a list of other types of objects:
 
 \itemize{
 \item \code{\link[=edgelist_from_sparse6]{edgelist_from_sparse6()}} creates edgelist matrices
@@ -52,13 +51,7 @@ package \pkg{igraph} to be installed.
 package \pkg{network} to be installed.
 }
 }
-\details{
-For \code{\link[=igraph_from_sparse6]{igraph_from_sparse6()}} additional arguments are passed to
-\code{\link[igraph:graph_from_edgelist]{igraph::graph_from_edgelist()}}
-
-For \code{\link[=network_from_sparse6]{network_from_sparse6()}} additional arguments are passed to
-\code{\link[network:network]{network::as.network()}}
-}
 \seealso{
-\code{\link[=as_sparse6]{as_sparse6()}} for saving objects as sparse6 symbols.
+\code{\link[=as_sparse6]{as_sparse6()}} for encoding network data objects as 'sparse6'
+symbols.
 }

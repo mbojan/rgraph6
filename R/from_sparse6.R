@@ -1,13 +1,14 @@
-#' Functions parsing sparse6 symbols
+#' Parsing 'sparse6' symbols
 #' 
-#' @description These functions take a vector of sparse6 symbols and return a
-#'   list of other types of objects:
+#' @description These functions take a character vector of 'sparse6' symbols and
+#'   return a list of other types of objects:
 #'   
 #' @name from_sparse6
 #' 
 #' @return The returned object is:
 #' 
-#' @seealso [as_sparse6()] for saving objects as sparse6 symbols.
+#' @seealso [as_sparse6()] for encoding network data objects as 'sparse6'
+#'   symbols.
 
 
 
@@ -16,10 +17,11 @@
 #' 
 #' @description - [edgelist_from_sparse6()] creates edgelist matrices
 #' 
-#' @param s6 character vector of sparse6 symbols
+#' @param s6 character vector of 'sparse6' symbols
 #' 
-#' @return - for [edgelist_from_sparse6()], a list of the same length as
-#'   its input of two-column edgelist matrices.
+#' @return - for [edgelist_from_sparse6()], a list of the same length as its
+#'   input of two-column edgelist matrices. The matrix has a `gorder` attribute
+#'   storing the number of vertices in the graph.
 #' 
 #' @export
 
@@ -65,7 +67,7 @@ as_elist_sparse6 <- function(object){
   
   #make sure that all edges are valid
   idx <- el[ ,1] != 0 & el[ ,2] != 0 & el[,1]<= n & el[,2] <= n
-  el[idx,]
+  structure(el[idx,], gorder = n)
 }
 
 
@@ -77,18 +79,17 @@ as_elist_sparse6 <- function(object){
 #' @description - [igraph_from_sparse6()] creates igraph objects. Requires
 #'   package \pkg{igraph} to be installed.
 #'   
-#' @param ... other arguments, see Details. 
-#' 
-#' @details For [igraph_from_sparse6()] additional arguments are passed to
-#'   [igraph::graph_from_edgelist()]
-#' 
 #' @return - for [igraph_from_sparse6()], a list of igraph objects
 #' 
 #' @export
-igraph_from_sparse6 <- function(s6, ...) {
+igraph_from_sparse6 <- function(s6) {
   requireNamespace("igraph")
   ellist <- edgelist_from_sparse6(s6)
-  lapply(ellist, igraph::graph_from_edgelist, directed=FALSE, ...)
+  my_graph_from_edgelist <- function(el) {
+    gempty <- igraph::make_empty_graph(attr(el, "gorder"), directed=FALSE)
+    igraph::add_edges(gempty, t(el))
+  }
+  lapply(ellist, my_graph_from_edgelist)
 }
 
 
@@ -100,14 +101,17 @@ igraph_from_sparse6 <- function(s6, ...) {
 #' @description - [network_from_sparse6()] creates network objects. Requires
 #'   package \pkg{network} to be installed.
 #' 
-#' @details For [network_from_sparse6()] additional arguments are passed to
-#'   [network::as.network()]
-#' 
 #' @return - for [network_from_sparse6()], a list of network objects
 #' 
 #' @export
-network_from_sparse6 <- function(s6, ...) {
+network_from_sparse6 <- function(s6) {
   requireNamespace("network")
   elist <- edgelist_from_sparse6(s6)
-  lapply(elist, network::as.network, directed=FALSE, ...)
+  lapply(
+    elist,
+    function(el) network::add.edges(
+      network::network.initialize(attr(el, "gorder"), directed=FALSE),
+      el[,1], el[,2]
+    )
+  )
 }
