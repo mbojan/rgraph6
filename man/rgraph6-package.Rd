@@ -15,7 +15,7 @@ described \href{http://cs.anu.edu.au/people/bdm/data/formats.txt}{here}.
 The main functions are \code{\link[=as_graph6]{as_graph6()}}, \code{\link[=as_digraph6]{as_digraph6()}}, \code{\link[=as_sparse6]{as_sparse6()}} for
 encoding network data and \code{\link[=igraph_from_text]{igraph_from_text()}} and \code{\link[=network_from_text]{network_from_text()}} for
 decoding. There are also other low-level functions to decode directly from
-\link[=from_dirgaph6]{digraph6}, \link[=from_graph6]{graph6}, and
+\link[=from_digraph6]{digraph6}, \link[=from_graph6]{graph6}, and
 \link[=from_sparse6]{sparse6}.
 }
 \section{Authors and citation}{

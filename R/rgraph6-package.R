@@ -8,7 +8,7 @@
 #' The main functions are [as_graph6()], [as_digraph6()], [as_sparse6()] for
 #' encoding network data and [igraph_from_text()] and [network_from_text()] for
 #' decoding. There are also other low-level functions to decode directly from
-#' [digraph6][from_dirgaph6], [graph6][from_graph6], and
+#' [digraph6][from_digraph6], [graph6][from_graph6], and
 #' [sparse6][from_sparse6].
 #' 
 #' @section Authors and citation:
