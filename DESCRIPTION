@@ -1,6 +1,6 @@
 Package: rgraph6
 Version: 2.0-0
-Title: Representing Graphs as graph6, dgraph6 or sparse6 Strings
+Title: Representing Graphs as 'graph6', 'digraph6' or 'sparse6' Strings
 Authors@R: c(
              person(given = "Michal",
              family = "Bojanowski",
@@ -16,8 +16,8 @@ Depends:
 Imports: methods, Rcpp (>= 1.0.3)
 LinkingTo: Rcpp
 Suggests: testthat, knitr, rmarkdown, igraph, network, Matrix
-Description: This package contains implementation of methods that allow
-	to represent undirected graphs in a compact 'graph6' format.
+Description: Encode network data as strings of printable ASCII characters. 
+  Implemented methods include formats 'graph6', 'sparse6', and 'digraph6'.
 License: GPL (>= 3)
 RoxygenNote: 7.1.1
 Encoding: UTF-8
