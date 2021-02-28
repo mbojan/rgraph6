@@ -97,6 +97,7 @@ maked <- function(size, p)
 # Get graph size from a raw vector `r`. Essentially an inverse of fN().
 
 size_from_raw <- function(r) {
+  assert <- function(cond, msg) if(!cond) stop(msg)
   if( as.integer(r[1]) == 126L & as.integer(r[2]) == 126L){ # n >= 258048
     assert(
       length(r) >= 8L, 
