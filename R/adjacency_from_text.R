@@ -1,9 +1,10 @@
-#' Create adjacency matrices from graph6, sparse6, or digraph6 symbols
+#' Create adjacency matrices from 'graph6', 'sparse6', or 'digraph6' symbols
 #' 
-#' @param object character vector with a mixture of graph6, sparse6 or digraph6
-#'   symbols
+#' @param object character vector with a mixture of 'graph6', 'sparse6' or
+#'   'digraph6' symbols
+#' @param ... other arguments, currently ignored
 #'   
-#' @details If `object` contains sparse6 symbols, which are in fact encoded
+#' @details If `object` contains 'sparse6' symbols, which are in fact encoded
 #'   edgelists, the function will return corresponding adjacency matrices
 #'   creating temporary igraph objects internally.
 #' 
