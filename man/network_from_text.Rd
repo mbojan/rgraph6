@@ -11,7 +11,7 @@ network_from_text(object)
 symbols}
 }
 \value{
-A list of \href{network::network()}{network} objects.
+A list of \link[network:network]{network} objects.
 }
 \description{
 Create network objects from graph6, sparse6, or digraph6 symbols

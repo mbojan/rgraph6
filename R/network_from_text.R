@@ -3,7 +3,7 @@
 #' @param object character vector with a mixture of graph6, sparse6 or digraph6
 #'   symbols
 #' 
-#' @return A list of [network](network::network()) objects.
+#' @return A list of [network][network::network()] objects.
 #' 
 #' @export
 network_from_text <- function(object) {

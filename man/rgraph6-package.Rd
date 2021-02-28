@@ -4,7 +4,7 @@
 \name{rgraph6-package}
 \alias{rgraph6-package}
 \alias{rgraph6}
-\title{rgraph6: Representing Graphs as graph6, digraph6 or sparse6 Strings}
+\title{rgraph6: Representing Graphs as 'graph6', 'digraph6' or 'sparse6' Strings}
 \description{
 This package implements methods for representing graphs in formats 'graph6',
 'sparse6' and 'digraph6'. The main functions are \code{\link[=as_graph6]{as_graph6()}},
