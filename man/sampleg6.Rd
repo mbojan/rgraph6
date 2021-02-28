@@ -3,6 +3,9 @@
 \docType{data}
 \name{sampleg6}
 \alias{sampleg6}
+\alias{g6}
+\alias{d6}
+\alias{s6}
 \title{A sample vectors of graph6, sparse6, and digraph6 codes}
 \format{
 All the three objects \code{g6}, \code{s6}, and \code{d6} are character vectors of

@@ -31,5 +31,6 @@
 #' 
 #' 
 #' @docType data
+#' @aliases g6 d6 s6
 "sampleg6"
 
