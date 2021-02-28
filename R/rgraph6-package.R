@@ -13,10 +13,19 @@
 #' 
 #' @section Authors and citation:
 #' 
-#' The formats themselves are due to [Brendan McKay](http://cs.anu.edu.au/~bdm).
+#' ```{r, echo=FALSE, include=FALSE}
+#' requireNamespace("desc")
+#' d <- desc::desc()
+#' ```
 #' 
-#' Package \pkg{rgraph6} is maintained by Michal Bojanowski and co-authored by
-#' David Schoch.
+#' **Maintainer**: `r format(d$get_author(role="cre"), include=c("given", "family"))`.
+#' 
+#' **Authors**: `r format(d$get_author(role="aut"), include = c("given", "family"))`.
+#' 
+#' The formats themselves are by [Brendan McKay](http://cs.anu.edu.au/~bdm).
+#' 
+#' When using this package please cite it. Call `citation(package="rgraph6")`
+#' to see how.
 #' 
 #' @docType package
 #' @name rgraph6-package

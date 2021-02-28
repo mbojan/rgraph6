@@ -18,3 +18,17 @@ decoding. There are also other low-level functions to decode directly from
 \link[=from_dirgaph6]{digraph6}, \link[=from_graph6]{graph6}, and
 \link[=from_sparse6]{sparse6}.
 }
+\section{Authors and citation}{
+
+
+\strong{Maintainer}: Michal Bojanowski.
+
+\strong{Authors}: Michal Bojanowski
+David Schoch.
+
+The formats themselves are by \href{http://cs.anu.edu.au/~bdm}{Brendan McKay}.
+
+When using this package please cite it. Call \code{citation(package="rgraph6")}
+to see how.
+}
+
