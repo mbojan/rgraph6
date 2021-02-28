@@ -1,4 +1,4 @@
-#' rgraph6: Representing Graphs as graph6, digraph6 or sparse6 Strings
+#' rgraph6: Representing Graphs as 'graph6', 'digraph6' or 'sparse6' Strings
 #' 
 #' This package implements methods for representing graphs in formats 'graph6',
 #' 'sparse6' and 'digraph6'. The main functions are [as_graph6()],
