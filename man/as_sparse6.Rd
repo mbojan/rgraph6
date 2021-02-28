@@ -2,33 +2,58 @@
 % Please edit documentation in R/as_sparse6.R
 \name{as_sparse6}
 \alias{as_sparse6}
-\alias{as_sparse6.default}
 \alias{as_sparse6.matrix}
-\alias{as_sparse6.list}
 \alias{as_sparse6.igraph}
 \alias{as_sparse6.network}
-\title{Convert edgelist to sparse6 symbols}
+\alias{as_sparse6.list}
+\alias{as_sparse6.default}
+\title{Encode network data as 'sparse6' symbols}
 \usage{
-as_sparse6(object)
+as_sparse6(object, ...)
 
-\method{as_sparse6}{default}(object)
+\method{as_sparse6}{matrix}(object, n, ...)
 
-\method{as_sparse6}{matrix}(object)
+\method{as_sparse6}{igraph}(object, ...)
 
-\method{as_sparse6}{list}(object)
+\method{as_sparse6}{network}(object, ...)
 
-\method{as_sparse6}{igraph}(object)
+\method{as_sparse6}{list}(object, ...)
 
-\method{as_sparse6}{network}(object)
+\method{as_sparse6}{default}(object, ...)
 }
 \arguments{
-\item{object}{an edgelist, igraph, network object or a list thereof
+\item{object}{an edgelist, igraph, or network object or a list thereof. See
+Methods section below.}
 
-See \link{rgraph6} for sparse6 format description.}
+\item{...}{other arguments passed to/from other methods}
+
+\item{n}{number of vertices in the graph}
 }
 \value{
-A character vector with sparse6 symbols.
+A character vector with 'sparse6' symbols.
 }
 \description{
-This function converts a graph(s) edgelist to a sparse6 symbol(s).
+Generic function encoding network data as 'sparse6' symbol(s). See below for
+available methods.
+}
+\section{Methods (by class)}{
+\itemize{
+\item \code{matrix}: Encode edgelist. Requries additional argument \code{n} with
+the number of vertices of the graph.
+
+\item \code{igraph}: Encode \href{igraph::igraph}{igraph} objects. If the graph
+is directed an error is thrown. Package \pkg{igraph} needs to be installed.
+
+\item \code{network}: Encode \href{network::network()}{network} objects. If the
+network is directed and error is thrown. Package \pkg{network} needs
+to be installed.
+
+\item \code{list}: Each element of the list is encoded independently with
+one of the other methods.
+
+\item \code{default}: The default method fails gracefully.
+}}
+
+\seealso{
+See \link{sparse6} for 'sparse6' format description.
 }

@@ -1,27 +1,28 @@
-#' Convert edgelist to sparse6 symbols
+#' Encode network data as 'sparse6' symbols
 #'
-#' This function converts a graph(s) edgelist to a sparse6 symbol(s).
+#' Generic function encoding network data as 'sparse6' symbol(s). See below for
+#' available methods.
 #'
-#' @param object an edgelist, igraph, network object or a list thereof
-#'
-#' See [rgraph6] for sparse6 format description.
+#' @param object an edgelist, igraph, or network object or a list thereof. See
+#'   Methods section below.
+#' @param ... other arguments passed to/from other methods
 #' 
-#' @importFrom methods as
+#' @seealso See [sparse6] for 'sparse6' format description.
 #' 
-#' @return A character vector with sparse6 symbols.
+#' @return A character vector with 'sparse6' symbols.
+#' 
 #' @export
+as_sparse6 <- function(object, ...) UseMethod("as_sparse6")
 
-as_sparse6 <- function(object) UseMethod("as_sparse6")
 
-#' @rdname as_sparse6
+
+#' @describeIn as_sparse6 Encode edgelist. Requries additional argument `n` with
+#' the number of vertices of the graph.
+#' 
+#' @param n number of vertices in the graph
+#'
 #' @export
-as_sparse6.default <- function(object) {
-  stop("don't know how to handle class ", dQuote(data.class(object)))
-}
-
-#' @rdname as_sparse6
-#' @export
-as_sparse6.matrix <- function(object) {
+as_sparse6.matrix <- function(object, n, ...) {
   nc <- ncol(object)
   nr <- nrow(object)
   if( nc != 2)
@@ -35,7 +36,8 @@ as_sparse6.matrix <- function(object) {
     object <- object[order(object[ ,1]), ]  
   }
   
-  n <- max(object)
+  # n <- max(object)
+  stopifnot(n >= max(object))
   k <- length(d2b(n - 1))
 
   object <- object - 1
@@ -69,21 +71,11 @@ as_sparse6.matrix <- function(object) {
   rawToChar(as.raw(r))
 }
 
-#' @rdname as_sparse6
+#' @describeIn as_sparse6 Encode [igraph](igraph::igraph) objects. If the graph
+#'   is directed an error is thrown. Package \pkg{igraph} needs to be installed.
+#' @importFrom methods as
 #' @export
-as_sparse6.list <- function(object) {
-  vapply(
-    object,
-    function(x) {
-      as_sparse6(x)
-    },
-    character(1)
-  )
-}
-
-#' @rdname as_sparse6
-#' @export
-as_sparse6.igraph <- function(object) {
+as_sparse6.igraph <- function(object, ...) {
   requireNamespace("igraph")
   stopifnot(!igraph::is_directed(object))
   
@@ -95,13 +87,37 @@ as_sparse6.igraph <- function(object) {
     el <- igraph::as_edgelist(object, names = FALSE)
   }
   
-  as_sparse6.matrix(el)
+  as_sparse6.matrix(el, n = igraph::gorder(object))
 }
 
-#' @rdname as_sparse6
+#' @describeIn as_sparse6 Encode [network](network::network()) objects. If the
+#'   network is directed and error is thrown. Package \pkg{network} needs
+#'   to be installed.
 #' @export
-as_sparse6.network <- function(object) {
+as_sparse6.network <- function(object, ...) {
   requireNamespace("network")
   stopifnot(!network::is.directed(object))
-  as_sparse6.matrix( as.matrix(object, matrix.type = "edgelist"))
+  as_sparse6.matrix( as.matrix(object, matrix.type = "edgelist"), n = network::network.size(object))
 }
+
+
+
+#' @describeIn as_sparse6 Each element of the list is encoded independently with
+#'   one of the other methods.
+#' @export
+as_sparse6.list <- function(object, ...) {
+  vapply(
+    object,
+    function(x) {
+      as_sparse6(x, ...)
+    },
+    character(1)
+  )
+}
+
+#' @describeIn as_sparse6 The default method fails gracefully.
+#' @export
+as_sparse6.default <- function(object, ...) {
+  stop("don't know how to handle class ", dQuote(data.class(object)))
+}
+

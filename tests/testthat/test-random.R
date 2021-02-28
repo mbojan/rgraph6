@@ -99,7 +99,7 @@ for( s in sizes ) {
   test_that(
     paste0("Converting matrix <-> sparse6 on ", mname), {
     expect_silent(
-      s6 <- as_sparse6(m)
+      s6 <- as_sparse6(m, n = s)
     )
     expect_silent(
       m2 <- edgelist_from_sparse6(s6)[[1]]

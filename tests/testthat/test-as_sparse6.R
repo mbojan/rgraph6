@@ -10,7 +10,7 @@ test_that("errors are given for improper input",{
 
 test_that("works for simple matrices", {
   m <- matrix(c(1,2,1,3), 2, 2,byrow = T) 
-  expect_silent(as_sparse6(m))
+  expect_silent(as_sparse6(m, 3))
 })
 
 
@@ -18,7 +18,7 @@ test_that("works for simple matrices", {
 test_that("works for ':Fa@x^' from format documentation", {
   s6 <- ":Fa@x^"
   elist <- matrix(c(1,2, 1,3, 2,3, 6,7), ncol=2, byrow=TRUE)
-  expect_identical(
+  expect_equivalent(
     edgelist_from_sparse6(s6)[[1]],
     elist
   )
