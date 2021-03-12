@@ -27,8 +27,8 @@ as_graph6.default <- function(object) {
 #' @export
 as_graph6.matrix <- function(object) {
   n <- ncol(object)
-  if( n < 2)
-    stop("as_graph6 handles networks of size greater 1")
+  # if( n < 2)
+  #   stop("as_graph6 handles networks of size greater 1")
   if( n != nrow(object) )
     stop("'object' must be square matrix")
 
@@ -69,42 +69,4 @@ as_graph6.network <- function(object) {
   requireNamespace("network")
   stopifnot(!network::is.directed(object))
   as_graph6.matrix( as.matrix(object, type="adjacency"))
-}
-
-
-
-fN <- function(x){
-  if(x < 0)  stop("'x' must be non-negative")
-  if( x >= 0 && x <= 62 ) {
-    return(x+63)
-  } else if( x >= 63 & x<= 258047){
-    e <- d2b(x)
-    e <- expand_to_length(e, l=18, what=0, where="start")
-    return(c(126,fR(e)))
-  } else if( x > 258047 ){
-    e <- d2b(x)
-    e <- expand_to_length(e, l=36, what=0, where="start")
-    return(c(126,126,fR(e)))
-  }
-}
-
-
-fR <- function(object) {
-  if( !all( object %in% c(0,1) ) )
-    stop("argument must contain only 0s or 1s")
-  k <- length(object)
-  # make 'v' be of length divisible by 6 by adding 0s at the end
-  if( (k %% 6) == 0 ) {
-    v <- object
-  } else {
-    v <- expand_to_length(object, l=ceiling(k/6)*6, what=0, where="end")
-  }
-  # split 'v' to vectors of length 6
-  rval <- split(v, rep( seq(1, length(v)/6), each=6))
-  # get the names as collapsed binary numbers
-  nams <- sapply(rval, paste, collapse="")
-  # convert the vectors into decimal numbers adding 63 beforehand
-  rval <- lapply(rval, function(x) b2d(x) + 63)
-  names(rval) <- nams
-  return(rval)
 }
