@@ -11,25 +11,22 @@
 #' [digraph6][from_digraph6], [graph6][from_graph6], and
 #' [sparse6][from_sparse6].
 #' 
-#' @section Authors and citation:
-#' 
-#' ```{r, echo=FALSE, include=FALSE}
-#' requireNamespace("desc")
-#' d <- desc::desc()
-#' ```
-#' 
-#' **Maintainer**: `r format(d$get_author(role="cre"), include=c("given", "family"))`.
-#' 
-#' **Authors**: `r format(d$get_author(role="aut"), include = c("given", "family"))`.
+#' @section Citation:
 #' 
 #' The formats themselves are by [Brendan McKay](http://cs.anu.edu.au/~bdm).
 #' 
-#' When using this package please cite it. Call `citation(package="rgraph6")`
-#' to see how.
+#' When using this package please cite it by referring to:
+#' 
+#' 
+#' ```{r, echo=FALSE, results="asis"}
+#' print(readCitationFile("inst/CITATION"), style = "text")
+#' ```
+#' 
+#' Call `citation(package="rgraph6")` for more details and the BibTeX entry.
 #' 
 #' @docType package
 #' @name rgraph6-package
 #' @aliases rgraph6
 #' @import Rcpp
 #' @useDynLib rgraph6
-NULL
+"_PACKAGE"

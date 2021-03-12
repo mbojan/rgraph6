@@ -3,6 +3,7 @@
 \docType{package}
 \name{rgraph6-package}
 \alias{rgraph6-package}
+\alias{_PACKAGE}
 \alias{rgraph6}
 \title{rgraph6: Representing Graphs as 'graph6', 'digraph6' or 'sparse6' Strings}
 \description{
@@ -18,17 +19,26 @@ decoding. There are also other low-level functions to decode directly from
 \link[=from_digraph6]{digraph6}, \link[=from_graph6]{graph6}, and
 \link[=from_sparse6]{sparse6}.
 }
-\section{Authors and citation}{
+\section{Citation}{
 
-
-\strong{Maintainer}: Michal Bojanowski.
-
-\strong{Authors}: Michal Bojanowski
-David Schoch.
 
 The formats themselves are by \href{http://cs.anu.edu.au/~bdm}{Brendan McKay}.
 
-When using this package please cite it. Call \code{citation(package="rgraph6")}
-to see how.
+When using this package please cite it by referring to:
+
+Bojanowski M, Schoch D (2021). \emph{rgraph6: Representing Graphs as graph6,
+dgraph6 or sparse6 Strings}. R package version: 2.0-0, <URL:
+https://mbojan.github.com/rgraph6>.
+
+Call \code{citation(package="rgraph6")} for more details and the BibTeX entry.
 }
 
+\author{
+\strong{Maintainer}: Michal Bojanowski \email{michal2992@gmail.com} (\href{https://orcid.org/0000-0001-7503-852X}{ORCID}) (Kozminski University)
+
+Authors:
+\itemize{
+  \item David Schoch
+}
+
+}
