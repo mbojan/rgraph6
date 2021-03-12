@@ -46,9 +46,10 @@ as_amatrix_graph6 <- function(object) {
   }    
   else{ #n<63
     rn <- r[1]
-    rg <- r[ seq(2, length(r)) ]
+    rg <- r[-1]
     n <- as.numeric(rn) - 63
   }
+  if(length(rg) == 0) return(matrix(0, n, n))
   g <- sapply(as.numeric(rg)-63, function(x)
     expand_to_length( d2b(x), l=ceiling(length(x)/6)*6, what=0, where="start") )
   g <- g[ seq(1, n*(n-1)/2) ]

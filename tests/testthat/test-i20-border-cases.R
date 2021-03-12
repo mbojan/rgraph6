@@ -17,7 +17,7 @@ test_that("graph of order 0 as graph6", {
 
 test_that("graph6 of order 0 as adjacency matrix", {
   expect_silent(
-    am <- adjacency_from_graph6(rawToChar(as.raw(fN(0))))
+    am <- adjacency_from_graph6(rawToChar(as.raw(fN(0))))[[1]]
   )
   expect_identical(am, matrix(0, 0, 0))
 })
@@ -25,7 +25,7 @@ test_that("graph6 of order 0 as adjacency matrix", {
 test_that("graph6 of order 0 as igraph", {
   requireNamespace("igraph")
   expect_true(igraph::identical_graphs(
-    igraph_from_graph6(rawToChar(as.raw(fN(0)))),
+    igraph_from_graph6(rawToChar(as.raw(fN(0))))[[1]],
     g0u
   ))
 })
@@ -33,7 +33,7 @@ test_that("graph6 of order 0 as igraph", {
 test_that("graph6 of order 0 as network", {
   requireNamespace("network")
   expect_identical(
-    network_from_graph6(rawToChar(as.raw(fN(0)))),
+    network_from_graph6(rawToChar(as.raw(fN(0))))[[1]],
     network::network.initialize(n = 0, directed = FALSE)
   )
 })
@@ -47,7 +47,7 @@ test_that("graph of order 1 as graph6", {
 
 test_that("graph6 of order 1 as adjacency matrix", {
   expect_silent(
-    am <- adjacency_from_graph6(rawToChar(as.raw(fN(1))))
+    am <- adjacency_from_graph6(rawToChar(as.raw(fN(1))))[[1]]
   )
   expect_identical(am, matrix(0, 1, 1))
 })
