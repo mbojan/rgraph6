@@ -55,7 +55,7 @@ test_that("graph6 of order 1 as adjacency matrix", {
 test_that("graph6 of order 1 as igraph", {
   requireNamespace("igraph")
   expect_true(igraph::identical_graphs(
-    igraph_from_graph6(rawToChar(as.raw(fN(1)))),
+    igraph_from_graph6(rawToChar(as.raw(fN(1))))[[1]],
     g1u
   ))
 })
@@ -63,7 +63,7 @@ test_that("graph6 of order 1 as igraph", {
 test_that("graph6 of order 1 as network", {
   requireNamespace("network")
   expect_identical(
-    network_from_graph6(rawToChar(as.raw(fN(1)))),
+    network_from_graph6(rawToChar(as.raw(fN(1))))[[1]],
     network::network.initialize(n = 1, directed = FALSE)
   )
 })

@@ -33,7 +33,10 @@ as_graph6.matrix <- function(object) {
     stop("'object' must be square matrix")
 
   v <- object[ upper.tri(object) ]
-  r <- c( fN(n),  fR( v ) )
+  r <- c(
+    fN(n),
+    if(length(v) > 0) fR(v) else NULL
+  )
   rawToChar(as.raw(r))
 }
 
