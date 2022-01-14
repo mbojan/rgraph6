@@ -83,7 +83,7 @@ test_that("graph of order 0 as sparse6", {
 test_that("sparse6 of order 0 as edgelist matrix", {
   string <- paste0(":", rawToChar(as.raw(fN(0))))
   expect_silent(
-    elist <- edgelist_from_sparse6(string)
+    elist <- edgelist_from_sparse6(string)[[1]]
   )
   expect_identical(
     elist, 
@@ -96,7 +96,7 @@ test_that("sparse6 of order 0 as igraph", {
   requireNamespace("igraph")
   string <- paste0(":", rawToChar(as.raw(fN(0))))
   expect_true(igraph::identical_graphs(
-    igraph_from_sparse6(string),
+    igraph_from_sparse6(string)[[1]],
     g0u
   ))
 })
@@ -105,7 +105,7 @@ test_that("sparse6 of order 0 as network", {
   requireNamespace("network")
   string <- paste0(":", rawToChar(as.raw(fN(0))))
   expect_identical(
-    network_from_sparse6(string),
+    network_from_sparse6(string)[[1]],
     network::network.initialize(n = 0, directed = FALSE)
   )
 })
@@ -126,8 +126,8 @@ test_that("sparse6 of order 1 as edgelist matrix", {
     elist <- edgelist_from_sparse6(string)
   )
   expect_identical(
-    elist, 
-    structure(matrix(0, 0, 2), gorder = 2)
+    elist[[1]], 
+    structure(matrix(0, 0, 2), gorder = 1)
   )
 })
 
@@ -135,7 +135,7 @@ test_that("sparse6 of order 1 as igraph", {
   requireNamespace("igraph")
   string <- paste0(":", rawToChar(as.raw(fN(1))))
   expect_true(igraph::identical_graphs(
-    igraph_from_sparse6(string),
+    igraph_from_sparse6(string)[[1]],
     g1u
   ))
 })
@@ -144,7 +144,7 @@ test_that("sparse6 of order 1 as network", {
   requireNamespace("network")
   string <- paste0(":", rawToChar(as.raw(fN(1))))
   expect_identical(
-    network_from_sparse6(string),
+    network_from_sparse6(string)[[1]],
     network::network.initialize(n = 1, directed = FALSE)
   )
 })
@@ -162,14 +162,14 @@ test_that("graph of order 0 as digraph6", {
   expect_identical(d6, string)
 })
 
-test_that("digraph6 of order 0 as edgelist matrix", {
+test_that("digraph6 of order 0 as adjacency matrix", {
   string <- paste0("&", rawToChar(as.raw(fN(0))))
   expect_silent(
-    elist <- adjacency_from_digraph6(string)
+    A <- adjacency_from_digraph6(string)[[1]]
   )
   expect_identical(
-    elist, 
-    structure(matrix(0, 0, 2), gorder = 0)
+    A, 
+    matrix(0, 0, 0)
   )
 })
 
@@ -178,7 +178,7 @@ test_that("digraph6 of order 0 as igraph", {
   requireNamespace("igraph")
   string <- paste0("&", rawToChar(as.raw(fN(0))))
   expect_true(igraph::identical_graphs(
-    igraph_from_digraph6(string),
+    igraph_from_digraph6(string)[[1]],
     g0d
   ))
 })
@@ -187,29 +187,30 @@ test_that("digraph6 of order 0 as network", {
   requireNamespace("network")
   string <- paste0("&", rawToChar(as.raw(fN(0))))
   expect_identical(
-    network_from_digraph6(string),
+    network_from_digraph6(string)[[1]],
     network::network.initialize(n = 0, directed = TRUE)
   )
 })
 
 
 
-test_that("graph of order 1 as sparse6", {
+test_that("graph of order 1 as digraph6", {
   expect_silent(
     d6 <- as_digraph6(g1d)
   )
-  string <- paste0("&", rawToChar(as.raw(fN(1))))
+  #string <- paste0("&", rawToChar(as.raw(fN(1)))) yields '&@' which is wrong according to nauty
+  string <- "&@?"
   expect_identical(d6, string)
 })
 
-test_that("digraph6 of order 1 as edgelist matrix", {
+test_that("digraph6 of order 1 as adjacency matrix", {
   string <- paste0("&", rawToChar(as.raw(fN(1))))
   expect_silent(
-    elist <- adjacency_from_digraph6(string)
+    A <- adjacency_from_digraph6(string)[[1]]
   )
   expect_identical(
-    elist, 
-    structure(matrix(0, 0, 2), gorder = 1)
+    A, 
+    matrix(0, 1, 1)
   )
 })
 
@@ -217,7 +218,7 @@ test_that("digraph6 of order 1 as igraph", {
   requireNamespace("igraph")
   string <- paste0("&", rawToChar(as.raw(fN(1))))
   expect_true(igraph::identical_graphs(
-    igraph_from_digraph6(string),
+    igraph_from_digraph6(string)[[1]],
     g1d
   ))
 })
@@ -226,7 +227,7 @@ test_that("digraph6 of order 1 as network", {
   requireNamespace("network")
   string <- paste0("&", rawToChar(as.raw(fN(1))))
   expect_identical(
-    network_from_digraph6(string),
+    network_from_digraph6(string)[[1]],
     network::network.initialize(n = 1, directed = TRUE)
   )
 })

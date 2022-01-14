@@ -27,9 +27,9 @@ as_sparse6.matrix <- function(object, n, ...) {
   nr <- nrow(object)
   if( nc != 2)
     stop("as_sparse6 only handles edgelists with 2 columns")
-  if(nr==0){
-    stop("as_sparse6 only handles edgelists with more than 1 row")
-  }
+  # if(nr==0){
+  #   stop("as_sparse6 only handles edgelists with more than 1 row")
+  # }
   # bring edgelist in right order if needed
   if(!(all(object[,1]>object[,2]) & all(diff(object[,1])>=0))){
     object <- t(apply(object, 1, sort, decreasing = TRUE))
@@ -37,7 +37,13 @@ as_sparse6.matrix <- function(object, n, ...) {
   }
   
   # n <- max(object)
-  stopifnot(n >= max(object))
+  # catch boundary case of empty graph
+  if(nr!=0){
+    stopifnot(n >= max(object))  
+  } else{
+    stopifnot(n>=0)
+  }
+  
   k <- length(d2b(n - 1))
 
   object <- object - 1

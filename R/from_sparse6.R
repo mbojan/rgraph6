@@ -53,6 +53,9 @@ as_elist_sparse6 <- function(object){
     rn <- r[2]
     rg <- r[ seq(3, length(r)) ]
     n <- as.numeric(rn) - 63
+    if(n<2){
+      return(structure(matrix(0,0,2),gorder = n))
+    }
   }
   
   g <- c(sapply(as.numeric(rg)-63, function(x) expand_to_length( d2b(x), l=6, what=0, where="start")))
