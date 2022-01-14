@@ -1,6 +1,6 @@
 
 test_that("errors are given for improper input",{
-  expect_error( as_digraph6(matrix(1, 1, 1)), regexp="handles networks of size greater 1")
+  # expect_error( as_digraph6(matrix(1, 1, 1)), regexp="handles networks of size greater 1") function handles this now
   expect_error( as_digraph6(1), regexp="handle class")
 })
 

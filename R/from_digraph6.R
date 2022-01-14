@@ -48,6 +48,9 @@ as_amatrix_digraph6 <- function(object) {
     rn <- r[2]
     rg <- r[ seq(3, length(r)) ]
     n <- as.numeric(rn) - 63
+    if(n<2){
+      return(matrix(0,n,n))
+    }
   }
   g <- sapply(as.numeric(rg)-63, function(x)
     expand_to_length( d2b(x), l=ceiling(length(x)/6)*6, what=0, where="start") )

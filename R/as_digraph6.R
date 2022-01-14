@@ -22,8 +22,8 @@ as_digraph6.default <- function(object) {
 #' @export
 as_digraph6.matrix <- function(object) {
   n <- ncol(object)
-  if( n < 2)
-    stop("as_digraph6 handles networks of size greater 1")
+  # if( n < 2)
+  #   stop("as_digraph6 handles networks of size greater 1")
   if( n != nrow(object) )
     stop("'object' must be square matrix")
   v <- c(t(object))
