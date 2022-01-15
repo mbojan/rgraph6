@@ -2,54 +2,72 @@
 % Please edit documentation in R/as_digraph6.R
 \name{as_digraph6}
 \alias{as_digraph6}
-\alias{as_digraph6.default}
 \alias{as_digraph6.matrix}
-\alias{as_digraph6.list}
 \alias{as_digraph6.igraph}
 \alias{as_digraph6.network}
-\title{Convert adjacency matrix to digraph6 symbols}
+\alias{as_digraph6.list}
+\alias{as_digraph6.default}
+\title{Encode network data as \code{digraph6} symbols}
 \usage{
 as_digraph6(object)
 
-\method{as_digraph6}{default}(object)
-
 \method{as_digraph6}{matrix}(object)
-
-\method{as_digraph6}{list}(object)
 
 \method{as_digraph6}{igraph}(object)
 
 \method{as_digraph6}{network}(object)
+
+\method{as_digraph6}{list}(object)
+
+\method{as_digraph6}{default}(object)
 }
 \arguments{
-\item{object}{a square binary adjacency matrix or a list of thereof
-
-See \link{rgraph6} for digraph6 format description.}
+\item{object}{a matrix, an igraph object or a network object or a list
+thereof. See Methods section below.}
 }
 \value{
 A character vector of digraph6 symbols.
 }
 \description{
-This function converts a graph(s) as adjacency matrices to a digraph6 symbol(s).
+Given (a list of) adjacency matrices or igraph objects or network objects
+return a vector of digraph6 symbols encoding them.
 }
+\details{
+See \link{rgraph6} for digraph6 format description.
+}
+\section{Methods (by class)}{
+\itemize{
+\item \code{matrix}: If \code{object} is a matrix it is interpreted as an
+adjacency matrix of a directed graph.
+
+\item \code{igraph}: Igraph \code{object} needs to be a directed.
+
+\item \code{network}: Network \code{object} needs to be directed.
+
+\item \code{list}: If \code{object} is a list the function is applied to each
+element.
+
+\item \code{default}: Throws an error about the unhandled class.
+}}
+
 \examples{
-# From adjacency matrix ----------------------------
-am1 <- matrix(c(
+# From adjacency matrix ----------------------------------------------------
+am <- matrix(c(
   0,1,0,
   0,0,1,
   1,0,0),
   byrow=TRUE, ncol=3, nrow=3)
-as_digraph6(am1) 
+as_digraph6(am)
 
-# From igraph objects ----------------------------
-if(requireNamespace("igraph")) {
-  g <- igraph::graph_from_adjacency_matrix(am1)
+# From igraph objects ------------------------------------------------------
+if(requireNamespace("igraph", quietly=TRUE)) {
+  g <- igraph::graph_from_adjacency_matrix(am)
   as_digraph6(g)
 }
 
-# From network objects ---------------------------
-if(requireNamespace("network")) {
-  net <- network::network(am1)
+# From network objects -----------------------------------------------------
+if(requireNamespace("network", quietly=TRUE)) {
+  net <- network::network(am)
   as_digraph6(net)
 }
 

@@ -1,10 +1,12 @@
-#' Convert adjacency matrix to digraph6 symbols
+#' Encode network data as `digraph6` symbols
 #' 
-#' This function converts a graph(s) as adjacency matrices to a digraph6 symbol(s).
+#' Given (a list of) adjacency matrices or igraph objects or network objects
+#' return a vector of digraph6 symbols encoding them.
 #' 
-#' @param object a square binary adjacency matrix or a list of thereof
+#' @param object a matrix, an igraph object or a network object or a list
+#'   thereof. See Methods section below.
 #' 
-#' See [rgraph6] for digraph6 format description.
+#' @details See [rgraph6] for digraph6 format description.
 #' 
 #' @return A character vector of digraph6 symbols.
 #' 
@@ -12,22 +14,19 @@
 
 as_digraph6 <- function(object) UseMethod("as_digraph6")
 
-#' @rdname as_digraph6
-#' @export
-as_digraph6.default <- function(object) {
-  stop("don't know how to handle class ", dQuote(data.class(object)))
-}
 
-#' @rdname as_digraph6
+#' @describeIn as_digraph6 If `object` is a matrix it is interpreted as an
+#'   adjacency matrix of a directed graph.
+#' 
 #' @export
 #' @examples
-#' # From adjacency matrix ----------------------------
-#' am1 <- matrix(c(
+#' # From adjacency matrix ----------------------------------------------------
+#' am <- matrix(c(
 #'   0,1,0,
 #'   0,0,1,
 #'   1,0,0),
 #'   byrow=TRUE, ncol=3, nrow=3)
-#' as_digraph6(am1) 
+#' as_digraph6(am)
 #' 
 as_digraph6.matrix <- function(object) {
   n <- ncol(object)
@@ -41,7 +40,44 @@ as_digraph6.matrix <- function(object) {
   rawToChar(as.raw(r))
 }
 
-#' @rdname as_digraph6
+
+#' @describeIn as_digraph6 Igraph `object` needs to be a directed.
+#' 
+#' @export
+#' @examples
+#' # From igraph objects ------------------------------------------------------
+#' if(requireNamespace("igraph", quietly=TRUE)) {
+#'   g <- igraph::graph_from_adjacency_matrix(am)
+#'   as_digraph6(g)
+#' }
+#' 
+as_digraph6.igraph <- function(object) {
+  requireNamespace("igraph")
+  stopifnot(igraph::is_directed(object))
+  as_digraph6.matrix( igraph::as_adjacency_matrix(object, sparse=FALSE))
+}
+
+#' @describeIn as_digraph6 Network `object` needs to be directed.
+#' @export
+#' @examples
+#' # From network objects -----------------------------------------------------
+#' if(requireNamespace("network", quietly=TRUE)) {
+#'   net <- network::network(am)
+#'   as_digraph6(net)
+#' }
+#' 
+as_digraph6.network <- function(object) {
+  requireNamespace("network")
+  stopifnot(network::is.directed(object))
+  as_digraph6.matrix( as.matrix(object, type="adjacency"))
+}
+
+
+
+
+#' @describeIn as_digraph6 If `object` is a list the function is applied to each
+#'   element.
+#' 
 #' @export
 as_digraph6.list <- function(object) {
   vapply(
@@ -53,32 +89,8 @@ as_digraph6.list <- function(object) {
   )
 }
 
-#' @rdname as_digraph6
+#' @describeIn as_digraph6 Throws an error about the unhandled class.
 #' @export
-#' @examples
-#' # From igraph objects ----------------------------
-#' if(requireNamespace("igraph")) {
-#'   g <- igraph::graph_from_adjacency_matrix(am1)
-#'   as_digraph6(g)
-#' }
-#' 
-as_digraph6.igraph <- function(object) {
-  requireNamespace("igraph")
-  stopifnot(igraph::is_directed(object))
-  as_digraph6.matrix( igraph::as_adjacency_matrix(object, sparse=FALSE))
-}
-
-#' @rdname as_digraph6
-#' @export
-#' @examples
-#' # From network objects ---------------------------
-#' if(requireNamespace("network")) {
-#'   net <- network::network(am1)
-#'   as_digraph6(net)
-#' }
-#' 
-as_digraph6.network <- function(object) {
-  requireNamespace("network")
-  stopifnot(network::is.directed(object))
-  as_digraph6.matrix( as.matrix(object, type="adjacency"))
+as_digraph6.default <- function(object) {
+  stop("don't know how to handle class ", dQuote(data.class(object)))
 }
