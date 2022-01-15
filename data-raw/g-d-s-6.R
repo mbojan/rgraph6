@@ -1,3 +1,4 @@
+devtools::load_all("..")
 library(dplyr)
 library(purrr)
 library(igraph)
@@ -57,5 +58,5 @@ usethis::use_data(g6, overwrite = TRUE)
 s6 <- with(d, value[type == "s6"])
 usethis::use_data(s6, overwrite = TRUE)
 
-d6 <- as_dgraph6(lapply(with(d, g[type == "s6"]), as.directed, mode = "arbitrary"))
+d6 <- as_digraph6(lapply(with(d, g[type == "s6"]), as.directed, mode = "arbitrary"))
 usethis::use_data(d6, overwrite = TRUE)
