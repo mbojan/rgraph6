@@ -2,41 +2,59 @@
 % Please edit documentation in R/as_graph6.R
 \name{as_graph6}
 \alias{as_graph6}
-\alias{as_graph6.default}
 \alias{as_graph6.matrix}
-\alias{as_graph6.list}
 \alias{as_graph6.igraph}
 \alias{as_graph6.network}
-\title{Convert undirected graphs to graph6 symbols}
+\alias{as_graph6.list}
+\alias{as_graph6.default}
+\title{Encode network data as \code{graph6} symbols}
 \usage{
 as_graph6(object)
 
-\method{as_graph6}{default}(object)
-
 \method{as_graph6}{matrix}(object)
-
-\method{as_graph6}{list}(object)
 
 \method{as_graph6}{igraph}(object)
 
 \method{as_graph6}{network}(object)
+
+\method{as_graph6}{list}(object)
+
+\method{as_graph6}{default}(object)
 }
 \arguments{
-\item{object}{a graph or a list of graphs}
+\item{object}{a matrix, an igraph object or a network object or a list
+thereof. See Methods section below.}
 }
 \value{
-A character vector of graph6 symbols.
+A character vector of \code{graph6} symbols.
 }
 \description{
-This function converts undirected graphs to graph6 symbols. Implemented
-methods expect the graph to be an adjacency matrix, an igraph, or a network
-object.
+Given (a list of) adjacency matrices or igraph objects or network objects
+return a vector of digraph6 symbols encoding them.
 }
 \details{
 See \link{rgraph6} for graph6 format description.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{matrix}: The matrix is interpreted as a square symmetric
+adjacency matrix corresponding to an undirected graph.
+
+\item \code{igraph}: Igraph \code{object} needs to correspond to an undirected
+graph.
+
+\item \code{network}: Network \code{object} needs to correspond to an undirected
+network.
+
+\item \code{list}: If \code{object} is a list then the method is applied to
+each element.
+
+\item \code{default}: The default method throws an error about an unhandled
+class.
+}}
+
 \examples{
-# From adjacency matrix -------------------------------
+# From adjacency matrix ----------------------------------------------------
 am <- matrix(c(
   0,1,1,
   1,0,0,
@@ -44,14 +62,14 @@ am <- matrix(c(
   ), byrow=TRUE, ncol=3)
 as_graph6(am)
 
-# From igraph objects ---------------------------------
-if(requireNamespace("igraph")) {
-  g <- igraph::graph_from_adjacency_matrix(am)
+# From igraph objects ------------------------------------------------------
+if(requireNamespace("igraph", quietly=TRUE)) {
+  g <- igraph::graph_from_adjacency_matrix(am, mode = "undirected")
   as_graph6(g)
 }
 
-# From network objects --------------------------------
-if(requireNamespace("network")) {
+# From network objects -----------------------------------------------------
+if(requireNamespace("network", quietly=TRUE)) {
   net <- network::network(am, directed=FALSE)
   as_graph6(net)
 }
