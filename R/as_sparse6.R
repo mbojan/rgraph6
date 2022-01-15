@@ -23,6 +23,7 @@ as_sparse6 <- function(object, ...) UseMethod("as_sparse6")
 #'
 #' @export
 #' @examples
+#' # From edgelist matrix -----------------------------------------------------
 #' elm <- matrix(c(
 #'   1, 2,
 #'   2, 3,
@@ -85,12 +86,15 @@ as_sparse6.matrix <- function(object, n, ...) {
   rawToChar(as.raw(r))
 }
 
+
+
+
 #' @describeIn as_sparse6 Encode [igraph][igraph::igraph] objects. If the graph
 #'   is directed an error is thrown. Package \pkg{igraph} needs to be installed.
 #' @importFrom methods as
 #' @export
 #' @examples 
-#' # From igraph objects ---------------------------------
+#' # From igraph objects ------------------------------------------------------
 #' if(requireNamespace("igraph")) {
 #'   g <- igraph::graph_from_edgelist(elm, directed=FALSE)
 #'   as_sparse6(g)
@@ -118,7 +122,7 @@ as_sparse6.igraph <- function(object, ...) {
 #' @examples
 #' # From network objects --------------------------------
 #' if(requireNamespace("network")) {
-#'   net <- network::network(am, directed=FALSE)
+#'   net <- network::network(elm, directed=FALSE)
 #'   as_graph6(net)
 #' }
 #' 

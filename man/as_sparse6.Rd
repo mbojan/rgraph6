@@ -55,6 +55,7 @@ one of the other methods.
 }}
 
 \examples{
+# From edgelist matrix -----------------------------------------------------
 elm <- matrix(c(
   1, 2,
   2, 3,
@@ -62,7 +63,7 @@ elm <- matrix(c(
 ), ncol=2, byrow=TRUE)
 as_sparse6(elm, n = 4)
 
-# From igraph objects ---------------------------------
+# From igraph objects ------------------------------------------------------
 if(requireNamespace("igraph")) {
   g <- igraph::graph_from_edgelist(elm, directed=FALSE)
   as_sparse6(g)
@@ -70,7 +71,7 @@ if(requireNamespace("igraph")) {
 
 # From network objects --------------------------------
 if(requireNamespace("network")) {
-  net <- network::network(am, directed=FALSE)
+  net <- network::network(elm, directed=FALSE)
   as_graph6(net)
 }
 
