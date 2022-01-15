@@ -35,3 +35,25 @@ object.
 \details{
 See \link{rgraph6} for graph6 format description.
 }
+\examples{
+# From adjacency matrix -------------------------------
+am <- matrix(c(
+  0,1,1,
+  1,0,0,
+  1,0,0
+  ), byrow=TRUE, ncol=3)
+as_graph6(am)
+
+# From igraph objects ---------------------------------
+if(requireNamespace("igraph")) {
+  g <- igraph::graph_from_adjacency_matrix(am)
+  as_graph6(g)
+}
+
+# From network objects --------------------------------
+if(requireNamespace("network")) {
+  net <- network::network(am, directed=FALSE)
+  as_graph6(net)
+}
+
+}

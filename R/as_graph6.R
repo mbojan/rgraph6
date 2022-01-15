@@ -17,7 +17,6 @@ as_graph6 <- function(object) UseMethod("as_graph6")
 
 
 #' @rdname as_graph6
-#' @method as_graph6 default
 #' @export
 as_graph6.default <- function(object) {
   stop("don't know how to handle class ", dQuote(data.class(object)))
@@ -25,6 +24,15 @@ as_graph6.default <- function(object) {
 
 #' @rdname as_graph6
 #' @export
+#' @examples
+#' # From adjacency matrix -------------------------------
+#' am <- matrix(c(
+#'   0,1,1,
+#'   1,0,0,
+#'   1,0,0
+#'   ), byrow=TRUE, ncol=3)
+#' as_graph6(am)
+#' 
 as_graph6.matrix <- function(object) {
   n <- ncol(object)
   # if( n < 2)
@@ -42,7 +50,6 @@ as_graph6.matrix <- function(object) {
 
 
 #' @rdname as_graph6
-#' @method as_graph6 list
 #' @export
 as_graph6.list <- function(object) {
     vapply(
@@ -57,8 +64,14 @@ as_graph6.list <- function(object) {
 
 
 #' @rdname as_graph6
-#' @method as_graph6 igraph
 #' @export
+#' @examples 
+#' # From igraph objects ---------------------------------
+#' if(requireNamespace("igraph")) {
+#'   g <- igraph::graph_from_adjacency_matrix(am)
+#'   as_graph6(g)
+#' }
+#' 
 as_graph6.igraph <- function(object) {
   requireNamespace("igraph")
   stopifnot(!igraph::is_directed(object))
@@ -66,8 +79,14 @@ as_graph6.igraph <- function(object) {
 }
 
 #' @rdname as_graph6
-#' @method as_graph6 network
 #' @export
+#' @examples
+#' # From network objects --------------------------------
+#' if(requireNamespace("network")) {
+#'   net <- network::network(am, directed=FALSE)
+#'   as_graph6(net)
+#' }
+#' 
 as_graph6.network <- function(object) {
   requireNamespace("network")
   stopifnot(!network::is.directed(object))
