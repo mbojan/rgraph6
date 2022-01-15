@@ -9,7 +9,9 @@ Authors@R: c(
              comment = c(ORCID = "0000-0001-7503-852X", affil="Kozminski University")),
              person(given = "David",
              family = "Schoch",
-             role = "aut")
+             role = "aut",
+             email = "david@schochastics.net",
+             comment = c(ORCID = "0000-0003-2952-4812", affil="Machester University"))
             )
 Depends: 
     R (>= 2.10)
