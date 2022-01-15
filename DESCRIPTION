@@ -11,7 +11,7 @@ Authors@R: c(
              family = "Schoch",
              role = "aut",
              email = "david@schochastics.net",
-             comment = c(ORCID = "0000-0003-2952-4812", affil="Machester University"))
+             comment = c(ORCID = "0000-0003-2952-4812", affil="Manchester University"))
             )
 Depends: 
     R (>= 2.10)
