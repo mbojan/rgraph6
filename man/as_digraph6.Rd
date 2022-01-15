@@ -43,7 +43,7 @@ as_digraph6(am1)
 
 # From igraph objects ----------------------------
 if(requireNamespace("igraph")) {
-  g <- igraph::graph_from_adjacency(am1)
+  g <- igraph::graph_from_adjacency_matrix(am1)
   as_digraph6(g)
 }
 
