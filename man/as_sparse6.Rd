@@ -54,6 +54,27 @@ one of the other methods.
 \item \code{default}: The default method fails gracefully.
 }}
 
+\examples{
+elm <- matrix(c(
+  1, 2,
+  2, 3,
+  3, 4
+), ncol=2, byrow=TRUE)
+as_sparse6(elm, n = 4)
+
+# From igraph objects ---------------------------------
+if(requireNamespace("igraph")) {
+  g <- igraph::graph_from_edgelist(elm, directed=FALSE)
+  as_sparse6(g)
+}
+
+# From network objects --------------------------------
+if(requireNamespace("network")) {
+  net <- network::network(am, directed=FALSE)
+  as_graph6(net)
+}
+
+}
 \seealso{
 See \link{rgraph6} for 'sparse6' format description.
 }

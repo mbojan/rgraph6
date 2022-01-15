@@ -22,6 +22,14 @@ as_sparse6 <- function(object, ...) UseMethod("as_sparse6")
 #' @param n number of vertices in the graph
 #'
 #' @export
+#' @examples
+#' elm <- matrix(c(
+#'   1, 2,
+#'   2, 3,
+#'   3, 4
+#' ), ncol=2, byrow=TRUE)
+#' as_sparse6(elm, n = 4)
+#' 
 as_sparse6.matrix <- function(object, n, ...) {
   nc <- ncol(object)
   nr <- nrow(object)
@@ -81,6 +89,13 @@ as_sparse6.matrix <- function(object, n, ...) {
 #'   is directed an error is thrown. Package \pkg{igraph} needs to be installed.
 #' @importFrom methods as
 #' @export
+#' @examples 
+#' # From igraph objects ---------------------------------
+#' if(requireNamespace("igraph")) {
+#'   g <- igraph::graph_from_edgelist(elm, directed=FALSE)
+#'   as_sparse6(g)
+#' }
+#' 
 as_sparse6.igraph <- function(object, ...) {
   requireNamespace("igraph")
   stopifnot(!igraph::is_directed(object))
@@ -100,6 +115,13 @@ as_sparse6.igraph <- function(object, ...) {
 #'   network is directed and error is thrown. Package \pkg{network} needs
 #'   to be installed.
 #' @export
+#' @examples
+#' # From network objects --------------------------------
+#' if(requireNamespace("network")) {
+#'   net <- network::network(am, directed=FALSE)
+#'   as_graph6(net)
+#' }
+#' 
 as_sparse6.network <- function(object, ...) {
   requireNamespace("network")
   stopifnot(!network::is.directed(object))
