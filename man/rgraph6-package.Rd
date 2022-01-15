@@ -41,7 +41,7 @@ Call \code{citation(package="rgraph6")} for more details and the BibTeX entry.
 
 Authors:
 \itemize{
-  \item David Schoch \email{david@schochastics.net} (\href{https://orcid.org/0000-0003-2952-4812}{ORCID}) (Machester University)
+  \item David Schoch \email{david@schochastics.net} (\href{https://orcid.org/0000-0003-2952-4812}{ORCID}) (Manchester University)
 }
 
 }
