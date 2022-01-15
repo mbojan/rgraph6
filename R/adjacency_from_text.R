@@ -10,6 +10,19 @@
 #' 
 #' @return A list of adjacency matrices.
 #' 
+#' @examples 
+#' # Graph6 symbols
+#' sampleg6
+#' adjacency_from_text(sampleg6)
+#' 
+#' # Sparse6 symbols
+#' s6 <- c(":DgXI@G~", ":DgWCgCb")
+#' adjacency_from_text(s6)
+#' 
+#' # Digraph6 symbol
+#' d6 <- "&N????C??D?_G??C?????_?C_??????C??Q@O?G?"
+#' adjacency_from_text(d6)
+#' 
 #' @export
 adjacency_from_text <- function(object, ...) {
   stopifnot(is.character(object))
