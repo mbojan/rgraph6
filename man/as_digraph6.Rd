@@ -32,3 +32,25 @@ A character vector of digraph6 symbols.
 \description{
 This function converts a graph(s) as adjacency matrices to a digraph6 symbol(s).
 }
+\examples{
+# From adjacency matrix ----------------------------
+am1 <- matrix(c(
+  0,1,0,
+  0,0,1,
+  1,0,0),
+  byrow=TRUE, ncol=3, nrow=3)
+as_digraph6(am1) 
+
+# From igraph objects ----------------------------
+if(requireNamespace("igraph")) {
+  g <- igraph::graph_from_adjacency(am1)
+  as_digraph6(g)
+}
+
+# From network objects ---------------------------
+if(requireNamespace("network")) {
+  net <- network::network(am1)
+  as_digraph6(net)
+}
+
+}
