@@ -19,7 +19,7 @@ Suggests: testthat, knitr, rmarkdown, igraph, network, Matrix
 Description: Encode network data as strings of printable ASCII characters. 
   Implemented methods include formats 'graph6', 'sparse6', and 'digraph6'.
 License: GPL (>= 3)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown=TRUE)
