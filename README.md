@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `rgraph6`: Representing Graphs as graph6, digraph6 or sparse6 Strings
+# `rgraph6`: Representing Graphs as graph6, digraph6 or sparse6 Strings <img src="man/figures/logo.png" align="right" width="20%"/>
 
 <!-- badges: start -->
 
@@ -33,16 +33,16 @@ Format ‘digraph6’ is for directed graphs.
 
 Main functions for encoding network data are:
 
-  - `as_graph6()`
-  - `as_sparse6()`
-  - `as_digraph6()`
+-   `as_graph6()`
+-   `as_sparse6()`
+-   `as_digraph6()`
 
 Main functions for decoding are:
 
-  - `adjacency_from_text()`
-  - `edgelist_from_text()`
-  - `igraph_from_text()`
-  - `network_from_text()`
+-   `adjacency_from_text()`
+-   `edgelist_from_text()`
+-   `igraph_from_text()`
+-   `network_from_text()`
 
 Low-level functions are shown on the following graph:
 
@@ -64,20 +64,19 @@ Encode as ‘graph6’ symbols:
 
 ``` r
 as_graph6(igraph_list)
-#> [1] "ICG_@?W??" "I????@B?G" "I?@O????W" "I@@A?E???" "I?_?_@_??"
+#> [1] "I????????" "I????????" "I????????" "I????????" "I????????"
 ```
 
 Encode as ‘sparse6’ symbols:
 
 ``` r
 as_sparse6(igraph_list)
-#> [1] ":IeASjaeR" ":IoCp{^"   ":IiC]Rg"   ":IeIgWu`"  ":IgAo{@D"
+#> [1] ":I???????" ":I?????"   ":I?????"   ":I??????"  ":I??????"
 ```
 
 ### Decode a vector of different types of symbols
 
-Using example data `g6`, `d6`, and `s6` provided with the
-package:
+Using example data `g6`, `d6`, and `s6` provided with the package:
 
 ``` r
 # Create a vector with a mixture of 'graph6', 'digraph6' and 'sparse6' symbols
@@ -90,19 +89,17 @@ x
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH 401998f U--- 15 10 -- 
-#> + edges from 401998f:
+#> IGRAPH cb09b8a U--- 15 10 -- 
+#> + edges from cb09b8a:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH 68860ac U--- 15 13 -- 
-#> + edges from 68860ac:
-#>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
-#> [11]  4--15 10--15 14--15
+#> IGRAPH 703ba1d U--- 15 0 -- 
+#> + edges from 703ba1d:
 #> 
 #> [[3]]
-#> IGRAPH 1da861b D--- 15 15 -- 
-#> + edges from 1da861b:
+#> IGRAPH ccb59ff D--- 15 15 -- 
+#> + edges from ccb59ff:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 
@@ -134,9 +131,9 @@ network_from_text(x)
 #>   loops = FALSE 
 #>   multiple = FALSE 
 #>   bipartite = FALSE 
-#>   total edges= 13 
+#>   total edges= 0 
 #>     missing edges= 0 
-#>     non-missing edges= 13 
+#>     non-missing edges= 0 
 #> 
 #>  Vertex attribute names: 
 #>     vertex.names 
@@ -182,24 +179,24 @@ d <- tibble::tibble(
     as_graph6()
 )
 d
-#> # A tibble: 10 x 1
-#>    g6            
-#>    <chr>         
-#>  1 "FblF_"       
-#>  2 "DFc"         
-#>  3 "HfTaMwk"     
-#>  4 "KefToktrftZ~"
-#>  5 "JPraDzZQ?M?" 
-#>  6 "Bo"          
-#>  7 "Ed`w"        
-#>  8 "Gpuq|{"      
-#>  9 "EbSG"        
-#> 10 "ICNa@Gg\\o"
+#> # A tibble: 10 × 1
+#>    g6          
+#>    <chr>       
+#>  1 F????       
+#>  2 D??         
+#>  3 H??????     
+#>  4 K???????????
+#>  5 J?????????? 
+#>  6 B?          
+#>  7 E???        
+#>  8 G?????      
+#>  9 E???        
+#> 10 I????????
 ```
 
 Nice and compact. We can go further by doing some computations and
 saving the results together with the graph data, and even save it to a
-simple CSV file\!
+simple CSV file!
 
 ``` r
 d %>%
@@ -212,16 +209,16 @@ d %>%
   dplyr::select(-igraphs) %>%
   write.csv(row.names = FALSE)
 #> "g6","vc","ec","density"
-#> "FblF_",7,11,0.523809523809524
-#> "DFc",5,5,0.5
-#> "HfTaMwk",9,18,0.5
-#> "KefToktrftZ~",12,41,0.621212121212121
-#> "JPraDzZQ?M?",11,24,0.436363636363636
-#> "Bo",3,2,0.666666666666667
-#> "Ed`w",6,8,0.533333333333333
-#> "Gpuq|{",8,19,0.678571428571429
-#> "EbSG",6,6,0.4
-#> "ICNa@Gg\o",10,17,0.377777777777778
+#> "F????",7,0,0
+#> "D??",5,0,0
+#> "H??????",9,0,0
+#> "K???????????",12,0,0
+#> "J??????????",11,0,0
+#> "B?",3,0,0
+#> "E???",6,0,0
+#> "G?????",8,0,0
+#> "E???",6,0,0
+#> "I????????",10,0,0
 ```
 
 ## Installation
@@ -252,9 +249,7 @@ remotes::install_github("mbojan/rgraph6", build_vignettes=TRUE)
 To cite this package please use:
 
 <p>
-
 Bojanowski M, Schoch D (2021). <em>rgraph6: Representing Graphs as
 graph6, dgraph6 or sparse6 Strings</em>. R package version: 2.0-0,
 <a href="https://mbojan.github.com/rgraph6">https://mbojan.github.com/rgraph6</a>.
-
 </p>
