@@ -64,14 +64,14 @@ Encode as ‘graph6’ symbols:
 
 ``` r
 as_graph6(igraph_list)
-#> [1] "I????????" "I????????" "I????????" "I????????" "I????????"
+#> [1] "ICG_@?W??" "I????@B?G" "I?@O????W" "I@@A?E???" "I?_?_@_??"
 ```
 
 Encode as ‘sparse6’ symbols:
 
 ``` r
 as_sparse6(igraph_list)
-#> [1] ":I???????" ":I?????"   ":I?????"   ":I??????"  ":I??????"
+#> [1] ":IeASjaeR" ":IoCp{^"   ":IiC]Rg"   ":IeIgWu`"  ":IgAo{@D"
 ```
 
 ### Decode a vector of different types of symbols
@@ -89,17 +89,19 @@ x
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH cb09b8a U--- 15 10 -- 
-#> + edges from cb09b8a:
+#> IGRAPH c605e1b U--- 15 10 -- 
+#> + edges from c605e1b:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH 703ba1d U--- 15 0 -- 
-#> + edges from 703ba1d:
+#> IGRAPH 077f2e8 U--- 15 13 -- 
+#> + edges from 077f2e8:
+#>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
+#> [11]  4--15 10--15 14--15
 #> 
 #> [[3]]
-#> IGRAPH ccb59ff D--- 15 15 -- 
-#> + edges from ccb59ff:
+#> IGRAPH af3008e D--- 15 15 -- 
+#> + edges from af3008e:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 
@@ -131,9 +133,9 @@ network_from_text(x)
 #>   loops = FALSE 
 #>   multiple = FALSE 
 #>   bipartite = FALSE 
-#>   total edges= 0 
+#>   total edges= 13 
 #>     missing edges= 0 
-#>     non-missing edges= 0 
+#>     non-missing edges= 13 
 #> 
 #>  Vertex attribute names: 
 #>     vertex.names 
@@ -180,18 +182,18 @@ d <- tibble::tibble(
 )
 d
 #> # A tibble: 10 × 1
-#>    g6          
-#>    <chr>       
-#>  1 F????       
-#>  2 D??         
-#>  3 H??????     
-#>  4 K???????????
-#>  5 J?????????? 
-#>  6 B?          
-#>  7 E???        
-#>  8 G?????      
-#>  9 E???        
-#> 10 I????????
+#>    g6            
+#>    <chr>         
+#>  1 "FblF_"       
+#>  2 "DFc"         
+#>  3 "HfTaMwk"     
+#>  4 "KefToktrftZ~"
+#>  5 "JPraDzZQ?M?" 
+#>  6 "Bo"          
+#>  7 "Ed`w"        
+#>  8 "Gpuq|{"      
+#>  9 "EbSG"        
+#> 10 "ICNa@Gg\\o"
 ```
 
 Nice and compact. We can go further by doing some computations and
@@ -209,16 +211,16 @@ d %>%
   dplyr::select(-igraphs) %>%
   write.csv(row.names = FALSE)
 #> "g6","vc","ec","density"
-#> "F????",7,0,0
-#> "D??",5,0,0
-#> "H??????",9,0,0
-#> "K???????????",12,0,0
-#> "J??????????",11,0,0
-#> "B?",3,0,0
-#> "E???",6,0,0
-#> "G?????",8,0,0
-#> "E???",6,0,0
-#> "I????????",10,0,0
+#> "FblF_",7,11,0.523809523809524
+#> "DFc",5,5,0.5
+#> "HfTaMwk",9,18,0.5
+#> "KefToktrftZ~",12,41,0.621212121212121
+#> "JPraDzZQ?M?",11,24,0.436363636363636
+#> "Bo",3,2,0.666666666666667
+#> "Ed`w",6,8,0.533333333333333
+#> "Gpuq|{",8,19,0.678571428571429
+#> "EbSG",6,6,0.4
+#> "ICNa@Gg\o",10,17,0.377777777777778
 ```
 
 ## Installation
