@@ -1,9 +1,14 @@
-#' rgraph6: Representing Graphs as 'graph6', 'digraph6' or 'sparse6' Strings
+#' @name rgraph6-package
+#' @aliases rgraph6
+#' @keywords package
+#' @useDynLib rgraph6
+#' @docType package
+#' @import Rcpp
 #' 
-#' This package implements methods for representing graphs in formats 'graph6',
-#' 'sparse6' and 'digraph6' as strings of printable ASCII characters. The
-#' formats are due to [Brendan McKay](http://cs.anu.edu.au/~bdm) and are
-#' described [here](http://cs.anu.edu.au/people/bdm/data/formats.txt).
+#' @details Formats 'graph6', 'sparse6' and 'digraph6' represent graphs as
+#'   strings of printable ASCII characters. The formats are due to [Brendan
+#'   McKay](http://cs.anu.edu.au/~bdm) and are described
+#'   [here](http://cs.anu.edu.au/people/bdm/data/formats.txt).
 #' 
 #' The main functions are [as_graph6()], [as_digraph6()], [as_sparse6()] for
 #' encoding network data and [igraph_from_text()] and [network_from_text()] for
@@ -23,10 +28,13 @@
 #' ```
 #' 
 #' Call `citation(package="rgraph6")` for more details and the BibTeX entry.
-#' 
-#' @docType package
-#' @name rgraph6-package
-#' @aliases rgraph6
-#' @import Rcpp
-#' @useDynLib rgraph6
 "_PACKAGE"
+
+
+
+
+# The following block is used by usethis to automatically manage
+# roxygen namespace tags. Modify with care!
+## usethis namespace: start
+## usethis namespace: end
+NULL

@@ -7,12 +7,15 @@
 \alias{rgraph6}
 \title{rgraph6: Representing Graphs as 'graph6', 'digraph6' or 'sparse6' Strings}
 \description{
-This package implements methods for representing graphs in formats 'graph6',
-'sparse6' and 'digraph6' as strings of printable ASCII characters. The
-formats are due to \href{http://cs.anu.edu.au/~bdm}{Brendan McKay} and are
-described \href{http://cs.anu.edu.au/people/bdm/data/formats.txt}{here}.
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+
+Encode network data as strings of printable ASCII characters. Implemented methods include formats 'graph6', 'sparse6', and 'digraph6'.
 }
 \details{
+Formats 'graph6', 'sparse6' and 'digraph6' represent graphs as
+strings of printable ASCII characters. The formats are due to \href{http://cs.anu.edu.au/~bdm}{Brendan McKay} and are described
+\href{http://cs.anu.edu.au/people/bdm/data/formats.txt}{here}.
+
 The main functions are \code{\link[=as_graph6]{as_graph6()}}, \code{\link[=as_digraph6]{as_digraph6()}}, \code{\link[=as_sparse6]{as_sparse6()}} for
 encoding network data and \code{\link[=igraph_from_text]{igraph_from_text()}} and \code{\link[=network_from_text]{network_from_text()}} for
 decoding. There are also other low-level functions to decode directly from
@@ -42,3 +45,4 @@ Authors:
 }
 
 }
+\keyword{package}
