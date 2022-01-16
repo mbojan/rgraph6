@@ -7,7 +7,7 @@
 \alias{as_sparse6.network}
 \alias{as_sparse6.list}
 \alias{as_sparse6.default}
-\title{Encode network data as 'sparse6' symbols}
+\title{Encode network data as \code{sparse6} symbols}
 \usage{
 as_sparse6(object, ...)
 
