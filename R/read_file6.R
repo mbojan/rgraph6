@@ -4,12 +4,16 @@
 #' @param type character; one of "adjacency", "edgelist", "igraph", or
 #'   "network". Type of result returned.
 #'   
-#' @details File pointed to by `path` is a text with one graph symbol per line.
+#' @details File pointed to by `path` is a text file with one graph symbol per line.
 #'   Optional headers of the form `>>graph6<<` or `>>sparse6<<` in the first
 #'   line (and without the newline after the header) are ignored and removed.
 #' 
 #' @return A list of decoded graphs in the form of objects determined by `type`.
-#' 
+#' @examples 
+#' g6_file <- tempfile()
+#' write(sampleg6,g6_file)
+#' read_file6(g6_file, type = "adjacency")
+#' unlink(g6_file)
 #' @export
 
 read_file6 <- function(path, type="adjacency"){

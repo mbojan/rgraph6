@@ -19,7 +19,13 @@ A list of decoded graphs in the form of objects determined by \code{type}.
 Read files of graph6, sparse6 or digraph6 symbols
 }
 \details{
-File pointed to by \code{path} is a text with one graph symbol per line.
+File pointed to by \code{path} is a text file with one graph symbol per line.
 Optional headers of the form \verb{>>graph6<<} or \verb{>>sparse6<<} in the first
 line (and without the newline after the header) are ignored and removed.
+}
+\examples{
+g6_file <- tempfile()
+write(sampleg6,g6_file)
+read_file6(g6_file, type = "adjacency")
+unlink(g6_file)
 }
