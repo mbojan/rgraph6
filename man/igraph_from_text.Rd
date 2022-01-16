@@ -16,3 +16,18 @@ A list of igraph objects.
 \description{
 Create igraph objects from graph6, sparse6, or digraph6 symbols
 }
+\examples{
+if(requireNamespace("igraph", quietly=TRUE)) {
+   # Graph6 symbols
+   sampleg6
+   igraph_from_text(sampleg6)
+
+   # Sparse6 symbols
+   s6 <- c(":DgXI@G~", ":DgWCgCb")
+   igraph_from_text(s6)
+
+   # Digraph6 symbol
+   d6 <- "&N????C??D?_G??C?????_?C_??????C??Q@O?G?"
+   igraph_from_text(d6)
+}
+}

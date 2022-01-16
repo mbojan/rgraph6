@@ -23,3 +23,16 @@ If \code{object} contains 'graph6' or 'digraph6' symbols, which are in
 fact encoded adjacency matrices, the function will return corresponding
 edgelist matrices creating temporary igraph objects internally.
 }
+\examples{
+# Graph6 symbols
+sampleg6
+edgelist_from_text(sampleg6)
+
+# Sparse6 symbols
+s6 <- c(":DgXI@G~", ":DgWCgCb")
+edgelist_from_text(s6)
+
+# Digraph6 symbol
+d6 <- "&N????C??D?_G??C?????_?C_??????C??Q@O?G?"
+edgelist_from_text(d6)
+}

@@ -19,7 +19,17 @@
 #' 
 #' @return - for [adjacency_from_graph6()], a list of the same length as
 #'   its input of square symmetric adjacency matrices.
+#' @examples
+#' A <- matrix(c(0,1,0,1,
+#'               1,0,1,0,
+#'               0,1,0,1,
+#'               1,0,1,0), 4, 4, byrow = TRUE)
+#' g6 <- as_graph6(A)
 #' 
+#' # To adjacency matrix ------------------------------------------------------
+#' adjacency_from_graph6(g6)
+#' 
+
 #' @export
 adjacency_from_graph6 <- function(g6) {
   structure(
@@ -76,6 +86,11 @@ as_amatrix_graph6 <- function(object) {
 #'   [igraph::graph_from_adjacency_matrix()]
 #' 
 #' @return - for [igraph_from_graph6()], a list of igraph objects
+#' @examples
+#' # To igraph objects --------------------------------------------------------
+#' if(requireNamespace("igraph", quietly=TRUE)) {
+#'   igraph_from_graph6(g6)
+#' }
 #' 
 #' @export
 igraph_from_graph6 <- function(g6, ...) {
@@ -96,7 +111,11 @@ igraph_from_graph6 <- function(g6, ...) {
 #'   [network::as.network()]
 #' 
 #' @return - for [network_from_graph6()], a list of network objects
-#' 
+#' @examples 
+#' # To network objects -------------------------------------------------------
+#' if(requireNamespace("network", quietly=TRUE)) {
+#'   network_from_graph6(g6)
+#' }
 #' @export
 network_from_graph6 <- function(g6, ...) {
   requireNamespace("network")

@@ -59,6 +59,26 @@ For \code{\link[=igraph_from_graph6]{igraph_from_graph6()}} additional arguments
 For \code{\link[=network_from_graph6]{network_from_graph6()}} additional arguments are passed to
 \code{\link[network:network]{network::as.network()}}
 }
+\examples{
+A <- matrix(c(0,1,0,1,
+              1,0,1,0,
+              0,1,0,1,
+              1,0,1,0), 4, 4, byrow = TRUE)
+g6 <- as_graph6(A)
+
+# To adjacency matrix ------------------------------------------------------
+adjacency_from_graph6(g6)
+
+# To igraph objects --------------------------------------------------------
+if(requireNamespace("igraph", quietly=TRUE)) {
+  igraph_from_graph6(g6)
+}
+
+# To network objects -------------------------------------------------------
+if(requireNamespace("network", quietly=TRUE)) {
+  network_from_graph6(g6)
+}
+}
 \seealso{
 \code{\link[=as_graph6]{as_graph6()}} for saving objects as graph6 symbols.
 }

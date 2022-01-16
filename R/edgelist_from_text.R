@@ -9,7 +9,18 @@
 #'   edgelist matrices creating temporary igraph objects internally.
 #' 
 #' @return A list of adjacency matrices.
+#' @examples 
+#' # Graph6 symbols
+#' sampleg6
+#' edgelist_from_text(sampleg6)
 #' 
+#' # Sparse6 symbols
+#' s6 <- c(":DgXI@G~", ":DgWCgCb")
+#' edgelist_from_text(s6)
+#' 
+#' # Digraph6 symbol
+#' d6 <- "&N????C??D?_G??C?????_?C_??????C??Q@O?G?"
+#' edgelist_from_text(d6)
 #' @export
 edgelist_from_text <- function(object, ...) {
   stopifnot(is.character(object))
