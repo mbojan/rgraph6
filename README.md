@@ -89,19 +89,19 @@ x
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH bfefac8 U--- 15 10 -- 
-#> + edges from bfefac8:
+#> IGRAPH 4351512 U--- 15 10 -- 
+#> + edges from 4351512:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH 2f94e77 U--- 15 13 -- 
-#> + edges from 2f94e77:
+#> IGRAPH fa6aaba U--- 15 13 -- 
+#> + edges from fa6aaba:
 #>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
 #> [11]  4--15 10--15 14--15
 #> 
 #> [[3]]
-#> IGRAPH 59ea23f D--- 15 15 -- 
-#> + edges from 59ea23f:
+#> IGRAPH 179fb23 D--- 15 15 -- 
+#> + edges from 179fb23:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 
@@ -253,8 +253,7 @@ install.packages("rgraph6", repos = "https://mbojan.r-universe.dev")
 **Author and maintainer**: Michal Bojanowski <michal2992@gmail.com>
 (<https://orcid.org/0000-0001-7503-852X>, Kozminski University).
 
-**Co-authors**: David Schoch (<https://orcid.org/0000-0003-2952-4812>,
-Manchester University)
+**Co-authors**: David Schoch (<https://orcid.org/0000-0003-2952-4812>)
 
 To cite this package please use:
 

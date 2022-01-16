@@ -59,7 +59,7 @@ Main functions for decoding are:
 
 Low-level functions are shown on the following graph:
 
-```{r functions-low, echo=FALSE}
+```{r functions-low, echo=FALSE,fig.width=10,fig.height=5}
 u <- c("adjacency", "edgelist", "network", "igraph", "digraph6", 
        "sparse6", "graph6")
 
@@ -81,23 +81,37 @@ d <- tidyr::crossing(
     ok = purrr::map_lgl(fun, exists, where=asNamespace("rgraph6"))
   )
 
-d %>%
+g <- d %>%
   filter(ok) %>%
   transmute(
     from, to,
     fun = paste0(fun, "()")
   ) %>%
-  tidygraph::as_tbl_graph() %>%
-  ggraph(layout = "stress") +
+  tidygraph::as_tbl_graph()
+
+x <- c(1.7619, 0.8201, -2.019, 0.8277, -0.0565, -0.0451, -0.9931)
+y <- c(-9e-04, -0.4761, 0.0281, 0.4898, -0.4738, 0.4898, 0.0206)
+E(g)$cross <- FALSE
+E(g)$cross[c(13,5,11,8)] <- TRUE
+ggraph(g,layout = "manual",x = x,y = y) +
   geom_edge_parallel(
-    aes(label = fun),
+    aes(label = fun, filter = !cross),
     start_cap = circle(1),
     end_cap = circle(1),
     label_dodge = unit(-5, "mm"),
-    label_push = unit(5, "mm"),
+    label_push = unit(0, "mm"),
     angle_calc = "along",
-    arrow = arrow(length = unit(3, "mm"))
+    arrow = arrow(length = unit(3, "mm"),type = "closed")
   ) +
+  geom_edge_parallel(
+    aes(label = fun, filter = cross),
+    start_cap = circle(1),
+    end_cap = circle(1),
+    label_dodge = unit(-5, "mm"),
+    label_push = unit(-27, "mm"),
+    angle_calc = "along",
+    arrow = arrow(length = unit(3, "mm"),type = "closed")
+  )+
   geom_node_label(aes(label = name)) +
   coord_cartesian(clip = "off") +
   scale_y_continuous(expand = expansion(add = .1)) +
