@@ -10,7 +10,27 @@
 #' objects.
 #' 
 #' @return A character vector of encoded graphs.
+#' @examples 
+#' # From igraph ------------------------------------------------------
+#' if(requireNamespace("igraph")) {
+#'    g <- igraph::graph.famous("Zachary")
+#'    graph_as_text(g)
+#'    
+#'    glist <- list(
+#'       igraph::sample_gnp(n = 15,p = 0.1),
+#'       igraph::sample_gnp(n = 15,p = 0.2), 
+#'       igraph::sample_gnp(n = 15,p = 0.3))
+#'       
+#'    graph_as_text(glist)
+#' }
 #' 
+#' # From network -----------------------------------------------------
+#' if(requireNamespace("network")) {
+#'    m <- matrix(rbinom(25,1,.4),5,5)
+#'    diag(m) <- 0
+#'    g <- network::network(m, directed=FALSE)
+#'    graph_as_text(g)
+#' }
 #' @export
 graph_as_text <- function(object, ...) UseMethod("graph_as_text")
 
@@ -18,7 +38,7 @@ graph_as_text <- function(object, ...) UseMethod("graph_as_text")
 #' @export
 graph_as_text.default <- function(object, ...) {
   fmt <- choose_format(object)
-  do.call(paste("as_", fmt), list(object = object))
+  do.call(paste0("as_", fmt), list(object = object))
 }
 
 #' @rdname graph_as_text

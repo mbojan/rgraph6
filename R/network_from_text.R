@@ -4,6 +4,18 @@
 #'   symbols
 #' 
 #' @return A list of [network][network::network()] objects.
+#' @examples 
+#' # complete graph in graph6 format
+#' g6 <- "G~~~~{"
+#' 
+#' # random graph with 15 nodes
+#' s6 <- ":NeF?bsl?aNC"
+#' 
+#' # random directed graph with 10 nodes
+#' d6 <- "&I???GGGI?_gG??O???"
+#' 
+#' network_from_text(g6)
+#' network_from_text(c(g6,s6,d6))
 #' 
 #' @export
 network_from_text <- function(object) {

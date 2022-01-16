@@ -20,8 +20,6 @@ as_sparse6 <- function(object, ...) UseMethod("as_sparse6")
 #' the number of vertices of the graph.
 #' 
 #' @param n number of vertices in the graph
-#'
-#' @export
 #' @examples
 #' # From edgelist matrix -----------------------------------------------------
 #' elm <- matrix(c(
@@ -30,7 +28,8 @@ as_sparse6 <- function(object, ...) UseMethod("as_sparse6")
 #'   3, 4
 #' ), ncol=2, byrow=TRUE)
 #' as_sparse6(elm, n = 4)
-#' 
+#'
+#' @export
 as_sparse6.matrix <- function(object, n, ...) {
   nc <- ncol(object)
   nr <- nrow(object)

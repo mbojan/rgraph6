@@ -28,3 +28,25 @@ automatically.
 If \code{object} is a list it may be a mixture of network and igraph
 objects.
 }
+\examples{
+# From igraph ------------------------------------------------------
+if(requireNamespace("igraph")) {
+   g <- igraph::graph.famous("Zachary")
+   graph_as_text(g)
+   
+   glist <- list(
+      igraph::sample_gnp(n = 15,p = 0.1),
+      igraph::sample_gnp(n = 15,p = 0.2), 
+      igraph::sample_gnp(n = 15,p = 0.3))
+      
+   graph_as_text(glist)
+}
+
+# From network -----------------------------------------------------
+if(requireNamespace("network")) {
+   m <- matrix(rbinom(25,1,.4),5,5)
+   diag(m) <- 0
+   g <- network::network(m, directed=FALSE)
+   graph_as_text(g)
+}
+}

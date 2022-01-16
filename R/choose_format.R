@@ -13,7 +13,28 @@
 #' @return Character value out of 'graph6', 'sparse6' or 'digraph6'. If `object`
 #'   is a list, a vector of such values of the length equal to the length of
 #'   `object`.
+#' @examples 
+#' # From igraph ------------------------------------------------------
+#' if(requireNamespace("igraph")) {
+#'    g <- igraph::graph.famous("Zachary")
+#'    choose_format(g)
+#'    
+#'    glist <- list(
+#'       igraph::sample_gnp(n = 15,p = 0.1),
+#'       igraph::sample_gnp(n = 15,p = 0.2), 
+#'       igraph::sample_gnp(n = 15,p = 0.3),
+#'       igraph::sample_gnp(n = 15,p = 0.15,directed = TRUE))
+#'       
+#'    choose_format(glist)
+#' }
 #' 
+#' # From network -----------------------------------------------------
+#' if(requireNamespace("network")) {
+#'    m <- matrix(rbinom(25,1,.4),15,15)
+#'    diag(m) <- 0
+#'    g <- network::network(m, directed=FALSE)
+#'    choose_format(g)
+#' }
 #' @export
 choose_format <- function(object, ...) UseMethod("choose_format")
 

@@ -29,9 +29,8 @@ The formats themselves are by \href{http://cs.anu.edu.au/~bdm}{Brendan McKay}.
 
 When using this package please cite it by referring to:
 
-Bojanowski M, Schoch D (2021). \emph{rgraph6: Representing Graphs as graph6,
-dgraph6 or sparse6 Strings}. R package version: 2.0-0, <URL:
-https://mbojan.github.com/rgraph6>.
+Bojanowski M, Schoch D (2021). \emph{rgraph6: Representing Graphs as graph6, dgraph6 or sparse6
+Strings}. R package version: 2.0-0, <URL: https://mbojan.github.com/rgraph6>.
 
 Call \code{citation(package="rgraph6")} for more details and the BibTeX entry.
 }
