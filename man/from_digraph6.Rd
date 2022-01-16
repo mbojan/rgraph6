@@ -5,7 +5,7 @@
 \alias{adjacency_from_digraph6}
 \alias{igraph_from_digraph6}
 \alias{network_from_digraph6}
-\title{Functions parsing digraph6 symbols}
+\title{Parsing \code{digraph6} symbols}
 \usage{
 adjacency_from_digraph6(d6)
 
@@ -59,6 +59,23 @@ For \code{\link[=igraph_from_digraph6]{igraph_from_digraph6()}} additional argum
 For \code{\link[=network_from_digraph6]{network_from_digraph6()}} additional arguments are passed to
 \code{\link[network:network]{network::as.network()}}
 }
+\examples{
+am <- matrix(rbinom(16, 1, 0.3), 4, 4)
+d6 <- as_digraph6(am)
+
+# To adjacency matrix ------------------------------------------------------
+adjacency_from_digraph6(d6)
+
+# To igraph objects --------------------------------------------------------
+if(requireNamespace("igraph", quietly=TRUE)) {
+  igraph_from_digraph6(d6)
+}
+
+# To network objects -------------------------------------------------------
+if(requireNamespace("network", quietly=TRUE)) {
+  network_from_digraph6(d6)
+}
+}
 \seealso{
-\code{\link[=as_digraph6]{as_digraph6()}} for saving objects as digraph6 symbols.
+\code{\link[=as_digraph6]{as_digraph6()}} for encoding objects as digraph6 symbols.
 }

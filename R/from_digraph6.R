@@ -1,4 +1,4 @@
-#' Functions parsing digraph6 symbols
+#' Parsing `digraph6` symbols
 #' 
 #' @description These functions take a vector of digraph6 symbols and return a
 #'   list of other types of objects:
@@ -7,7 +7,7 @@
 #' 
 #' @return The returned object is:
 #' 
-#' @seealso [as_digraph6()] for saving objects as digraph6 symbols.
+#' @seealso [as_digraph6()] for encoding objects as digraph6 symbols.
 
 
 
@@ -21,6 +21,14 @@
 #'   its input of square symmetric adjacency matrices.
 #' 
 #' @export
+#' 
+#' @examples
+#' am <- matrix(rbinom(16, 1, 0.3), 4, 4)
+#' d6 <- as_digraph6(am)
+#' 
+#' # To adjacency matrix ------------------------------------------------------
+#' adjacency_from_digraph6(d6)
+#' 
 adjacency_from_digraph6 <- function(d6) {
   structure(
     lapply(d6, as_amatrix_digraph6),
@@ -75,6 +83,13 @@ as_amatrix_digraph6 <- function(object) {
 #' @return - for [igraph_from_digraph6()], a list of igraph objects
 #' 
 #' @export
+#' 
+#' @examples
+#' # To igraph objects --------------------------------------------------------
+#' if(requireNamespace("igraph", quietly=TRUE)) {
+#'   igraph_from_digraph6(d6)
+#' }
+#' 
 igraph_from_digraph6 <- function(d6, ...) {
   requireNamespace("igraph")
   amlist <- adjacency_from_digraph6(d6)
@@ -100,6 +115,12 @@ igraph_from_digraph6 <- function(d6, ...) {
 #' @return - for [network_from_digraph6()], a list of network objects
 #' 
 #' @export
+#' 
+#' @examples 
+#' # To network objects -------------------------------------------------------
+#' if(requireNamespace("network", quietly=TRUE)) {
+#'   network_from_digraph6(d6)
+#' }
 network_from_digraph6 <- function(d6, ...) {
   requireNamespace("network")
   amlist <- adjacency_from_digraph6(d6)
