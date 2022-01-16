@@ -206,6 +206,11 @@ Install development version from GitHub with:
 remotes::install_github("mbojan/rgraph6", build_vignettes=TRUE)
 ```
 
+Nightly Windows and MacOS binaries are available on [R Universe](https://mbojan.r-universe.dev):
+
+```{r install-runiv, eval=FALSE}
+install.packages("rgraph6", repos = "https://mbojan.r-universe.dev")
+```
 
 
 ## Authors, contributors and citation
