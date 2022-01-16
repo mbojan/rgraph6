@@ -1,4 +1,4 @@
-#' Encode network data as 'sparse6' symbols
+#' Encode network data as `sparse6` symbols
 #'
 #' Generic function encoding network data as 'sparse6' symbol(s). See below for
 #' available methods.
