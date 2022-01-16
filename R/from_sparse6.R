@@ -1,4 +1,4 @@
-#' Parsing 'sparse6' symbols
+#' Parsing `sparse6` symbols
 #' 
 #' @description These functions take a character vector of 'sparse6' symbols and
 #'   return a list of other types of objects:
@@ -24,6 +24,15 @@
 #'   storing the number of vertices in the graph.
 #' 
 #' @export
+#' 
+#' @examples 
+#' elm <- structure(c(1, 1, 2, 2, 4, 4, 5, 6, 9, 10, 7, 8, 4, 8, 6, 8,  
+#'   8, 5, 4, 6), .Dim = c(10L, 2L))
+#' s6 <- as_sparse6(elm, n = 10)
+#' 
+#' # To edgelist matrix -------------------------------------------------------
+#' edgelist_from_sparse6(s6)
+#' 
 
 edgelist_from_sparse6 <- function(s6) {
   test_sparse6(s6)
@@ -85,6 +94,13 @@ as_elist_sparse6 <- function(object){
 #' @return - for [igraph_from_sparse6()], a list of igraph objects
 #' 
 #' @export
+#' 
+#' @examples 
+#' # To igraph object ---------------------------------------------------------
+#' if(requireNamespace("igraph", quietly=TRUE)) {
+#'   igraph_from_sparse6(s6)
+#' }
+#' 
 igraph_from_sparse6 <- function(s6) {
   requireNamespace("igraph")
   ellist <- edgelist_from_sparse6(s6)
@@ -107,6 +123,13 @@ igraph_from_sparse6 <- function(s6) {
 #' @return - for [network_from_sparse6()], a list of network objects
 #' 
 #' @export
+#' 
+#' @examples
+#' # To network object --------------------------------------------------------
+#' if(requireNamespace("network", quietly=TRUE)) {
+#'   network_from_sparse6(s6)
+#' }
+#' 
 network_from_sparse6 <- function(s6) {
   requireNamespace("network")
   elist <- edgelist_from_sparse6(s6)

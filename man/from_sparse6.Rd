@@ -5,7 +5,7 @@
 \alias{edgelist_from_sparse6}
 \alias{igraph_from_sparse6}
 \alias{network_from_sparse6}
-\title{Parsing 'sparse6' symbols}
+\title{Parsing \code{sparse6} symbols}
 \usage{
 edgelist_from_sparse6(s6)
 
@@ -50,6 +50,25 @@ package \pkg{igraph} to be installed.
 \item \code{\link[=network_from_sparse6]{network_from_sparse6()}} creates network objects. Requires
 package \pkg{network} to be installed.
 }
+}
+\examples{
+elm <- structure(c(1, 1, 2, 2, 4, 4, 5, 6, 9, 10, 7, 8, 4, 8, 6, 8,  
+  8, 5, 4, 6), .Dim = c(10L, 2L))
+s6 <- as_sparse6(elm, n = 10)
+
+# To edgelist matrix -------------------------------------------------------
+edgelist_from_sparse6(s6)
+
+# To igraph object ---------------------------------------------------------
+if(requireNamespace("igraph", quietly=TRUE)) {
+  igraph_from_sparse6(s6)
+}
+
+# To network object --------------------------------------------------------
+if(requireNamespace("network", quietly=TRUE)) {
+  network_from_sparse6(s6)
+}
+
 }
 \seealso{
 \code{\link[=as_sparse6]{as_sparse6()}} for encoding network data objects as 'sparse6'
