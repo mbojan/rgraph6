@@ -9,7 +9,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Encode network data as strings of printable ASCII characters. Implemented methods include formats 'graph6', 'sparse6', and 'digraph6'.
+Encode network data as strings of printable ASCII characters. Implemented methods include formats 'graph6', 'sparse6', and 'digraph6'. The formats and methods are described in McKay, B.D. and Piperno, A (2014) <doi:10.1016/j.jsc.2013.09.003>.
 }
 \details{
 Formats 'graph6', 'sparse6' and 'digraph6' represent graphs as
@@ -41,7 +41,7 @@ Call \code{citation(package="rgraph6")} for more details and the BibTeX entry.
 
 Authors:
 \itemize{
-  \item David Schoch \email{david@schochastics.net} (\href{https://orcid.org/0000-0003-2952-4812}{ORCID}) (Manchester University)
+  \item David Schoch \email{david@schochastics.net} (\href{https://orcid.org/0000-0003-2952-4812}{ORCID})
 }
 
 }
