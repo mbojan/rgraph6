@@ -28,6 +28,11 @@
 #' ```
 #' 
 #' Call `citation(package="rgraph6")` for more details and the BibTeX entry.
+#' 
+#' @references 
+#' McKay, B. D., & Piperno, A. (2014). Practical graph isomorphism, II. *Journal
+#' of symbolic computation*, 60, 94-112.
+#' 
 "_PACKAGE"
 
 
