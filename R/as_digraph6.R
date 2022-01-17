@@ -1,14 +1,15 @@
-#' Encode network data as `digraph6` symbols
+#' Encode network data as 'digraph6' symbols
 #' 
-#' Given (a list of) adjacency matrices or igraph objects or network objects
-#' return a vector of digraph6 symbols encoding them.
+#' This is a generic function for encoding directed networks as 'digraph6'
+#' symbols. Implemented methods cover adjacency matrices, igraph objects, and
+#' networks objects, or list thereof.
 #' 
 #' @param object a matrix, an igraph object or a network object or a list
 #'   thereof. See Methods section below.
 #' 
-#' @details See [rgraph6] for digraph6 format description.
+#' @details The 'digraph6' format is designed for directed graphs.
 #' 
-#' @return A character vector of digraph6 symbols.
+#' @return A character vector of 'digraph6' symbols.
 #' 
 #' @export
 
@@ -41,7 +42,8 @@ as_digraph6.matrix <- function(object) {
 }
 
 
-#' @describeIn as_digraph6 Igraph `object` needs to be a directed.
+#' @describeIn as_digraph6 Igraph `object` needs to be a directed. Requires
+#'   **igraph** package.
 #' 
 #' @export
 #' @examples
@@ -76,7 +78,8 @@ as_digraph6.network <- function(object) {
 
 
 #' @describeIn as_digraph6 If `object` is a list the function is applied to each
-#'   element.
+#'   element. Consequently, it can be a list with elements being a mixture of
+#'   supported objects (adjacency matrices, igraph, or network).
 #' 
 #' @export
 as_digraph6.list <- function(object) {
