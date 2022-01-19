@@ -7,7 +7,7 @@
 \alias{as_digraph6.network}
 \alias{as_digraph6.list}
 \alias{as_digraph6.default}
-\title{Encode network data as \code{digraph6} symbols}
+\title{Encode network data as 'digraph6' symbols}
 \usage{
 as_digraph6(object)
 
@@ -26,26 +26,29 @@ as_digraph6(object)
 thereof. See Methods section below.}
 }
 \value{
-A character vector of digraph6 symbols.
+A character vector of 'digraph6' symbols.
 }
 \description{
-Given (a list of) adjacency matrices or igraph objects or network objects
-return a vector of digraph6 symbols encoding them.
+This is a generic function for encoding directed networks as 'digraph6'
+symbols. Implemented methods cover adjacency matrices, igraph objects, and
+networks objects, or list thereof.
 }
 \details{
-See \link{rgraph6} for digraph6 format description.
+The 'digraph6' format is designed for directed graphs.
 }
 \section{Methods (by class)}{
 \itemize{
 \item \code{matrix}: If \code{object} is a matrix it is interpreted as an
 adjacency matrix of a directed graph.
 
-\item \code{igraph}: Igraph \code{object} needs to be a directed.
+\item \code{igraph}: Igraph \code{object} needs to be a directed. Requires
+\strong{igraph} package.
 
 \item \code{network}: Network \code{object} needs to be directed.
 
 \item \code{list}: If \code{object} is a list the function is applied to each
-element.
+element. Consequently, it can be a list with elements being a mixture of
+supported objects (adjacency matrices, igraph, or network).
 
 \item \code{default}: Throws an error about the unhandled class.
 }}

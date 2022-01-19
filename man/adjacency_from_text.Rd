@@ -7,7 +7,7 @@
 adjacency_from_text(object, ...)
 }
 \arguments{
-\item{object}{character vector with a mixture of 'graph6', 'sparse6' or
+\item{object}{character vector consisting of 'graph6', 'sparse6' or
 'digraph6' symbols}
 
 \item{...}{other arguments, currently ignored}
