@@ -34,7 +34,8 @@ symbols. Implemented methods cover adjacency matrices, igraph objects, and
 networks objects, or list thereof.
 }
 \details{
-The 'digraph6' format is designed for directed graphs.
+The 'digraph6' format is designed for directed graphs. Error is thrown
+in case it is given a undirected network.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -42,13 +43,14 @@ The 'digraph6' format is designed for directed graphs.
 adjacency matrix of a directed graph.
 
 \item \code{igraph}: Igraph \code{object} needs to be a directed. Requires
-\strong{igraph} package.
+\pkg{igraph} package.
 
-\item \code{network}: Network \code{object} needs to be directed.
+\item \code{network}: Network \code{object} needs to be directed. Requires
+\pkg{network} package.
 
 \item \code{list}: If \code{object} is a list the function is applied to each
-element. Consequently, it can be a list with elements being a mixture of
-supported objects (adjacency matrices, igraph, or network).
+element. Consequently, it can be a list with a mixutre elements with
+supported objects (adjacency matrices, igraph, or network objects).
 
 \item \code{default}: Throws an error about the unhandled class.
 }}

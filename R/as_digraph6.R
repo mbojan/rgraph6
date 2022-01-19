@@ -7,7 +7,8 @@
 #' @param object a matrix, an igraph object or a network object or a list
 #'   thereof. See Methods section below.
 #' 
-#' @details The 'digraph6' format is designed for directed graphs.
+#' @details The 'digraph6' format is designed for directed graphs. Error is thrown
+#' in case it is given a undirected network.
 #' 
 #' @return A character vector of 'digraph6' symbols.
 #' 
@@ -43,7 +44,7 @@ as_digraph6.matrix <- function(object) {
 
 
 #' @describeIn as_digraph6 Igraph `object` needs to be a directed. Requires
-#'   **igraph** package.
+#'   \pkg{igraph} package.
 #' 
 #' @export
 #' @examples
@@ -59,7 +60,8 @@ as_digraph6.igraph <- function(object) {
   as_digraph6.matrix( igraph::as_adjacency_matrix(object, sparse=FALSE))
 }
 
-#' @describeIn as_digraph6 Network `object` needs to be directed.
+#' @describeIn as_digraph6 Network `object` needs to be directed. Requires
+#'   \pkg{network} package.
 #' @export
 #' @examples
 #' # From network objects -----------------------------------------------------
@@ -78,8 +80,8 @@ as_digraph6.network <- function(object) {
 
 
 #' @describeIn as_digraph6 If `object` is a list the function is applied to each
-#'   element. Consequently, it can be a list with elements being a mixture of
-#'   supported objects (adjacency matrices, igraph, or network).
+#'   element. Consequently, it can be a list with a mixutre elements with
+#'   supported objects (adjacency matrices, igraph, or network objects).
 #' 
 #' @export
 as_digraph6.list <- function(object) {
