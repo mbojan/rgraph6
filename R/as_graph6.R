@@ -1,4 +1,4 @@
-#' Encode network data as `graph6` symbols
+#' Encode network data as 'graph6' symbols
 #' 
 #' Given (a list of) adjacency matrices or igraph objects or network objects
 #' return a vector of digraph6 symbols encoding them.

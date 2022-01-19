@@ -7,7 +7,7 @@
 \alias{as_graph6.network}
 \alias{as_graph6.list}
 \alias{as_graph6.default}
-\title{Encode network data as \code{graph6} symbols}
+\title{Encode network data as 'graph6' symbols}
 \usage{
 as_graph6(object)
 
