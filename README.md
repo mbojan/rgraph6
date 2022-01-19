@@ -89,19 +89,19 @@ x
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH 597becd U--- 15 10 -- 
-#> + edges from 597becd:
+#> IGRAPH 694f0fa U--- 15 10 -- 
+#> + edges from 694f0fa:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH 2a5228e U--- 15 13 -- 
-#> + edges from 2a5228e:
+#> IGRAPH 11d837d U--- 15 13 -- 
+#> + edges from 11d837d:
 #>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
 #> [11]  4--15 10--15 14--15
 #> 
 #> [[3]]
-#> IGRAPH fbd117b D--- 15 15 -- 
-#> + edges from fbd117b:
+#> IGRAPH 9a47773 D--- 15 15 -- 
+#> + edges from 9a47773:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 
@@ -255,8 +255,12 @@ install.packages("rgraph6", repos = "https://mbojan.r-universe.dev")
 
 **Co-authors**: David Schoch (<https://orcid.org/0000-0003-2952-4812>)
 
-To cite this package please use:
+To cite this package please use the following entries:
 
+<p>
+McKay B, Piperno A (2014). “Practical graph isomorphism, II.”
+<em>Journal of Symbolic Computation</em>.
+</p>
 <p>
 Bojanowski M, Schoch D (2021). <em>rgraph6: Representing Graphs as
 graph6, dgraph6 or sparse6 Strings</em>. R package version: 2.0-0,

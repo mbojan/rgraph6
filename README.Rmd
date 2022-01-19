@@ -240,11 +240,11 @@ is_author <- purrr::map_lgl(p, ~ "aut" %in% .x$role)
 
 **Co-authors**: `r paste(format(p[is_author & !is_maintainer], include = c("given", "family", "comment")), collapse=", ")`
 
-To cite this package please use:
+To cite this package please use the following entries:
 
 ```{r, echo=FALSE, results = "asis"}
 cat(format(
-  readCitationFile("inst/CITATION", meta = list(Encoding = "UTF-8"))[[1]], 
+  readCitationFile("inst/CITATION", meta = list(Encoding = "UTF-8")), 
   style = "html"
 ))
 ```
