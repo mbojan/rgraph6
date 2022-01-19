@@ -1,4 +1,16 @@
-citHeader("To cite package 'rgraph6' in publications use:")
+citHeader("To cite package 'rgraph6' in publications use the following two entries:")
+
+citEntry( 
+  entry = "Article",
+  title = "Practical graph isomorphism, II",
+  author= personList(
+      person("Brendan", "McKay"),
+      person("Adolfo", "Piperno")
+    ),
+  journal = "Journal of Symbolic Computation",
+  year = 2014,
+  textVersion = "McKay, B. D., & Piperno, A. (2014). Practical graph isomorphism, II. Journal of symbolic computation, 60, 94-112."
+)
 
 citEntry( 
   entry = "Manual",
