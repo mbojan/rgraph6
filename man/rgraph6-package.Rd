@@ -44,7 +44,7 @@ Call \code{citation(package="rgraph6")} for more details and the BibTeX entry.
 \references{
 McKay, B. D. (1978) Computing automorphisms and canonical labellings of
 graphs \emph{Combinatorial Mathematics, Lect. Notes Math.}, vol. 686,
-Springer-Verlag, Berlin, pp. 223-232
+Springer-Verlag, Berlin, pp. 223-232 \doi{10.1007/BFb0062536}
 
 McKay, B. D. (1981). Practical graph isomorphism. \emph{Congressus Numerantium},
 30, pp. 45-87
@@ -57,7 +57,7 @@ McKay, B. D., & Piperno, A. (2013). \emph{Nauty and Traces user’s guide} (Vers
 Australia.
 
 McKay, B. D., & Piperno, A. (2014). Practical graph isomorphism, II. \emph{Journal
-of symbolic computation}, 60, 94-112.
+of symbolic computation}, 60, 94-112. \doi{10.1016/j.jsc.2013.09.003}
 }
 \author{
 \strong{Maintainer}: Michal Bojanowski \email{michal2992@gmail.com} (\href{https://orcid.org/0000-0001-7503-852X}{ORCID}) (Kozminski University)

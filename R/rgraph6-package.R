@@ -34,7 +34,7 @@
 #' @references 
 #' McKay, B. D. (1978) Computing automorphisms and canonical labellings of
 #' graphs *Combinatorial Mathematics, Lect. Notes Math.*, vol. 686,
-#' Springer-Verlag, Berlin, pp. 223-232
+#' Springer-Verlag, Berlin, pp. 223-232 \doi{10.1007/BFb0062536}
 #' 
 #' McKay, B. D. (1981). Practical graph isomorphism. *Congressus Numerantium*,
 #' 30, pp. 45-87
@@ -47,7 +47,7 @@
 #' Australia.
 #' 
 #' McKay, B. D., & Piperno, A. (2014). Practical graph isomorphism, II. *Journal
-#' of symbolic computation*, 60, 94-112.
+#' of symbolic computation*, 60, 94-112. \doi{10.1016/j.jsc.2013.09.003}
 #' 
 "_PACKAGE"
 
