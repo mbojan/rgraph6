@@ -1,7 +1,6 @@
 #' Create adjacency matrices from 'graph6', 'sparse6', or 'digraph6' symbols
 #' 
-#' @param object character vector consisting of 'graph6', 'sparse6' or
-#'   'digraph6' symbols
+#' @param object character vector of 'graph6', 'sparse6', or 'digraph6' symbols
 #' @param ... other arguments, currently ignored
 #'   
 #' @details If `object` contains 'sparse6' symbols, which are in fact encoded

@@ -2,19 +2,18 @@
 % Please edit documentation in R/network_from_text.R
 \name{network_from_text}
 \alias{network_from_text}
-\title{Create network objects from graph6, sparse6, or digraph6 symbols}
+\title{Create network objects from 'graph6', 'sparse6', or 'digraph6' symbols}
 \usage{
 network_from_text(object)
 }
 \arguments{
-\item{object}{character vector with a mixture of graph6, sparse6 or digraph6
-symbols}
+\item{object}{character vector of 'graph6', 'sparse6', or 'digraph6' symbols}
 }
 \value{
 A list of \link[network:network]{network} objects.
 }
 \description{
-Create network objects from graph6, sparse6, or digraph6 symbols
+Create network objects from 'graph6', 'sparse6', or 'digraph6' symbols
 }
 \examples{
 # complete graph in graph6 format

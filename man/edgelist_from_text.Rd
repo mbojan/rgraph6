@@ -7,8 +7,7 @@
 edgelist_from_text(object, ...)
 }
 \arguments{
-\item{object}{character vector with a mixture of 'graph6', 'sparse6' or
-'digraph6' symbols}
+\item{object}{character vector of 'graph6', 'sparse6', or 'digraph6' symbols}
 
 \item{...}{other arguments, currently ignored}
 }

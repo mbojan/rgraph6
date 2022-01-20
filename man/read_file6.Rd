@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_file6.R
 \name{read_file6}
 \alias{read_file6}
-\title{Read files of graph6, sparse6 or digraph6 symbols}
+\title{Read files of 'graph6', 'sparse6' or 'digraph6' symbols}
 \usage{
 read_file6(path, type = "adjacency")
 }
@@ -16,7 +16,7 @@ read_file6(path, type = "adjacency")
 A list of decoded graphs in the form of objects determined by \code{type}.
 }
 \description{
-Read files of graph6, sparse6 or digraph6 symbols
+Read files of 'graph6', 'sparse6' or 'digraph6' symbols
 }
 \details{
 File pointed to by \code{path} is a text file with one graph symbol per line.

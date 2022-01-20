@@ -1,4 +1,4 @@
-#' Read files of graph6, sparse6 or digraph6 symbols
+#' Read files of 'graph6', 'sparse6' or 'digraph6' symbols
 #' 
 #' @param path character; path to file name
 #' @param type character; one of "adjacency", "edgelist", "igraph", or

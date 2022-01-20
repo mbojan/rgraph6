@@ -1,7 +1,7 @@
 #' Encode network data as 'graph6' symbols
 #' 
-#' Given (a list of) adjacency matrices or igraph objects or network objects
-#' return a vector of digraph6 symbols encoding them.
+#' Generic function encoding networks as 'graph6' symbol(s). See below 
+#' for available methods
 #' 
 #' @param object a matrix, an igraph object or a network object or a list
 #'   thereof. See Methods section below.
@@ -9,7 +9,7 @@
 #' @details 
 #' See [rgraph6] for graph6 format description.
 #' 
-#' @return A character vector of `graph6` symbols.
+#' @return A character vector of 'graph6' symbols.
 #' 
 #' @export
 

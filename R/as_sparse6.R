@@ -9,7 +9,7 @@
 #' 
 #' @seealso See [rgraph6] for 'sparse6' format description.
 #' 
-#' @return A character vector with 'sparse6' symbols.
+#' @return A character vector of 'sparse6' symbols.
 #' 
 #' @export
 as_sparse6 <- function(object, ...) UseMethod("as_sparse6")

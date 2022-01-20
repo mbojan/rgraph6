@@ -26,11 +26,11 @@ as_graph6(object)
 thereof. See Methods section below.}
 }
 \value{
-A character vector of \code{graph6} symbols.
+A character vector of 'graph6' symbols.
 }
 \description{
-Given (a list of) adjacency matrices or igraph objects or network objects
-return a vector of digraph6 symbols encoding them.
+Generic function encoding networks as 'graph6' symbol(s). See below
+for available methods
 }
 \details{
 See \link{rgraph6} for graph6 format description.

@@ -1,7 +1,6 @@
-#' Create igraph objects from graph6, sparse6, or digraph6 symbols
+#' Create igraph objects from 'graph6', 'sparse6', or 'digraph6' symbols
 #' 
-#' @param object character vector with a mixture of graph6, sparse6 or digraph6
-#'   symbols
+#' @param object character vector of 'graph6', 'sparse6', or 'digraph6' symbols
 #' @examples 
 #' if(requireNamespace("igraph", quietly=TRUE)) {
 #'    # Graph6 symbols

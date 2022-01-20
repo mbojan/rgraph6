@@ -29,9 +29,8 @@ thereof. See Methods section below.}
 A character vector of 'digraph6' symbols.
 }
 \description{
-This is a generic function for encoding directed networks as 'digraph6'
-symbols. Implemented methods cover adjacency matrices, igraph objects, and
-networks objects, or list thereof.
+Generic function encoding directed networks as 'digraph6' symbol(s). See below
+for available methods.
 }
 \details{
 The 'digraph6' format is designed for directed graphs. Error is thrown

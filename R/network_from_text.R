@@ -1,7 +1,6 @@
-#' Create network objects from graph6, sparse6, or digraph6 symbols
+#' Create network objects from 'graph6', 'sparse6', or 'digraph6' symbols
 #' 
-#' @param object character vector with a mixture of graph6, sparse6 or digraph6
-#'   symbols
+#' @param object character vector of 'graph6', 'sparse6', or 'digraph6' symbols
 #' 
 #' @return A list of [network][network::network()] objects.
 #' @examples 

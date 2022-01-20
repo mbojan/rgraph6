@@ -30,7 +30,7 @@ Methods section below.}
 \item{n}{number of vertices in the graph}
 }
 \value{
-A character vector with 'sparse6' symbols.
+A character vector of 'sparse6' symbols.
 }
 \description{
 Generic function encoding network data as 'sparse6' symbol(s). See below for

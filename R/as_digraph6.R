@@ -1,8 +1,7 @@
 #' Encode network data as 'digraph6' symbols
 #' 
-#' This is a generic function for encoding directed networks as 'digraph6'
-#' symbols. Implemented methods cover adjacency matrices, igraph objects, and
-#' networks objects, or list thereof.
+#' Generic function encoding directed networks as 'digraph6' symbol(s). See below 
+#' for available methods.
 #' 
 #' @param object a matrix, an igraph object or a network object or a list
 #'   thereof. See Methods section below.
