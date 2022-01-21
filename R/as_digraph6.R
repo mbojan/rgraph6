@@ -1,7 +1,7 @@
 #' Encode network data as 'digraph6' symbols
 #' 
-#' Generic function encoding directed networks as 'digraph6' symbol(s). See below 
-#' for available methods.
+#' Generic function encoding directed networks as 'digraph6' symbol(s). See
+#' below for available methods.
 #' 
 #' @param object a matrix, an igraph object or a network object or a list
 #'   thereof. See Methods section below.
@@ -16,8 +16,8 @@
 as_digraph6 <- function(object) UseMethod("as_digraph6")
 
 
-#' @describeIn as_digraph6 If `object` is a matrix it is interpreted as an
-#'   adjacency matrix of a directed graph.
+#' @describeIn as_digraph6 Expects `object` to be a square matrix which is
+#'   interpreted as an adjacency matrix of a directed graph.
 #' 
 #' @export
 #' @examples
@@ -42,8 +42,8 @@ as_digraph6.matrix <- function(object) {
 }
 
 
-#' @describeIn as_digraph6 Igraph `object` needs to be a directed. Requires
-#'   \pkg{igraph} package.
+#' @describeIn as_digraph6 Igraph `object` needs to be a directed graph.
+#'   Requires \pkg{igraph} package.
 #' 
 #' @export
 #' @examples
@@ -59,8 +59,8 @@ as_digraph6.igraph <- function(object) {
   as_digraph6.matrix( igraph::as_adjacency_matrix(object, sparse=FALSE))
 }
 
-#' @describeIn as_digraph6 Network `object` needs to be directed. Requires
-#'   \pkg{network} package.
+#' @describeIn as_digraph6 Network `object` needs to be directed network.
+#'   Requires \pkg{network} package.
 #' @export
 #' @examples
 #' # From network objects -----------------------------------------------------
@@ -79,8 +79,8 @@ as_digraph6.network <- function(object) {
 
 
 #' @describeIn as_digraph6 If `object` is a list the function is applied to each
-#'   element. Consequently, it can be a list with a mixutre elements with
-#'   supported objects (adjacency matrices, igraph, or network objects).
+#'   element. Consequently, it can be a list with a mixture of supported objects
+#'   classes (adjacency matrices, igraph, or network objects).
 #' 
 #' @export
 as_digraph6.list <- function(object) {

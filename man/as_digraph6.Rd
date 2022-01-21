@@ -29,8 +29,8 @@ thereof. See Methods section below.}
 A character vector of 'digraph6' symbols.
 }
 \description{
-Generic function encoding directed networks as 'digraph6' symbol(s). See below
-for available methods.
+Generic function encoding directed networks as 'digraph6' symbol(s). See
+below for available methods.
 }
 \details{
 The 'digraph6' format is designed for directed graphs. Error is thrown
@@ -38,18 +38,18 @@ in case it is given a undirected network.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{matrix}: If \code{object} is a matrix it is interpreted as an
-adjacency matrix of a directed graph.
+\item \code{matrix}: Expects \code{object} to be a square matrix which is
+interpreted as an adjacency matrix of a directed graph.
 
-\item \code{igraph}: Igraph \code{object} needs to be a directed. Requires
-\pkg{igraph} package.
+\item \code{igraph}: Igraph \code{object} needs to be a directed graph.
+Requires \pkg{igraph} package.
 
-\item \code{network}: Network \code{object} needs to be directed. Requires
-\pkg{network} package.
+\item \code{network}: Network \code{object} needs to be directed network.
+Requires \pkg{network} package.
 
 \item \code{list}: If \code{object} is a list the function is applied to each
-element. Consequently, it can be a list with a mixutre elements with
-supported objects (adjacency matrices, igraph, or network objects).
+element. Consequently, it can be a list with a mixture of supported objects
+classes (adjacency matrices, igraph, or network objects).
 
 \item \code{default}: Throws an error about the unhandled class.
 }}
