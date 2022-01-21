@@ -7,7 +7,8 @@
 #'   Methods section below.
 #' @param ... other arguments passed to/from other methods
 #' 
-#' @seealso See [rgraph6] for 'sparse6' format description.
+#' @seealso The 'sparse6' format is designed for undirected graphs. Error is
+#'   thrown in case it is given a directed graph.
 #' 
 #' @return A character vector of 'sparse6' symbols.
 #' 
@@ -16,10 +17,12 @@ as_sparse6 <- function(object, ...) UseMethod("as_sparse6")
 
 
 
-#' @describeIn as_sparse6 Encode edgelist. Requries additional argument `n` with
-#' the number of vertices of the graph.
+#' @describeIn as_sparse6 Expects `object` to be a two-column matrix which is
+#'   interpreted as an edgelist of an undirected graph. Requires an additional
+#'   argument `n` with the number of vertices of the graph.
 #' 
 #' @param n number of vertices in the graph
+#' 
 #' @examples
 #' # From edgelist matrix -----------------------------------------------------
 #' elm <- matrix(c(
@@ -88,8 +91,9 @@ as_sparse6.matrix <- function(object, n, ...) {
 
 
 
-#' @describeIn as_sparse6 Encode [igraph][igraph::igraph] objects. If the graph
-#'   is directed an error is thrown. Package \pkg{igraph} needs to be installed.
+#' @describeIn as_sparse6 Igraph `object` needs to be an undirected graph.
+#'   Requires \pkg{igraph} package.
+#'  
 #' @importFrom methods as
 #' @export
 #' @examples 
@@ -114,9 +118,9 @@ as_sparse6.igraph <- function(object, ...) {
   as_sparse6.matrix(el, n = igraph::gorder(object))
 }
 
-#' @describeIn as_sparse6 Encode [network][network::network()] objects. If the
-#'   network is directed and error is thrown. Package \pkg{network} needs
-#'   to be installed.
+#' @describeIn as_sparse6 Network `object` needs to be a directed network.
+#'   Requires \pkg{network} package.
+#'   
 #' @export
 #' @examples
 #' # From network objects --------------------------------
@@ -133,8 +137,10 @@ as_sparse6.network <- function(object, ...) {
 
 
 
-#' @describeIn as_sparse6 Each element of the list is encoded independently with
-#'   one of the other methods.
+#' @describeIn as_sparse6 If `object` is a list the function is applied to each
+#'   element. Consequently, it can be a list with a mixture of supported objects
+#'   classes (adjacency matrices, igraph, or network objects).
+#'   
 #' @export
 as_sparse6.list <- function(object, ...) {
   vapply(

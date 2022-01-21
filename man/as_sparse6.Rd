@@ -38,18 +38,19 @@ available methods.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{matrix}: Encode edgelist. Requries additional argument \code{n} with
-the number of vertices of the graph.
+\item \code{matrix}: Expects \code{object} to be a two-column matrix which is
+interpreted as an edgelist of an undirected graph. Requires an additional
+argument \code{n} with the number of vertices of the graph.
 
-\item \code{igraph}: Encode \link[igraph:aaa-igraph-package]{igraph} objects. If the graph
-is directed an error is thrown. Package \pkg{igraph} needs to be installed.
+\item \code{igraph}: Igraph \code{object} needs to be an undirected graph.
+Requires \pkg{igraph} package.
 
-\item \code{network}: Encode \link[network:network]{network} objects. If the
-network is directed and error is thrown. Package \pkg{network} needs
-to be installed.
+\item \code{network}: Network \code{object} needs to be a directed network.
+Requires \pkg{network} package.
 
-\item \code{list}: Each element of the list is encoded independently with
-one of the other methods.
+\item \code{list}: If \code{object} is a list the function is applied to each
+element. Consequently, it can be a list with a mixture of supported objects
+classes (adjacency matrices, igraph, or network objects).
 
 \item \code{default}: The default method fails gracefully.
 }}
@@ -77,5 +78,6 @@ if(requireNamespace("network")) {
 
 }
 \seealso{
-See \link{rgraph6} for 'sparse6' format description.
+The 'sparse6' format is designed for undirected graphs. Error is
+thrown in case it is given a directed graph.
 }
