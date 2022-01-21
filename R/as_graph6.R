@@ -1,13 +1,13 @@
 #' Encode network data as 'graph6' symbols
 #' 
-#' Generic function encoding networks as 'graph6' symbol(s). See below 
-#' for available methods
+#' Generic function encoding undirected networks as 'graph6' symbol(s). See
+#' below for available methods.
 #' 
 #' @param object a matrix, an igraph object or a network object or a list
 #'   thereof. See Methods section below.
 #' 
-#' @details 
-#' See [rgraph6] for graph6 format description.
+#' @details The 'graph6' format is designed for undirected graphs. Error is thrown
+#' in case it is given a directed graph.
 #' 
 #' @return A character vector of 'graph6' symbols.
 #' 
@@ -17,8 +17,11 @@ as_graph6 <- function(object) UseMethod("as_graph6")
 
 
 
-#' @describeIn as_graph6 The matrix is interpreted as a square symmetric
-#'   adjacency matrix corresponding to an undirected graph.
+#' @describeIn as_graph6 Expects `object` to be a square matrix which is
+#'   interpreted as an adjacency matrix of an undirected graph. The function
+#'   reads only the upper triangle of the matrix and there is no test whether
+#'   the matrix is symmetric.
+#'   
 #' 
 #' @export
 #' @examples
@@ -49,8 +52,8 @@ as_graph6.matrix <- function(object) {
 
 
 
-#' @describeIn as_graph6 Igraph `object` needs to correspond to an undirected
-#'   graph.
+#' @describeIn as_graph6 Igraph `object` needs to be an undirected graph.
+#'   Requires \pkg{igraph} package.
 #' 
 #' @export
 #' @examples 
@@ -68,8 +71,8 @@ as_graph6.igraph <- function(object) {
 
 
 
-#' @describeIn as_graph6 Network `object` needs to correspond to an undirected
-#'   network.
+#' @describeIn as_graph6 Network `object` needs to be a directed network.
+#'   Requires \pkg{network} package.
 #' 
 #' @export
 #' @examples
@@ -86,8 +89,9 @@ as_graph6.network <- function(object) {
 }
 
 
-#' @describeIn as_graph6 If `object` is a list then the method is applied to
-#'   each element.
+#' @describeIn as_graph6 If `object` is a list the function is applied to each
+#'   element. Consequently, it can be a list with a mixture of supported objects
+#'   classes (adjacency matrices, igraph, or network objects).
 #' 
 #' @export
 as_graph6.list <- function(object) {

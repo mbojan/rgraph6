@@ -29,25 +29,29 @@ thereof. See Methods section below.}
 A character vector of 'graph6' symbols.
 }
 \description{
-Generic function encoding networks as 'graph6' symbol(s). See below
-for available methods
+Generic function encoding undirected networks as 'graph6' symbol(s). See
+below for available methods.
 }
 \details{
-See \link{rgraph6} for graph6 format description.
+The 'graph6' format is designed for undirected graphs. Error is thrown
+in case it is given a directed graph.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{matrix}: The matrix is interpreted as a square symmetric
-adjacency matrix corresponding to an undirected graph.
+\item \code{matrix}: Expects \code{object} to be a square matrix which is
+interpreted as an adjacency matrix of an undirected graph. The function
+reads only the upper triangle of the matrix and there is no test whether
+the matrix is symmetric.
 
-\item \code{igraph}: Igraph \code{object} needs to correspond to an undirected
-graph.
+\item \code{igraph}: Igraph \code{object} needs to be an undirected graph.
+Requires \pkg{igraph} package.
 
-\item \code{network}: Network \code{object} needs to correspond to an undirected
-network.
+\item \code{network}: Network \code{object} needs to be a directed network.
+Requires \pkg{network} package.
 
-\item \code{list}: If \code{object} is a list then the method is applied to
-each element.
+\item \code{list}: If \code{object} is a list the function is applied to each
+element. Consequently, it can be a list with a mixture of supported objects
+classes (adjacency matrices, igraph, or network objects).
 
 \item \code{default}: The default method throws an error about an unhandled
 class.
