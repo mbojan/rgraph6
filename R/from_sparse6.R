@@ -62,9 +62,16 @@ as_elist_sparse6 <- function(object){
     rn <- r[2]
     rg <- r[ seq(3, length(r)) ]
     n <- as.numeric(rn) - 63
+    
+    #hardcoding graphs with n<2
     if(n<2){
       return(structure(matrix(0,0,2),gorder = n))
     }
+    # hardcoding complete graph with 2 nodes 
+    if(n==2 & as.numeric(rg[1])==110){
+      return(structure(matrix(c(1,2),1,2),gorder = n))
+    }
+    
   }
   #capture all empty graphs
   if(as.numeric(rg[1])==0){
