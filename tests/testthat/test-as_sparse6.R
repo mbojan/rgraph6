@@ -47,3 +47,27 @@ test_that("works on lists of edgelists representing graphs of varying size (#27)
   expect_identical(r, s6)
   expect_equivalent(edgelist_from_sparse6(s6), l)
 })
+
+
+
+
+test_that("behaves correctly for edgelists with different maximums (#28)", {
+  requireNamespace("igraph")
+  
+  # 
+  g <- igraph::make_graph(~ A, B, C, D, E -- F)
+  elm <- igraph::as_edgelist(g, names=FALSE) # [5, 6]
+  expect_identical(
+    as_sparse6(g),
+    as_sparse6(elm)
+  )
+  
+  # 
+  g <- igraph::make_graph(~ A -- B, C, D, E, F)
+  elm <- igraph::as_edgelist(g, names=FALSE) # [1, 2]
+  expect_identical(
+    as_sparse6(g),
+    as_sparse6(elm, n = 6)
+  )
+  expect_identical(as_sparse6(elm), ":An")
+})
