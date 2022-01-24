@@ -32,3 +32,18 @@ test_that("works for ':Fa@x^' from format documentation", {
     igraph::graph_from_edgelist(elist, directed=FALSE)  
   ))
 })
+
+
+
+test_that("works on lists of edgelists representing graphs of varying size (#27)", {
+  l <- list(
+    matrix(c(1,2, 2,3, 3,4), ncol=2, byrow=TRUE),
+    matrix(c(1,2, 2,3), ncol=2, byrow=TRUE)
+  )
+  expect_silent(
+    r <- as_sparse6(l)
+  )
+  s6 <- c(":Cdv", ":Bd")
+  expect_identical(r, s6)
+  expect_equivalent(edgelist_from_sparse6(s6), l)
+})
