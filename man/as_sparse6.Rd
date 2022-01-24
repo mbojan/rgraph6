@@ -11,7 +11,7 @@
 \usage{
 as_sparse6(object, ...)
 
-\method{as_sparse6}{matrix}(object, n, ...)
+\method{as_sparse6}{matrix}(object, n = max(object, 0), ...)
 
 \method{as_sparse6}{igraph}(object, ...)
 

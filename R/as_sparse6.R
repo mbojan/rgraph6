@@ -46,7 +46,7 @@ as_sparse6.matrix <- function(object, n = max(object, 0), ...) {
   # bring edgelist in right order if needed
   if(!(all(object[,1]>object[,2]) & all(diff(object[,1])>=0))){
     object <- t(apply(object, 1, sort, decreasing = TRUE))
-    object <- object[order(object[ ,1]), ]  
+    object <- object[order(object[ ,1]),,drop=FALSE]  
   }
   
   # n <- max(object)
