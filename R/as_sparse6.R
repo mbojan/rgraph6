@@ -38,6 +38,8 @@ as_sparse6.matrix <- function(object, n = max(object, 0), ...) {
   nr <- nrow(object)
   if( nc != 2)
     stop("as_sparse6 only handles edgelists with 2 columns")
+  if(!is.numeric(object))
+    stop("Edgelist matrix needs to be numeric while it is ", mode(object))
   # if(nr==0){
   #   stop("as_sparse6 only handles edgelists with more than 1 row")
   # }
