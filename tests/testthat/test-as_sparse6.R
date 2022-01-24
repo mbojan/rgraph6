@@ -80,4 +80,9 @@ test_that("behaves correctly for edgelists with different maximums (#28)", {
   )
   expect_identical(as_sparse6(elm), ":Bp")
   
+  #4
+  expect_identical(as_sparse6(igraph::graph.full(2)),
+                   as_sparse6(edgelist_from_sparse6(":An")))
+  
+  
 })
