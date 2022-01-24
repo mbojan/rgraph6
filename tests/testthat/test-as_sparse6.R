@@ -78,6 +78,6 @@ test_that("behaves correctly for edgelists with different maximums (#28)", {
     as_sparse6(g),
     as_sparse6(elm, n = 6)
   )
-  expect_identical(as_sparse6(elm), ":Eg^")
+  expect_identical(as_sparse6(elm), ":Bp")
   
 })
