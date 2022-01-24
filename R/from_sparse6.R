@@ -66,6 +66,10 @@ as_elist_sparse6 <- function(object){
       return(structure(matrix(0,0,2),gorder = n))
     }
   }
+  #capture all empty graphs
+  if(as.numeric(rg[1])==0){
+    return(structure(matrix(0,0,2),gorder = n))
+  }
   
   g <- c(sapply(as.numeric(rg)-63, function(x) expand_to_length( d2b(x), l=6, what=0, where="start")))
   k <- length(d2b(n-1))
