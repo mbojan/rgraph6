@@ -33,7 +33,7 @@ as_sparse6 <- function(object, ...) UseMethod("as_sparse6")
 #' as_sparse6(elm, n = 4)
 #'
 #' @export
-as_sparse6.matrix <- function(object, n, ...) {
+as_sparse6.matrix <- function(object, n = max(object, 0), ...) {
   nc <- ncol(object)
   nr <- nrow(object)
   if( nc != 2)
