@@ -19,11 +19,12 @@
 #'    g <- igraph::graph.famous("Zachary")
 #'    choose_format(g)
 #'    
+#'    set.seed(123)
 #'    glist <- list(
-#'       igraph::sample_gnp(n = 15,p = 0.1),
-#'       igraph::sample_gnp(n = 15,p = 0.2), 
-#'       igraph::sample_gnp(n = 15,p = 0.3),
-#'       igraph::sample_gnp(n = 15,p = 0.15,directed = TRUE))
+#'       igraph::sample_gnp(n = 15, p = 0.1),
+#'       igraph::sample_gnp(n = 15, p = 0.2), 
+#'       igraph::sample_gnp(n = 15, p = 0.3),
+#'       igraph::sample_gnp(n = 15, p = 0.15, directed = TRUE))
 #'       
 #'    choose_format(glist)
 #' }
