@@ -32,7 +32,7 @@ implemented them in his program \code{Nauty}. When using this package please cit
 it by referring to the following references:
 
 McKay B, Piperno A (2014). "Practical graph isomorphism, II." \emph{Journal
-of Symbolic Computation}.
+of Symbolic Computation}, \emph{60}, 94-112.
 
 Bojanowski M, Schoch D (2021). \emph{rgraph6: Representing Graphs as graph6,
 dgraph6 or sparse6 Strings}. R package version: 2.0-0, <URL:

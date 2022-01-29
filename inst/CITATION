@@ -9,6 +9,8 @@ citEntry(
     ),
   journal = "Journal of Symbolic Computation",
   year = 2014,
+  volume = 60,
+  pages = "94--112",
   textVersion = "McKay, B. D., & Piperno, A. (2014). Practical graph isomorphism, II. Journal of symbolic computation, 60, 94-112."
 )
 
