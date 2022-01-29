@@ -10,6 +10,9 @@
 #' objects.
 #' 
 #' @return A character vector of encoded graphs.
+#' 
+#' @seealso [choose_format()]
+#' 
 #' @examples 
 #' # From igraph ------------------------------------------------------
 #' if(requireNamespace("igraph")) {
@@ -34,15 +37,26 @@
 #' @export
 graph_as_text <- function(object, ...) UseMethod("graph_as_text")
 
-#' @rdname graph_as_text
+#' @describeIn graph_as_text The default method chooses the encoding format
+#'   automatically using [choose_format()].
+#'
 #' @export
 graph_as_text.default <- function(object, ...) {
   fmt <- choose_format(object)
   do.call(paste0("as_", fmt), list(object = object))
 }
 
-#' @rdname graph_as_text
+
+
+#' @describeIn graph_as_text The list method applies the default method to each
+#'   element.
+#' 
 #' @export
 graph_as_text.list <- function(object, ...) {
   lapply(object, graph_as_text)
 }
+
+
+
+
+

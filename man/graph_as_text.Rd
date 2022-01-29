@@ -28,6 +28,15 @@ automatically.
 If \code{object} is a list it may be a mixture of network and igraph
 objects.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{default}: The default method chooses the encoding format
+automatically using \code{\link[=choose_format]{choose_format()}}.
+
+\item \code{list}: The list method applies the default method to each
+element.
+}}
+
 \examples{
 # From igraph ------------------------------------------------------
 if(requireNamespace("igraph")) {
@@ -49,4 +58,7 @@ if(requireNamespace("network")) {
    g <- network::network(m, directed=FALSE)
    graph_as_text(g)
 }
+}
+\seealso{
+\code{\link[=choose_format]{choose_format()}}
 }
