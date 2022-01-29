@@ -1,6 +1,6 @@
 #' A sample vectors of graph6, sparse6, and digraph6 codes
 #' 
-#' Objects `g6`, `s6`, and `d6` are, example vectors of codes in graph6,
+#' Objects `g6`, `s6`, and `d6` are vectors of codes in graph6,
 #' sparse6, and digraph6 representations respectively. Object `sampleg6` is a
 #' vector of graph6 codes.
 #' 
@@ -9,17 +9,17 @@
 #' @usage d6
 #' @usage sampleg6
 #' 
-#' @format All the three objects `g6`, `s6`, and `d6` are character vectors of
+#' @format The three objects `g6`, `s6`, and `d6` are character vectors of
 #'   length 20 corresponding to undirected (in case of `g6` and `s6`) and
 #'   directed (in case of `d6`) graphs of varying sizes and densities.
 #'   
-#'   Object `sampleg6` is a character vector of length `length(sampleg6)` of
+#'   Object `sampleg6` is a character vector of length `r length(sampleg6)` of
 #'   undirected graphs in graph6 format.
 #' 
-#' @details Graphs in `g6`, `s6`, and `d6` objects were generated using common
-#'   algorithm which consists of the following steps:
+#' @details Graphs in `g6`, `s6`, and `d6` objects were generated using the
+#'   common algorithm which consists of the following steps:
 #'   
-#'   1. For a given vector of sizes of the node set (15, 30, 60, 120)...
+#'   1. For each value from the vector of sizes of the node set (15, 30, 60, 120)...
 #'   2. ... generate a vector of edge counts (size of the edge set) of length 5
 #'   ranging from a single edge up to an edge count corresponding to the density
 #'   of 0.2.
