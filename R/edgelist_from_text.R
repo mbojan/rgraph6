@@ -7,7 +7,8 @@
 #'   fact encoded adjacency matrices, the function will return corresponding
 #'   edgelist matrices creating temporary igraph objects internally.
 #' 
-#' @return A list of adjacency matrices.
+#' @return A list of edgelist matrices.
+#' 
 #' @examples 
 #' # Graph6 symbols
 #' sampleg6

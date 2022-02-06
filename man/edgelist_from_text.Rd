@@ -12,7 +12,7 @@ edgelist_from_text(object, ...)
 \item{...}{other arguments, currently ignored}
 }
 \value{
-A list of adjacency matrices.
+A list of edgelist matrices.
 }
 \description{
 Create edgelist matrices from 'graph6', 'sparse6', or 'digraph6' symbols
