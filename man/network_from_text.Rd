@@ -10,7 +10,7 @@ network_from_text(object)
 \item{object}{character vector of 'graph6', 'sparse6', or 'digraph6' symbols}
 }
 \value{
-A list of \link[network:network]{network} objects.
+A list of 'network' objects.
 }
 \description{
 Create network objects from 'graph6', 'sparse6', or 'digraph6' symbols
