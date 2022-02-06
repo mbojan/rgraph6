@@ -1,14 +1,14 @@
-#' Choose format heuristically
+#' Choose most efficient format heuristically
 #' 
-#' Given a graph suggest efficient format out of 'graph6', 'sparse6' or 'digraph6'.
+#' Given a graph suggest the most efficient format out of 'graph6', 'sparse6' or
+#' 'digraph6'.
 #' 
 #' @param object Igraph/network object or list thereof
 #' @param ... other arguments, currently ignored
 #' 
 #' @details If `object` is directed, the suggested format is 'digraph6'. If
 #'   `object` is undirected the function suggests 'sparse6' if density is less
-#'   than 0.15 and 'graph6' otherwise. This rule is approximate and will be
-#'   replaced with exact one in the future.
+#'   than 0.15 and 'graph6' otherwise. This rule is approximate.
 #'   
 #' @return Character value out of 'graph6', 'sparse6' or 'digraph6'. If `object`
 #'   is a list, a vector of such values of the length equal to the length of

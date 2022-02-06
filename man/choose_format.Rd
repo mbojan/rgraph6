@@ -4,7 +4,7 @@
 \alias{choose_format}
 \alias{choose_format.default}
 \alias{choose_format.list}
-\title{Choose format heuristically}
+\title{Choose most efficient format heuristically}
 \usage{
 choose_format(object, ...)
 
@@ -23,13 +23,13 @@ is a list, a vector of such values of the length equal to the length of
 \code{object}.
 }
 \description{
-Given a graph suggest efficient format out of 'graph6', 'sparse6' or 'digraph6'.
+Given a graph suggest the most efficient format out of 'graph6', 'sparse6' or
+'digraph6'.
 }
 \details{
 If \code{object} is directed, the suggested format is 'digraph6'. If
 \code{object} is undirected the function suggests 'sparse6' if density is less
-than 0.15 and 'graph6' otherwise. This rule is approximate and will be
-replaced with exact one in the future.
+than 0.15 and 'graph6' otherwise. This rule is approximate.
 }
 \examples{
 # From igraph ------------------------------------------------------
