@@ -20,10 +20,8 @@
 #' 
 #' @section Citation:
 #' 
-#' The formats themselves are by [Brendan McKay](http://cs.anu.edu.au/~bdm) who
-#' implemented them in his program `Nauty`. When using this package please cite
-#' it by referring to the following references:
-#' 
+#' When using this package please cite it by referring to the following
+#' publications:
 #' 
 #' ```{r, echo=FALSE, results="asis"}
 #' print(readCitationFile("inst/CITATION"), style = "text")

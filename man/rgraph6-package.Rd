@@ -27,10 +27,8 @@ decoding. There are also other low-level functions to decode directly from
 \section{Citation}{
 
 
-The formats themselves are by \href{http://cs.anu.edu.au/~bdm}{Brendan McKay} who
-implemented them in his program \code{Nauty}. When using this package please cite
-it by referring to the following references:
-
+When using this package please cite it by referring to the following
+publications:
 McKay B, Piperno A (2014). "Practical graph isomorphism, II." \emph{Journal
 of Symbolic Computation}, \emph{60}, 94-112.
 
