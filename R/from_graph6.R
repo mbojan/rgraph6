@@ -1,13 +1,13 @@
-#' Functions parsing graph6 symbols
+#' Functions parsing 'graph6' symbols
 #' 
-#' @description These functions take a vector of graph6 symbols and return a
+#' @description These functions take a vector of 'graph6' symbols and return a
 #'   list of other types of objects:
 #'   
 #' @name from_graph6
 #' 
 #' @return The returned object is:
 #' 
-#' @seealso [as_graph6()] for saving objects as graph6 symbols.
+#' @seealso [as_graph6()] for saving objects as 'graph6' symbols.
 
 
 
@@ -15,7 +15,7 @@
 #' 
 #' @description - [adjacency_from_graph6()] creates adjacency matrices
 #' 
-#' @param g6 character vector of graph6 symbols
+#' @param g6 character vector of 'graph6' symbols
 #' 
 #' @return - for [adjacency_from_graph6()], a list of the same length as
 #'   its input of square symmetric adjacency matrices.
@@ -77,7 +77,7 @@ as_amatrix_graph6 <- function(object) {
 
 #' @rdname from_graph6
 #' 
-#' @description - [igraph_from_graph6()] creates igraph objects. Requires
+#' @description - [igraph_from_graph6()] creates 'igraph' objects. Requires
 #'   package \pkg{igraph} to be installed.
 #'   
 #' @param ... other arguments, see Details. 
@@ -85,7 +85,7 @@ as_amatrix_graph6 <- function(object) {
 #' @details For [igraph_from_graph6()] additional arguments are passed to
 #'   [igraph::graph_from_adjacency_matrix()]
 #' 
-#' @return - for [igraph_from_graph6()], a list of igraph objects
+#' @return - for [igraph_from_graph6()], a list of 'igraph' objects
 #' @examples
 #' # To igraph objects --------------------------------------------------------
 #' if(requireNamespace("igraph", quietly=TRUE)) {

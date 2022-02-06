@@ -5,7 +5,7 @@
 \alias{adjacency_from_graph6}
 \alias{igraph_from_graph6}
 \alias{network_from_graph6}
-\title{Functions parsing graph6 symbols}
+\title{Functions parsing 'graph6' symbols}
 \usage{
 adjacency_from_graph6(g6)
 
@@ -14,7 +14,7 @@ igraph_from_graph6(g6, ...)
 network_from_graph6(g6, ...)
 }
 \arguments{
-\item{g6}{character vector of graph6 symbols}
+\item{g6}{character vector of 'graph6' symbols}
 
 \item{...}{other arguments, see Details.}
 }
@@ -27,7 +27,7 @@ its input of square symmetric adjacency matrices.
 }
 
 \itemize{
-\item for \code{\link[=igraph_from_graph6]{igraph_from_graph6()}}, a list of igraph objects
+\item for \code{\link[=igraph_from_graph6]{igraph_from_graph6()}}, a list of 'igraph' objects
 }
 
 \itemize{
@@ -35,7 +35,7 @@ its input of square symmetric adjacency matrices.
 }
 }
 \description{
-These functions take a vector of graph6 symbols and return a
+These functions take a vector of 'graph6' symbols and return a
 list of other types of objects:
 
 \itemize{
@@ -43,7 +43,7 @@ list of other types of objects:
 }
 
 \itemize{
-\item \code{\link[=igraph_from_graph6]{igraph_from_graph6()}} creates igraph objects. Requires
+\item \code{\link[=igraph_from_graph6]{igraph_from_graph6()}} creates 'igraph' objects. Requires
 package \pkg{igraph} to be installed.
 }
 
@@ -80,5 +80,5 @@ if(requireNamespace("network", quietly=TRUE)) {
 }
 }
 \seealso{
-\code{\link[=as_graph6]{as_graph6()}} for saving objects as graph6 symbols.
+\code{\link[=as_graph6]{as_graph6()}} for saving objects as 'graph6' symbols.
 }
