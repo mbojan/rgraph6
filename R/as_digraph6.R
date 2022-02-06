@@ -6,8 +6,8 @@
 #' @param object a matrix, an igraph object or a network object or a list
 #'   thereof. See Methods section below.
 #' 
-#' @details The 'digraph6' format is designed for directed graphs. Error is thrown
-#' in case it is given a undirected network.
+#' @details The 'digraph6' format is designed for directed graphs. Error is
+#'   thrown in case it is given an undirected network.
 #' 
 #' @return A character vector of 'digraph6' symbols.
 #' 

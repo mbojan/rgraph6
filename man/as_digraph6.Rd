@@ -33,8 +33,8 @@ Generic function encoding directed networks as 'digraph6' symbol(s). See
 below for available methods.
 }
 \details{
-The 'digraph6' format is designed for directed graphs. Error is thrown
-in case it is given a undirected network.
+The 'digraph6' format is designed for directed graphs. Error is
+thrown in case it is given an undirected network.
 }
 \section{Methods (by class)}{
 \itemize{
