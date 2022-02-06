@@ -52,7 +52,7 @@ Requires \pkg{network} package.
 
 \item \code{list}: If \code{object} is a list the function is applied to each
 element. Consequently, it can be a list with a mixture of supported objects
-classes (adjacency matrices, igraph, or network objects).
+classes (edgelist matrices, igraph, or network objects).
 
 \item \code{default}: The default method fails gracefully.
 }}
@@ -65,8 +65,8 @@ elm <- matrix(c(
   3, 4
 ), ncol=2, byrow=TRUE)
 as_sparse6(elm) # 1--2, 2--3, 3--4
-as_sparse6(elm + 6) # 1, 2, 3, 4, 5, 6, 7 -- 8, 8 -- 9, 9 -- 10
-as_sparse6(elm, n = 10) # 1 -- 2, 2 -- 3, 3 -- 4, 5, 6, 7, 8, 9, 10
+as_sparse6(elm + 6) # 1, 2, 3, 4, 5, 6, 7--8, 8--9, 9--10
+as_sparse6(elm, n = 10) # 1--2, 2--3, 3--4, 5, 6, 7, 8, 9, 10
 
 # From igraph objects ------------------------------------------------------
 if(requireNamespace("igraph")) {
