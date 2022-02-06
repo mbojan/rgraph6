@@ -10,7 +10,7 @@ igraph_from_text(object)
 \item{object}{character vector of 'graph6', 'sparse6', or 'digraph6' symbols}
 }
 \value{
-A list of igraph objects.
+A list of 'igraph' objects.
 }
 \description{
 Create igraph objects from 'graph6', 'sparse6', or 'digraph6' symbols
