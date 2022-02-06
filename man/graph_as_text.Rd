@@ -25,7 +25,7 @@ Encode a graph as 'graph6', 'sparse6' or 'digraph6' choosing the format
 automatically.
 }
 \details{
-If \code{object} is a list it may be a mixture of network and igraph
+If \code{object} is a list it may be a mixture of 'network' and 'igraph'
 objects.
 }
 \section{Methods (by class)}{

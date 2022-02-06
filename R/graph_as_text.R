@@ -6,7 +6,7 @@
 #' @param object igraph/network object or a list thereof
 #' @param ... other arguments, currently ignored
 #' 
-#' @details If `object` is a list it may be a mixture of network and igraph
+#' @details If `object` is a list it may be a mixture of 'network' and 'igraph'
 #' objects.
 #' 
 #' @return A character vector of encoded graphs.
@@ -55,8 +55,3 @@ graph_as_text.default <- function(object, ...) {
 graph_as_text.list <- function(object, ...) {
   lapply(object, graph_as_text)
 }
-
-
-
-
-
