@@ -17,9 +17,11 @@ as_sparse6 <- function(object, ...) UseMethod("as_sparse6")
 
 
 
-#' @describeIn as_sparse6 Expects `object` to be a two-column matrix which is
-#'   interpreted as an edgelist of an undirected graph. Requires an additional
-#'   argument `n` with the number of vertices of the graph.
+#' @describeIn as_sparse6 Expects `object` to be a two-column matrix of
+#'   *integers* which is interpreted as an edgelist of an undirected graph. By
+#'   default the network size is inferred to be the maximal element of `object`.
+#'   This can be overridden by providing the network size via the `n` argument,
+#'   the results will not be identical though (see the Examples).
 #' 
 #' @param n number of vertices in the graph
 #' 
@@ -30,7 +32,9 @@ as_sparse6 <- function(object, ...) UseMethod("as_sparse6")
 #'   2, 3,
 #'   3, 4
 #' ), ncol=2, byrow=TRUE)
-#' as_sparse6(elm, n = 4)
+#' as_sparse6(elm) # 1--2, 2--3, 3--4
+#' as_sparse6(elm + 6) # 1, 2, 3, 4, 5, 6, 7 -- 8, 8 -- 9, 9 -- 10
+#' as_sparse6(elm, n = 10) # 1 -- 2, 2 -- 3, 3 -- 4, 5, 6, 7, 8, 9, 10
 #'
 #' @export
 as_sparse6.matrix <- function(object, n = max(object, 0), ...) {
@@ -40,6 +44,7 @@ as_sparse6.matrix <- function(object, n = max(object, 0), ...) {
     stop("as_sparse6 only handles edgelists with 2 columns")
   if(!is.numeric(object))
     stop("Edgelist matrix needs to be numeric while it is ", mode(object))
+  object <- structure(as.integer(object), dim = dim(object))
   # if(nr==0){
   #   stop("as_sparse6 only handles edgelists with more than 1 row")
   # }

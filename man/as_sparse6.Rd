@@ -38,9 +38,11 @@ available methods.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{matrix}: Expects \code{object} to be a two-column matrix which is
-interpreted as an edgelist of an undirected graph. Requires an additional
-argument \code{n} with the number of vertices of the graph.
+\item \code{matrix}: Expects \code{object} to be a two-column matrix of
+\emph{integers} which is interpreted as an edgelist of an undirected graph. By
+default the network size is inferred to be the maximal element of \code{object}.
+This can be overridden by providing the network size via the \code{n} argument,
+the results will not be identical though (see the Examples).
 
 \item \code{igraph}: Igraph \code{object} needs to be an undirected graph.
 Requires \pkg{igraph} package.
@@ -62,7 +64,9 @@ elm <- matrix(c(
   2, 3,
   3, 4
 ), ncol=2, byrow=TRUE)
-as_sparse6(elm, n = 4)
+as_sparse6(elm) # 1--2, 2--3, 3--4
+as_sparse6(elm + 6) # 1, 2, 3, 4, 5, 6, 7 -- 8, 8 -- 9, 9 -- 10
+as_sparse6(elm, n = 10) # 1 -- 2, 2 -- 3, 3 -- 4, 5, 6, 7, 8, 9, 10
 
 # From igraph objects ------------------------------------------------------
 if(requireNamespace("igraph")) {
