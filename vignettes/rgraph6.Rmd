@@ -1,0 +1,191 @@
+---
+title: "Examples of usage of 'rgraph6'"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Examples of usage of 'rgraph6'}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+library(rgraph6)
+library(igraph)
+requireNamespace("network")
+library(ggraph)
+
+library(dplyr)
+library(ggplot2)
+requireNamespace("tidyr")
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+
+
+
+# Functions in the package
+
+Main functions for encoding network data are:
+
+- `as_graph6()`
+- `as_sparse6()`
+- `as_digraph6()`
+
+Main functions for decoding are:
+
+- `adjacency_from_text()`
+- `edgelist_from_text()`
+- `igraph_from_text()`
+- `network_from_text()`
+
+Low-level functions are shown on the following graph:
+
+```{r functions-low, echo=FALSE, fig.width=7, fig.height=7}
+u <- c("adjacency", "edgelist", "network", "igraph", "digraph6", 
+       "sparse6", "graph6")
+
+d <- tidyr::crossing(
+  from = u,
+  to = u
+) %>%
+  filter(from != to) %>%
+  mutate(
+    fun = paste0(to, "_from_", from)
+  ) %>%
+  mutate(
+    fun = case_when(
+      to == "graph6" & (from %in% c("adjacency", "network", "igraph")) ~ "as_graph6",
+      to == "sparse6" & (from %in% c("edgelist", "network", "igraph")) ~ "as_sparse6",
+      to == "digraph6" & (from %in% c("adjacency", "network", "igraph")) ~ "as_digraph6",
+      TRUE ~ fun
+    ),
+    ok = purrr::map_lgl(fun, exists, where=asNamespace("rgraph6"))
+  )
+
+g <- d %>%
+  filter(ok) %>%
+  transmute(
+    from, to,
+    fun = paste0(fun, "()")
+  ) %>%
+  tidygraph::as_tbl_graph()
+
+# x <- c(1.7619, 0.8201, -2.019, 0.8277, -0.0565, -0.0451, -0.9931)
+# y <- c(-9e-04, -0.4761, 0.0281, 0.4898, -0.4738, 0.4898, 0.0206)
+E(g)$cross <- FALSE
+E(g)$cross[c(13,5,11,8)] <- TRUE
+ggraph(g,layout = "stress") +
+  geom_edge_parallel(
+    aes(label = fun, filter = !cross),
+    start_cap = circle(1),
+    end_cap = circle(1),
+    label_dodge = unit(-5, "mm"),
+    label_push = unit(0, "mm"),
+    label_size = 3,
+    angle_calc = "along",
+    arrow = arrow(length = unit(3, "mm"),type = "closed")
+  ) +
+  geom_edge_parallel(
+    aes(label = fun, filter = cross),
+    start_cap = circle(1),
+    end_cap = circle(1),
+    label_dodge = unit(-5, "mm"),
+    label_push = unit(-27, "mm"),
+    label_size = 3,
+    angle_calc = "along",
+    arrow = arrow(length = unit(3, "mm"),type = "closed")
+  )+
+  geom_node_label(aes(label = name)) +
+  coord_cartesian(clip = "off") +
+  scale_y_continuous(expand = expansion(add = .1)) +
+  theme_void()
+```
+
+
+
+# Examples
+
+## Encode list of 'igraph' objects
+
+Generate a list of igraph objects:
+
+```{r}
+set.seed(666)
+igraph_list <- replicate(5, igraph::sample_gnp(10, 0.1, directed=FALSE), 
+                         simplify = FALSE)
+```
+
+Encode as 'graph6' symbols:
+
+```{r}
+as_graph6(igraph_list)
+```
+
+Encode as 'sparse6' symbols:
+
+```{r}
+as_sparse6(igraph_list)
+```
+
+
+
+
+## Decode a vector of different types of symbols
+
+Using example data `g6`, `d6`, and `s6` provided with the package:
+
+```{r example-mixed}
+# Create a vector with a mixture of 'graph6', 'digraph6' and 'sparse6' symbols
+x <- c(g6[1], s6[2], d6[3])
+x
+
+# Parse to igraph objects (package igraph required)
+igraph_from_text(x)
+
+# Parse to network objects (package network required)
+network_from_text(x)
+```
+
+
+
+
+## Tidy graph databases
+
+The formats shine if we need to store large number of graphs in a data frame. Let's generate a list of random graphs as igraph objects and store them in a data frame column of graph6 symbols:
+
+```{r}
+library("dplyr")
+
+# Generate list of igraph objects
+set.seed(666)
+
+d <- tibble::tibble(
+  g6 = replicate(
+    10,
+    igraph::random.graph.game(sample(3:12, replace=TRUE), p=.5, directed=FALSE),
+    simplify=FALSE
+  ) %>%
+    as_graph6()
+)
+d
+```
+
+Nice and compact. We can go further by doing some computations and saving the results together with the graph data, and even save it to a simple CSV file!
+
+```{r}
+d %>%
+  dplyr::mutate(
+    igraphs = igraph_from_text(g6),
+    vc = purrr::map_dbl(igraphs, igraph::vcount),
+    ec = purrr::map_dbl(igraphs, igraph::ecount),
+    density = purrr::map_dbl(igraphs, igraph::edge_density)
+  ) %>%
+  dplyr::select(-igraphs) %>%
+  write.csv(row.names = FALSE)
+```
