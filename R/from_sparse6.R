@@ -1,4 +1,4 @@
-#' Parsing `sparse6` symbols
+#' Parsing 'sparse6' symbols
 #' 
 #' @description These functions take a character vector of 'sparse6' symbols and
 #'   return a list of other types of objects:
@@ -99,10 +99,10 @@ as_elist_sparse6 <- function(object){
 
 #' @rdname from_sparse6
 #' 
-#' @description - [igraph_from_sparse6()] creates igraph objects. Requires
+#' @description - [igraph_from_sparse6()] creates 'igraph' objects. Requires
 #'   package \pkg{igraph} to be installed.
 #'   
-#' @return - for [igraph_from_sparse6()], a list of igraph objects
+#' @return - for [igraph_from_sparse6()], a list of 'igraph' objects
 #' 
 #' @export
 #' 
@@ -128,10 +128,10 @@ igraph_from_sparse6 <- function(s6) {
 
 #' @rdname from_sparse6
 #' 
-#' @description - [network_from_sparse6()] creates network objects. Requires
+#' @description - [network_from_sparse6()] creates 'network' objects. Requires
 #'   package \pkg{network} to be installed.
 #' 
-#' @return - for [network_from_sparse6()], a list of network objects
+#' @return - for [network_from_sparse6()], a list of 'network' objects
 #' 
 #' @export
 #' 

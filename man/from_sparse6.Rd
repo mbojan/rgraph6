@@ -5,7 +5,7 @@
 \alias{edgelist_from_sparse6}
 \alias{igraph_from_sparse6}
 \alias{network_from_sparse6}
-\title{Parsing \code{sparse6} symbols}
+\title{Parsing 'sparse6' symbols}
 \usage{
 edgelist_from_sparse6(s6)
 
@@ -26,11 +26,11 @@ storing the number of vertices in the graph.
 }
 
 \itemize{
-\item for \code{\link[=igraph_from_sparse6]{igraph_from_sparse6()}}, a list of igraph objects
+\item for \code{\link[=igraph_from_sparse6]{igraph_from_sparse6()}}, a list of 'igraph' objects
 }
 
 \itemize{
-\item for \code{\link[=network_from_sparse6]{network_from_sparse6()}}, a list of network objects
+\item for \code{\link[=network_from_sparse6]{network_from_sparse6()}}, a list of 'network' objects
 }
 }
 \description{
@@ -42,12 +42,12 @@ return a list of other types of objects:
 }
 
 \itemize{
-\item \code{\link[=igraph_from_sparse6]{igraph_from_sparse6()}} creates igraph objects. Requires
+\item \code{\link[=igraph_from_sparse6]{igraph_from_sparse6()}} creates 'igraph' objects. Requires
 package \pkg{igraph} to be installed.
 }
 
 \itemize{
-\item \code{\link[=network_from_sparse6]{network_from_sparse6()}} creates network objects. Requires
+\item \code{\link[=network_from_sparse6]{network_from_sparse6()}} creates 'network' objects. Requires
 package \pkg{network} to be installed.
 }
 }
