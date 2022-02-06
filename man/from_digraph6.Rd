@@ -14,7 +14,7 @@ igraph_from_digraph6(d6, ...)
 network_from_digraph6(d6, ...)
 }
 \arguments{
-\item{d6}{character vector of digraph6 symbols}
+\item{d6}{character vector of 'digraph6' symbols}
 
 \item{...}{other arguments, see Details.}
 }
@@ -27,15 +27,15 @@ its input of square symmetric adjacency matrices.
 }
 
 \itemize{
-\item for \code{\link[=igraph_from_digraph6]{igraph_from_digraph6()}}, a list of igraph objects
+\item for \code{\link[=igraph_from_digraph6]{igraph_from_digraph6()}}, a list of 'igraph' objects
 }
 
 \itemize{
-\item for \code{\link[=network_from_digraph6]{network_from_digraph6()}}, a list of network objects
+\item for \code{\link[=network_from_digraph6]{network_from_digraph6()}}, a list of 'network' objects
 }
 }
 \description{
-These functions take a vector of digraph6 symbols and return a
+These functions take a vector of 'digraph6' symbols and return a
 list of other types of objects:
 
 \itemize{
@@ -43,12 +43,12 @@ list of other types of objects:
 }
 
 \itemize{
-\item \code{\link[=igraph_from_digraph6]{igraph_from_digraph6()}} creates igraph objects. Requires
+\item \code{\link[=igraph_from_digraph6]{igraph_from_digraph6()}} creates 'igraph' objects. Requires
 package \pkg{igraph} to be installed.
 }
 
 \itemize{
-\item \code{\link[=network_from_digraph6]{network_from_digraph6()}} creates network objects. Requires
+\item \code{\link[=network_from_digraph6]{network_from_digraph6()}} creates 'network' objects. Requires
 package \pkg{network} to be installed.
 }
 }
@@ -77,5 +77,5 @@ if(requireNamespace("network", quietly=TRUE)) {
 }
 }
 \seealso{
-\code{\link[=as_digraph6]{as_digraph6()}} for encoding objects as digraph6 symbols.
+\code{\link[=as_digraph6]{as_digraph6()}} for encoding objects as 'digraph6' symbols.
 }

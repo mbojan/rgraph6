@@ -1,13 +1,13 @@
 #' Parsing `digraph6` symbols
 #' 
-#' @description These functions take a vector of digraph6 symbols and return a
+#' @description These functions take a vector of 'digraph6' symbols and return a
 #'   list of other types of objects:
 #'   
 #' @name from_digraph6
 #' 
 #' @return The returned object is:
 #' 
-#' @seealso [as_digraph6()] for encoding objects as digraph6 symbols.
+#' @seealso [as_digraph6()] for encoding objects as 'digraph6' symbols.
 
 
 
@@ -15,7 +15,7 @@
 #' 
 #' @description - [adjacency_from_digraph6()] creates adjacency matrices
 #' 
-#' @param d6 character vector of digraph6 symbols
+#' @param d6 character vector of 'digraph6' symbols
 #' 
 #' @return - for [adjacency_from_digraph6()], a list of the same length as
 #'   its input of square symmetric adjacency matrices.
@@ -72,7 +72,7 @@ as_amatrix_digraph6 <- function(object) {
 
 #' @rdname from_digraph6
 #' 
-#' @description - [igraph_from_digraph6()] creates igraph objects. Requires
+#' @description - [igraph_from_digraph6()] creates 'igraph' objects. Requires
 #'   package \pkg{igraph} to be installed.
 #'   
 #' @param ... other arguments, see Details. 
@@ -80,7 +80,7 @@ as_amatrix_digraph6 <- function(object) {
 #' @details For [igraph_from_digraph6()] additional arguments are passed to
 #'   [igraph::graph_from_adjacency_matrix()]
 #' 
-#' @return - for [igraph_from_digraph6()], a list of igraph objects
+#' @return - for [igraph_from_digraph6()], a list of 'igraph' objects
 #' 
 #' @export
 #' 
@@ -106,13 +106,13 @@ igraph_from_digraph6 <- function(d6, ...) {
 
 #' @rdname from_digraph6
 #' 
-#' @description - [network_from_digraph6()] creates network objects. Requires
+#' @description - [network_from_digraph6()] creates 'network' objects. Requires
 #'   package \pkg{network} to be installed.
 #' 
 #' @details For [network_from_digraph6()] additional arguments are passed to
 #'   [network::as.network()]
 #' 
-#' @return - for [network_from_digraph6()], a list of network objects
+#' @return - for [network_from_digraph6()], a list of 'network' objects
 #' 
 #' @export
 #' 
