@@ -6,14 +6,14 @@
 \alias{g6}
 \alias{d6}
 \alias{s6}
-\title{A sample vectors of graph6, sparse6, and digraph6 codes}
+\title{Example vectors of 'graph6', 'sparse6', and 'digraph6' codes}
 \format{
 The three objects \code{g6}, \code{s6}, and \code{d6} are character vectors of
 length 20 corresponding to undirected (in case of \code{g6} and \code{s6}) and
 directed (in case of \code{d6}) graphs of varying sizes and densities.
 
 Object \code{sampleg6} is a character vector of length 9 of
-undirected graphs in graph6 format.
+undirected graphs in 'graph6' format.
 }
 \usage{
 g6
@@ -25,9 +25,9 @@ d6
 sampleg6
 }
 \description{
-Objects \code{g6}, \code{s6}, and \code{d6} are vectors of codes in graph6,
-sparse6, and digraph6 representations respectively. Object \code{sampleg6} is a
-vector of graph6 codes.
+Objects \code{g6}, \code{s6}, and \code{d6} are vectors of codes in 'graph6', 'sparse6', and
+'digraph6' representations respectively. Object \code{sampleg6} is a vector of
+'graph6' codes.
 }
 \details{
 Graphs in \code{g6}, \code{s6}, and \code{d6} objects were generated using the

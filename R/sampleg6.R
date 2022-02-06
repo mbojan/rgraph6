@@ -1,8 +1,8 @@
-#' A sample vectors of graph6, sparse6, and digraph6 codes
+#' Example vectors of 'graph6', 'sparse6', and 'digraph6' codes
 #' 
-#' Objects `g6`, `s6`, and `d6` are vectors of codes in graph6,
-#' sparse6, and digraph6 representations respectively. Object `sampleg6` is a
-#' vector of graph6 codes.
+#' Objects `g6`, `s6`, and `d6` are vectors of codes in 'graph6', 'sparse6', and
+#' 'digraph6' representations respectively. Object `sampleg6` is a vector of
+#' 'graph6' codes.
 #' 
 #' @usage g6
 #' @usage s6
@@ -14,7 +14,7 @@
 #'   directed (in case of `d6`) graphs of varying sizes and densities.
 #'   
 #'   Object `sampleg6` is a character vector of length `r length(sampleg6)` of
-#'   undirected graphs in graph6 format.
+#'   undirected graphs in 'graph6' format.
 #' 
 #' @details Graphs in `g6`, `s6`, and `d6` objects were generated using the
 #'   common algorithm which consists of the following steps:
