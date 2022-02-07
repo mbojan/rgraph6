@@ -18,6 +18,7 @@ library(ggraph)
 library(dplyr)
 library(ggplot2)
 requireNamespace("tidyr")
+requireNamespace("tibble")
 
 knitr::opts_chunk$set(
   collapse = TRUE,
