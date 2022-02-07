@@ -1,39 +1,82 @@
 ---
-title: "Examples of usage of 'rgraph6'"
+title: "Examples of the use of the 'rgraph6' package"
 output: 
   rmarkdown::html_vignette:
     toc: true
 vignette: >
-  %\VignetteIndexEntry{Examples of usage of 'rgraph6'}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Examples of the use of the 'rgraph6' package}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
 library(rgraph6)
-library(igraph)
-requireNamespace("network")
-library(ggraph)
-
-library(dplyr)
-library(ggplot2)
-requireNamespace("tidyr")
+library(magrittr)
+requireNamespace("purrr")
+requireNamespace("dplyr")
 requireNamespace("tibble")
+requireNamespace("igraph")
 
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  dev = "svg"
+  # comment = "#>"
 )
 ```
 
 
+## The formats
+
+Let's generate an example directed and undirected graphs:
+
+```{r, fig.width=5, fig.height=5}
+set.seed(123)
+g_directed <- igraph::sample_gnm(12, 12, directed=TRUE)
+g_undirected <- igraph::as.undirected(g_directed)
+igraph::igraph_options(vertex.color="white", vertex.label.color="black",
+                       edge.color="black", edge.arrow.size=0.5)
+plot(g_directed)
+plot(g_undirected)
+```
 
 
 
-# Functions in the package
+### Digraph6
+
+The 'digraph6' is designed for directed graphs. Encoding `g_directed` will give:
+
+```{r}
+as_digraph6(g_directed)
+```
+
+
+
+### Graph6
+
+The 'graph6' format is designed for undirected graphs. It is more efficient for *dense* graphs. Encoding `g_undirected` will give:
+
+```{r}
+as_graph6(g_undirected)
+```
+
+
+
+### Sparse6
+
+The 'sparse6' format is designed for undirected graphs. It is more efficient for *sparse* graphs. Encoding `g_undirected` will give:
+
+```{r}
+as_sparse6(g_undirected)
+```
+
+
+## Main functions
 
 Main functions for encoding network data are:
 
+- `graph_as_text()`
 - `as_graph6()`
 - `as_sparse6()`
 - `as_digraph6()`
@@ -45,74 +88,17 @@ Main functions for decoding are:
 - `igraph_from_text()`
 - `network_from_text()`
 
-Low-level functions are shown on the following graph:
+Implemented functions are shown on the following graph:
 
-```{r functions-low, echo=FALSE, fig.width=7, fig.height=7}
-u <- c("adjacency", "edgelist", "network", "igraph", "digraph6", 
-       "sparse6", "graph6")
-
-d <- tidyr::crossing(
-  from = u,
-  to = u
-) %>%
-  filter(from != to) %>%
-  mutate(
-    fun = paste0(to, "_from_", from)
-  ) %>%
-  mutate(
-    fun = case_when(
-      to == "graph6" & (from %in% c("adjacency", "network", "igraph")) ~ "as_graph6",
-      to == "sparse6" & (from %in% c("edgelist", "network", "igraph")) ~ "as_sparse6",
-      to == "digraph6" & (from %in% c("adjacency", "network", "igraph")) ~ "as_digraph6",
-      TRUE ~ fun
-    ),
-    ok = purrr::map_lgl(fun, exists, where=asNamespace("rgraph6"))
-  )
-
-g <- d %>%
-  filter(ok) %>%
-  transmute(
-    from, to,
-    fun = paste0(fun, "()")
-  ) %>%
-  tidygraph::as_tbl_graph()
-
-# x <- c(1.7619, 0.8201, -2.019, 0.8277, -0.0565, -0.0451, -0.9931)
-# y <- c(-9e-04, -0.4761, 0.0281, 0.4898, -0.4738, 0.4898, 0.0206)
-E(g)$cross <- FALSE
-E(g)$cross[c(13,5,11,8)] <- TRUE
-ggraph(g,layout = "stress") +
-  geom_edge_parallel(
-    aes(label = fun, filter = !cross),
-    start_cap = circle(1),
-    end_cap = circle(1),
-    label_dodge = unit(-5, "mm"),
-    label_push = unit(0, "mm"),
-    label_size = 3,
-    angle_calc = "along",
-    arrow = arrow(length = unit(3, "mm"),type = "closed")
-  ) +
-  geom_edge_parallel(
-    aes(label = fun, filter = cross),
-    start_cap = circle(1),
-    end_cap = circle(1),
-    label_dodge = unit(-5, "mm"),
-    label_push = unit(-27, "mm"),
-    label_size = 3,
-    angle_calc = "along",
-    arrow = arrow(length = unit(3, "mm"),type = "closed")
-  )+
-  geom_node_label(aes(label = name)) +
-  coord_cartesian(clip = "off") +
-  scale_y_continuous(expand = expansion(add = .1)) +
-  theme_void()
-```
+![Diagram of functions implemented in the 'rgraph6' package](../man/figures/README-functions-low-1.png){ width="100%" }
 
 
 
-# Examples
 
-## Encode list of 'igraph' objects
+
+## Examples
+
+### Encode a list of 'igraph' objects
 
 Generate a list of igraph objects:
 
@@ -137,7 +123,7 @@ as_sparse6(igraph_list)
 
 
 
-## Decode a vector of different types of symbols
+### Decode a vector of different types of symbols
 
 Using example data `g6`, `d6`, and `s6` provided with the package:
 
@@ -156,13 +142,11 @@ network_from_text(x)
 
 
 
-## Tidy graph databases
+### Tidy graph databases
 
 The formats shine if we need to store large number of graphs in a data frame. Let's generate a list of random graphs as igraph objects and store them in a data frame column of graph6 symbols:
 
 ```{r}
-library("dplyr")
-
 # Generate list of igraph objects
 set.seed(666)
 
@@ -177,16 +161,22 @@ d <- tibble::tibble(
 d
 ```
 
-Nice and compact. We can go further by doing some computations and saving the results together with the graph data, and even save it to a simple CSV file!
+Nice and compact. We can go further by doing some computations and saving the results together with the graph data:
 
 ```{r}
-d %>%
+d2 <- d %>%
   dplyr::mutate(
     igraphs = igraph_from_text(g6),
     vc = purrr::map_dbl(igraphs, igraph::vcount),
     ec = purrr::map_dbl(igraphs, igraph::ecount),
     density = purrr::map_dbl(igraphs, igraph::edge_density)
   ) %>%
-  dplyr::select(-igraphs) %>%
-  write.csv(row.names = FALSE)
+  dplyr::select(-igraphs)
+d2  
+```
+
+... and even save it to a simple CSV file!
+
+```{r}
+write.csv(d2, row.names = FALSE)
 ```
