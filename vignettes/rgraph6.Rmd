@@ -17,8 +17,7 @@ requireNamespace("igraph")
 requireNamespace("knitr")
 
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  dev = "svg"
+  collapse = TRUE
   # comment = "#>"
 )
 ```
