@@ -30,3 +30,4 @@ LazyData: true
 Roxygen: list(markdown=TRUE)
 URL: https://mbojan.github.io/rgraph6/
 BugReports: https://github.com/mbojan/rgraph6/issues
+VignetteBuilder: knitr
