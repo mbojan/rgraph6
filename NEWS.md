@@ -2,9 +2,10 @@
 
 This is a major overhaul of the package.
 
-- The package now supports 'sparse6' and 'digraph6' formats
+- The package now supports 'sparse6' and 'digraph6' formats.
 - A more complete API with `graph_as_text()`, `igraph_from_text()`, `network_from_text()` top level functions and plethora low level functions.
-- David Schoch joins as an coauthor
+- Added vignette.
+- David Schoch joins as a coauthor.
 
 
 # rgraph6 1.2
@@ -17,6 +18,7 @@ This is a major overhaul of the package.
 
 - Corrected code for binary to decimal conversion. Previous version was returning wrong results for binary numbers that begin with 1 and have all other entries to 0.
 - Added some tests for testing binary to decimal conversions as well as for converting matrices to graph6 format.
+
 
 # rgraph6 1.0
 
