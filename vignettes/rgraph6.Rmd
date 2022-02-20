@@ -13,11 +13,8 @@ editor_options:
 
 ```{r setup, include = FALSE}
 library(rgraph6)
-library(magrittr)
-requireNamespace("purrr")
-requireNamespace("dplyr")
-requireNamespace("tibble")
 requireNamespace("igraph")
+requireNamespace("knitr")
 
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -150,13 +147,12 @@ The formats shine if we need to store large number of graphs in a data frame. Le
 # Generate list of igraph objects
 set.seed(666)
 
-d <- tibble::tibble(
-  g6 = replicate(
+d <- data.frame(
+  g6 = as_graph6(replicate(
     10,
     igraph::random.graph.game(sample(3:12, replace=TRUE), p=.5, directed=FALSE),
     simplify=FALSE
-  ) %>%
-    as_graph6()
+  ))
 )
 d
 ```
@@ -164,15 +160,15 @@ d
 Nice and compact. We can go further by doing some computations and saving the results together with the graph data:
 
 ```{r}
-d2 <- d %>%
-  dplyr::mutate(
-    igraphs = igraph_from_text(g6),
-    vc = purrr::map_dbl(igraphs, igraph::vcount),
-    ec = purrr::map_dbl(igraphs, igraph::ecount),
-    density = purrr::map_dbl(igraphs, igraph::edge_density)
-  ) %>%
-  dplyr::select(-igraphs)
-d2  
+d2 <- within(
+  d, {
+    igraphs <- igraph_from_text(g6)
+    vc <- vapply(igraphs, igraph::vcount, integer(1))
+    ec <- vapply(igraphs, igraph::ecount, numeric(1))
+    density <- vapply(igraphs, igraph::edge_density, numeric(1))
+})
+d2$igraphs <- NULL
+str(d2, 1)
 ```
 
 ... and even save it to a simple CSV file!
