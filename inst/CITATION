@@ -24,7 +24,7 @@ citEntry(
   year = 2021,
   note = "R package version: 2.0-0",
   url = "https://mbojan.github.io/rgraph6/",
-  textVersion = "Bojanowski M, Schoch D (2021). rgraph6: Representing Graphs as graph6, dgraph6 or sparse6 Strings. R package version: 2.0-0, URL: https://github.com/mbojan/rgraph6"
+  textVersion = "Bojanowski M, Schoch D (2021). rgraph6: Representing Graphs as graph6, dgraph6 or sparse6 Strings. R package version: 2.0-0, URL: https://mbojan.github.io/rgraph6/"
 )
 
 
