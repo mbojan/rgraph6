@@ -31,6 +31,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/mbojan/rgraph6/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/rgraph6/actions)
 [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/rgraph6?color=2ED968)](https://cranlogs.r-pkg.org/) 
 [![cran version](http://www.r-pkg.org/badges/version/rgraph6)](https://cran.r-project.org/package=rgraph6)
+[![rgraph6 status badge](https://mbojan.r-universe.dev/badges/rgraph6)](https://mbojan.r-universe.dev)
 <!-- badges: end -->
 
 

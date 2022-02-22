@@ -10,6 +10,8 @@
 downloads](https://cranlogs.r-pkg.org/badges/rgraph6?color=2ED968)](https://cranlogs.r-pkg.org/)
 [![cran
 version](http://www.r-pkg.org/badges/version/rgraph6)](https://cran.r-project.org/package=rgraph6)
+[![rgraph6 status
+badge](https://mbojan.r-universe.dev/badges/rgraph6)](https://mbojan.r-universe.dev)
 <!-- badges: end -->
 
 Functions in this package allow for encoding network data as strings of
@@ -89,19 +91,19 @@ x
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH 694f0fa U--- 15 10 -- 
-#> + edges from 694f0fa:
+#> IGRAPH bb50844 U--- 15 10 -- 
+#> + edges from bb50844:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH 11d837d U--- 15 13 -- 
-#> + edges from 11d837d:
+#> IGRAPH a41ee59 U--- 15 13 -- 
+#> + edges from a41ee59:
 #>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
 #> [11]  4--15 10--15 14--15
 #> 
 #> [[3]]
-#> IGRAPH 9a47773 D--- 15 15 -- 
-#> + edges from 9a47773:
+#> IGRAPH 2966182 D--- 15 15 -- 
+#> + edges from 2966182:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 
@@ -259,10 +261,10 @@ To cite this package please use the following entries:
 
 <p>
 McKay B, Piperno A (2014). “Practical graph isomorphism, II.”
-<em>Journal of Symbolic Computation</em>.
+<em>Journal of Symbolic Computation</em>, <b>60</b>, 94–112.
 </p>
 <p>
 Bojanowski M, Schoch D (2021). <em>rgraph6: Representing Graphs as
 graph6, dgraph6 or sparse6 Strings</em>. R package version: 2.0-0,
-<a href="https://github.com/mbojan/rgraph6">https://github.com/mbojan/rgraph6</a>.
+<a href="https://mbojan.github.io/rgraph6/">https://mbojan.github.io/rgraph6/</a>.
 </p>
