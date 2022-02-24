@@ -62,8 +62,12 @@ as_sparse6.matrix <- function(object, n = max(object, 0), ...) {
     stopifnot(n>=0)
   }
   
-  k <- length(d2b(n - 1))
-
+  #circumvent -1 as input to d2b
+  if(n>0){
+    k <- length(d2b(n - 1))
+  } else{
+    k <- 65
+  }
   object <- object - 1
   lbit  <- diff(c(0, object[,1]))
   curv <- sum(lbit)

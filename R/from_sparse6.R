@@ -79,7 +79,12 @@ as_elist_sparse6 <- function(object){
   }
   
   g <- c(sapply(as.numeric(rg)-63, function(x) expand_to_length( d2b(x), l=6, what=0, where="start")))
-  k <- length(d2b(n-1))
+  #circumvent -1 as input to d2b
+  if(n>0){
+    k <- length(d2b(n - 1))
+  } else{
+    k <- 65
+  }
   g <- expand_to_length(g,l=ceiling(length(g)/(k+1))*(k+1),what=1,where="end")
   
   gm <- matrix(g,ncol=k+1,byrow = TRUE)
