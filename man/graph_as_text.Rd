@@ -30,13 +30,13 @@ objects.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{default}: The default method chooses the encoding format
+\item \code{graph_as_text(default)}: The default method chooses the encoding format
 automatically using \code{\link[=choose_format]{choose_format()}}.
 
-\item \code{list}: The list method applies the default method to each
+\item \code{graph_as_text(list)}: The list method applies the default method to each
 element.
-}}
 
+}}
 \examples{
 # From igraph ------------------------------------------------------
 if(requireNamespace("igraph")) {

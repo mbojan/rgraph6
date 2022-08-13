@@ -38,25 +38,25 @@ available methods.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{matrix}: Expects \code{object} to be a two-column matrix of
+\item \code{as_sparse6(matrix)}: Expects \code{object} to be a two-column matrix of
 \emph{integers} which is interpreted as an edgelist of an undirected graph. By
 default the network size is inferred to be the maximal element of \code{object}.
 This can be overridden by providing the network size via the \code{n} argument,
 the results will not be identical though (see the Examples).
 
-\item \code{igraph}: Igraph \code{object} needs to be an undirected graph.
+\item \code{as_sparse6(igraph)}: Igraph \code{object} needs to be an undirected graph.
 Requires \pkg{igraph} package.
 
-\item \code{network}: Network \code{object} needs to be a directed network.
+\item \code{as_sparse6(network)}: Network \code{object} needs to be a directed network.
 Requires \pkg{network} package.
 
-\item \code{list}: If \code{object} is a list the function is applied to each
+\item \code{as_sparse6(list)}: If \code{object} is a list the function is applied to each
 element. Consequently, it can be a list with a mixture of supported objects
 classes (edgelist matrices, igraph, or network objects).
 
-\item \code{default}: The default method fails gracefully.
-}}
+\item \code{as_sparse6(default)}: The default method fails gracefully.
 
+}}
 \examples{
 # From edgelist matrix -----------------------------------------------------
 elm <- matrix(c(

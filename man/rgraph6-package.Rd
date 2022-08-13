@@ -7,9 +7,9 @@
 \alias{rgraph6}
 \title{rgraph6: Representing Graphs as 'graph6', 'digraph6' or 'sparse6' Strings}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Encode network data as strings of printable ASCII characters. Implemented functions include encoding and decoding adjacency matrices, edgelists, igraph, and network objects to/from formats 'graph6', 'sparse6', and 'digraph6'. The formats and methods are described in McKay, B.D. and Piperno, A (2014) <doi:10.1016/j.jsc.2013.09.003>.
+Encode network data as strings of printable ASCII characters. Implemented functions include encoding and decoding adjacency matrices, edgelists, igraph, and network objects to/from formats 'graph6', 'sparse6', and 'digraph6'. The formats and methods are described in McKay, B.D. and Piperno, A (2014) \doi{10.1016/j.jsc.2013.09.003}.
 }
 \details{
 Formats 'graph6', 'sparse6' and 'digraph6' represent graphs as
@@ -33,8 +33,8 @@ McKay B, Piperno A (2014). "Practical graph isomorphism, II." \emph{Journal
 of Symbolic Computation}, \emph{60}, 94-112.
 
 Bojanowski M, Schoch D (2021). \emph{rgraph6: Representing Graphs as graph6,
-dgraph6 or sparse6 Strings}. R package version: 2.0-0, <URL:
-https://github.com/mbojan/rgraph6>.
+dgraph6 or sparse6 Strings}. R package version: 2.0-0,
+\url{https://mbojan.github.io/rgraph6/}.
 
 Call \code{citation(package="rgraph6")} for more details and the BibTeX entry.
 }
@@ -56,6 +56,14 @@ Australia.
 
 McKay, B. D., & Piperno, A. (2014). Practical graph isomorphism, II. \emph{Journal
 of symbolic computation}, 60, 94-112. \doi{10.1016/j.jsc.2013.09.003}
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://mbojan.github.io/rgraph6/}
+  \item Report bugs at \url{https://github.com/mbojan/rgraph6/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Michal Bojanowski \email{michal2992@gmail.com} (\href{https://orcid.org/0000-0001-7503-852X}{ORCID}) (Kozminski University)

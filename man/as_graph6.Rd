@@ -38,25 +38,25 @@ in case it is given a directed graph.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{matrix}: Expects \code{object} to be a square matrix which is
+\item \code{as_graph6(matrix)}: Expects \code{object} to be a square matrix which is
 interpreted as an adjacency matrix of an undirected graph. The function
 reads only the upper triangle of the matrix and there is no test whether
 the matrix is symmetric.
 
-\item \code{igraph}: Igraph \code{object} needs to be an undirected graph.
+\item \code{as_graph6(igraph)}: Igraph \code{object} needs to be an undirected graph.
 Requires \pkg{igraph} package.
 
-\item \code{network}: Network \code{object} needs to be a directed network.
+\item \code{as_graph6(network)}: Network \code{object} needs to be a directed network.
 Requires \pkg{network} package.
 
-\item \code{list}: If \code{object} is a list the function is applied to each
+\item \code{as_graph6(list)}: If \code{object} is a list the function is applied to each
 element. Consequently, it can be a list with a mixture of supported objects
 classes (adjacency matrices, igraph, or network objects).
 
-\item \code{default}: The default method throws an error about an unhandled
+\item \code{as_graph6(default)}: The default method throws an error about an unhandled
 class.
-}}
 
+}}
 \examples{
 # From adjacency matrix ----------------------------------------------------
 am <- matrix(c(
