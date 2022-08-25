@@ -12,7 +12,7 @@ available methods."><meta property="og:image" content="http://mbojan.github.io/r
     
     <a class="navbar-brand me-2" href="../index.html">rgraph6</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0-2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0-0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,19 +99,19 @@ Methods section below.</p></dd>
     <div class="section level2">
     <h2 id="methods-by-class-">Methods (by class)<a class="anchor" aria-label="anchor" href="#methods-by-class-"></a></h2>
     
-<ul><li><p><code>as_sparse6(matrix)</code>: Expects <code>object</code> to be a two-column matrix of
+<ul><li><p><code>matrix</code>: Expects <code>object</code> to be a two-column matrix of
 <em>integers</em> which is interpreted as an edgelist of an undirected graph. By
 default the network size is inferred to be the maximal element of <code>object</code>.
 This can be overridden by providing the network size via the <code>n</code> argument,
 the results will not be identical though (see the Examples).</p></li>
-<li><p><code>as_sparse6(igraph)</code>: Igraph <code>object</code> needs to be an undirected graph.
+<li><p><code>igraph</code>: Igraph <code>object</code> needs to be an undirected graph.
 Requires <span class="pkg">igraph</span> package.</p></li>
-<li><p><code>as_sparse6(network)</code>: Network <code>object</code> needs to be a directed network.
+<li><p><code>network</code>: Network <code>object</code> needs to be a directed network.
 Requires <span class="pkg">network</span> package.</p></li>
-<li><p><code>as_sparse6(list)</code>: If <code>object</code> is a list the function is applied to each
+<li><p><code>list</code>: If <code>object</code> is a list the function is applied to each
 element. Consequently, it can be a list with a mixture of supported objects
 classes (edgelist matrices, igraph, or network objects).</p></li>
-<li><p><code>as_sparse6(default)</code>: The default method fails gracefully.</p></li>
+<li><p><code>default</code>: The default method fails gracefully.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
