@@ -162,7 +162,7 @@ Nice and compact. We can go further by doing some computations and saving the re
 d2 <- within(
   d, {
     igraphs <- igraph_from_text(g6)
-    vc <- vapply(igraphs, igraph::vcount, integer(1))
+    vc <- vapply(igraphs, igraph::vcount, numeric(1))
     ec <- vapply(igraphs, igraph::ecount, numeric(1))
     density <- vapply(igraphs, igraph::edge_density, numeric(1))
 })
