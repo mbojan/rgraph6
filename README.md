@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/mbojan/rgraph6/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/rgraph6/actions)
+[![R-CMD-check](https://github.com/mbojan/rgraph6/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mbojan/rgraph6/actions/workflows/R-CMD-check.yaml)
 [![rstudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/rgraph6?color=2ED968)](https://cranlogs.r-pkg.org/)
 [![cran
@@ -35,18 +35,23 @@ Format ‘digraph6’ is for directed graphs.
 
 Main functions for encoding network data are:
 
--   `as_graph6()`
--   `as_sparse6()`
--   `as_digraph6()`
+- `as_graph6()`
+- `as_sparse6()`
+- `as_digraph6()`
 
 Main functions for decoding are:
 
--   `adjacency_from_text()`
--   `edgelist_from_text()`
--   `igraph_from_text()`
--   `network_from_text()`
+- `adjacency_from_text()`
+- `edgelist_from_text()`
+- `igraph_from_text()`
+- `network_from_text()`
 
 Low-level functions are shown on the following graph:
+
+    #> Warning: Using the `size` aesthetic in this geom was deprecated in ggplot2 3.4.0.
+    #> ℹ Please use `linewidth` in the `default_aes` field and elsewhere instead.
+    #> This warning is displayed once every 8 hours.
+    #> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
 
 <img src="man/figures/README-functions-low-1.png" width="100%" />
 
@@ -73,6 +78,9 @@ Encode as ‘sparse6’ symbols:
 
 ``` r
 as_sparse6(igraph_list)
+#> 'as(<dgCMatrix>, "dgTMatrix")' is deprecated.
+#> Use 'as(., "TsparseMatrix")' instead.
+#> See help("Deprecated") and help("Matrix-deprecated").
 #> [1] ":IeASjaeR" ":IoCp{^"   ":IiC]Rg"   ":IeIgWu`"  ":IgAo{@D"
 ```
 
@@ -91,19 +99,19 @@ x
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH bb50844 U--- 15 10 -- 
-#> + edges from bb50844:
+#> IGRAPH 7b8e70d U--- 15 10 -- 
+#> + edges from 7b8e70d:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH a41ee59 U--- 15 13 -- 
-#> + edges from a41ee59:
+#> IGRAPH 0fe0af5 U--- 15 13 -- 
+#> + edges from 0fe0af5:
 #>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
 #> [11]  4--15 10--15 14--15
 #> 
 #> [[3]]
-#> IGRAPH 2966182 D--- 15 15 -- 
-#> + edges from 2966182:
+#> IGRAPH 7489f35 D--- 15 15 -- 
+#> + edges from 7489f35:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 
@@ -229,8 +237,7 @@ d %>%
 
 <!--
 Install released version from CRAN with:
-
-
+&#10;
 ```r
 install.packages("rgraph6")
 ```
