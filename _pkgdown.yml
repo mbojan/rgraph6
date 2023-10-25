@@ -1,4 +1,5 @@
 url: http://mbojan.github.io/rgraph6/
 template:
   bootstrap: 5
-
+development:
+  mode: auto
