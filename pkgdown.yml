@@ -1,9 +1,9 @@
-pandoc: 2.7.3
-pkgdown: 2.0.6
+pandoc: 2.19.2
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   rgraph6: rgraph6.html
-last_built: 2022-08-25T12:26Z
+last_built: 2023-10-25T10:51Z
 urls:
   reference: http://mbojan.github.io/rgraph6/reference
   article: http://mbojan.github.io/rgraph6/articles
