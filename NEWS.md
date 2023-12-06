@@ -1,3 +1,8 @@
+# rgraph 2.0-3
+
+- Fix deprecation of some of the coercion methods in **Matrix** package (#33).
+
+
 # rgraph6 2.0-2
 
 - Re-roxygenize to fix HTML validation errors.

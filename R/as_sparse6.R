@@ -120,7 +120,7 @@ as_sparse6.igraph <- function(object, ...) {
   
   if (requireNamespace("Matrix", quietly = TRUE)) {
     A <- igraph::as_adj(object,type = "upper",sparse = TRUE)
-    B <- as(A, "dgTMatrix")
+    B <- as(A, "TsparseMatrix")
     el <- cbind(B@j,B@i)+1
   } else{
     el <- igraph::as_edgelist(object, names = FALSE)
