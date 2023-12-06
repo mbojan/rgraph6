@@ -1,7 +1,7 @@
 # rgraph 2.0-3
 
 - Fix deprecation of some of the coercion methods in **Matrix** package (#33).
-
+- Update the vignette such that we don't expect `igraph::vcount()` to return an integer (#34, #35).
 
 # rgraph6 2.0-2
 
