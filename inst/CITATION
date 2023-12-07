@@ -1,9 +1,9 @@
-citHeader("To cite package 'rgraph6' in publications use the following two entries:")
+citation(auto = meta)
 
-citEntry( 
-  entry = "Article",
+bibentry( 
+  bibtype = "Article",
   title = "Practical graph isomorphism, II",
-  author= personList(
+  author= c(
       person("Brendan", "McKay"),
       person("Adolfo", "Piperno")
     ),
@@ -11,24 +11,5 @@ citEntry(
   year = 2014,
   volume = 60,
   pages = "94--112",
-  textVersion = "McKay, B. D., & Piperno, A. (2014). Practical graph isomorphism, II. Journal of symbolic computation, 60, 94-112."
-)
-
-citEntry( 
-  entry = "Manual",
-  title = "{rgraph6}: Representing Graphs as graph6, dgraph6 or sparse6 Strings",
-  author= personList(
-      person("Micha\\l{}", "Bojanowski"),
-      person("David", "Schoch")
-    ),
-  year = 2021,
-  note = "R package version: 2.0-0",
-  url = "https://mbojan.github.io/rgraph6/",
-  textVersion = "Bojanowski M, Schoch D (2021). rgraph6: Representing Graphs as graph6, dgraph6 or sparse6 Strings. R package version: 2.0-0, URL: https://mbojan.github.io/rgraph6/"
-)
-
-
-citFooter(
-  paste("We have invested some time and effort in creating this package,",
-    "please cite it when using it for data analysis or other tasks.", sep = " ")
+  textVersion = "McKay, B. D., & Piperno, A. (2014). Practical graph isomorphism, II. _Journal of Symbolic Computation_, 60, 94-112."
 )
