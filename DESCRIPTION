@@ -1,5 +1,5 @@
 Package: rgraph6
-Version: 2.0-4
+Version: 2.0-3
 Title: Representing Graphs as 'graph6', 'digraph6' or 'sparse6' Strings
 Authors@R: c(
              person(given = "Michal",
