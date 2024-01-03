@@ -149,7 +149,7 @@ set.seed(666)
 d <- data.frame(
   g6 = as_graph6(replicate(
     10,
-    igraph::random.graph.game(sample(3:12, replace=TRUE), p=.5, directed=FALSE),
+    igraph::sample_gnp(sample(3:12, 1), p=.5, directed=FALSE),
     simplify=FALSE
   ))
 )
