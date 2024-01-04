@@ -188,19 +188,19 @@ package</p>
 <span><span class="co"># Parse to igraph objects (package igraph required)</span></span>
 <span><span class="fu"><a href="../reference/igraph_from_text.html">igraph_from_text</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">## [[1]]</span></span>
-<span><span class="co">## IGRAPH b6aeacb U--- 15 10 -- </span></span>
-<span><span class="co">## + edges from b6aeacb:</span></span>
+<span><span class="co">## IGRAPH ef0b60d U--- 15 10 -- </span></span>
+<span><span class="co">## + edges from ef0b60d:</span></span>
 <span><span class="co">##  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## [[2]]</span></span>
-<span><span class="co">## IGRAPH d01a870 U--- 15 13 -- </span></span>
-<span><span class="co">## + edges from d01a870:</span></span>
+<span><span class="co">## IGRAPH 0700039 U--- 15 13 -- </span></span>
+<span><span class="co">## + edges from 0700039:</span></span>
 <span><span class="co">##  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13</span></span>
 <span><span class="co">## [11]  4--15 10--15 14--15</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## [[3]]</span></span>
-<span><span class="co">## IGRAPH 090f294 D--- 15 15 -- </span></span>
-<span><span class="co">## + edges from 090f294:</span></span>
+<span><span class="co">## IGRAPH 067c1e4 D--- 15 15 -- </span></span>
+<span><span class="co">## + edges from 067c1e4:</span></span>
 <span><span class="co">##  [1] 1-&gt; 8 1-&gt;11 1-&gt;12 1-&gt;13 2-&gt;13 2-&gt;14 3-&gt;10 4-&gt; 7 4-&gt; 9 5-&gt; 8 5-&gt;10 5-&gt;11</span></span>
 <span><span class="co">## [13] 5-&gt;13 6-&gt; 8 9-&gt;14</span></span>
 <span></span>
@@ -271,22 +271,22 @@ store them in a data frame column of graph6 symbols:</p>
 <span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  g6 <span class="op">=</span> <span class="fu"><a href="../reference/as_graph6.html">as_graph6</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate</a></span><span class="op">(</span></span>
 <span>    <span class="fl">10</span>,</span>
-<span>    <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/erdos.renyi.game.html" class="external-link">random.graph.game</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">12</span>, replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>, p<span class="op">=</span><span class="fl">.5</span>, directed<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>    <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/sample_gnp.html" class="external-link">sample_gnp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">12</span>, <span class="fl">1</span><span class="op">)</span>, p<span class="op">=</span><span class="fl">.5</span>, directed<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,</span>
 <span>    simplify<span class="op">=</span><span class="cn">FALSE</span></span>
 <span>  <span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">d</span></span>
-<span><span class="co">##              g6</span></span>
-<span><span class="co">## 1         FblF_</span></span>
-<span><span class="co">## 2           DFc</span></span>
-<span><span class="co">## 3       HfTaMwk</span></span>
-<span><span class="co">## 4  KefToktrftZ~</span></span>
-<span><span class="co">## 5   JPraDzZQ?M?</span></span>
-<span><span class="co">## 6            Bo</span></span>
-<span><span class="co">## 7          Ed`w</span></span>
-<span><span class="co">## 8        Gpuq|{</span></span>
-<span><span class="co">## 9          EbSG</span></span>
-<span><span class="co">## 10   ICNa@Gg\\o</span></span></code></pre></div>
+<span><span class="co">##             g6</span></span>
+<span><span class="co">## 1        FSOT_</span></span>
+<span><span class="co">## 2  JYNALTg{fE?</span></span>
+<span><span class="co">## 3  JWwbmJNOfX_</span></span>
+<span><span class="co">## 4       Gr|Kto</span></span>
+<span><span class="co">## 5    IftZ~cXPo</span></span>
+<span><span class="co">## 6      H`i@]us</span></span>
+<span><span class="co">## 7        FClsO</span></span>
+<span><span class="co">## 8    IlPd`~fbg</span></span>
+<span><span class="co">## 9           BG</span></span>
+<span><span class="co">## 10      GFnwpW</span></span></code></pre></div>
 <p>Nice and compact. We can go further by doing some computations and
 saving the results together with the graph data:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -300,24 +300,24 @@ saving the results together with the graph data:</p>
 <span><span class="va">d2</span><span class="op">$</span><span class="va">igraphs</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">d2</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## 'data.frame':    10 obs. of  4 variables:</span></span>
-<span><span class="co">##  $ g6     : chr  "FblF_" "DFc" "HfTaMwk" "KefToktrftZ~" ...</span></span>
-<span><span class="co">##  $ density: num  0.524 0.5 0.5 0.621 0.436 ...</span></span>
-<span><span class="co">##  $ ec     : num  11 5 18 41 24 2 8 19 6 17</span></span>
-<span><span class="co">##  $ vc     : num  7 5 9 12 11 3 6 8 6 10</span></span></code></pre></div>
+<span><span class="co">##  $ g6     : chr  "FSOT_" "JYNALTg{fE?" "JWwbmJNOfX_" "Gr|Kto" ...</span></span>
+<span><span class="co">##  $ density: num  0.333 0.473 0.509 0.607 0.6 ...</span></span>
+<span><span class="co">##  $ ec     : num  7 26 28 17 27 17 9 26 1 16</span></span>
+<span><span class="co">##  $ vc     : num  7 11 11 8 10 9 7 10 3 8</span></span></code></pre></div>
 <p>… and even save it to a simple CSV file!</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv</a></span><span class="op">(</span><span class="va">d2</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">## "g6","density","ec","vc"</span></span>
-<span><span class="co">## "FblF_",0.523809523809524,11,7</span></span>
-<span><span class="co">## "DFc",0.5,5,5</span></span>
-<span><span class="co">## "HfTaMwk",0.5,18,9</span></span>
-<span><span class="co">## "KefToktrftZ~",0.621212121212121,41,12</span></span>
-<span><span class="co">## "JPraDzZQ?M?",0.436363636363636,24,11</span></span>
-<span><span class="co">## "Bo",0.666666666666667,2,3</span></span>
-<span><span class="co">## "Ed`w",0.533333333333333,8,6</span></span>
-<span><span class="co">## "Gpuq|{",0.678571428571429,19,8</span></span>
-<span><span class="co">## "EbSG",0.4,6,6</span></span>
-<span><span class="co">## "ICNa@Gg\o",0.377777777777778,17,10</span></span></code></pre></div>
+<span><span class="co">## "FSOT_",0.333333333333333,7,7</span></span>
+<span><span class="co">## "JYNALTg{fE?",0.472727272727273,26,11</span></span>
+<span><span class="co">## "JWwbmJNOfX_",0.509090909090909,28,11</span></span>
+<span><span class="co">## "Gr|Kto",0.607142857142857,17,8</span></span>
+<span><span class="co">## "IftZ~cXPo",0.6,27,10</span></span>
+<span><span class="co">## "H`i@]us",0.472222222222222,17,9</span></span>
+<span><span class="co">## "FClsO",0.428571428571429,9,7</span></span>
+<span><span class="co">## "IlPd`~fbg",0.577777777777778,26,10</span></span>
+<span><span class="co">## "BG",0.333333333333333,1,3</span></span>
+<span><span class="co">## "GFnwpW",0.571428571428571,16,8</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
