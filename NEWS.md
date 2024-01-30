@@ -1,3 +1,8 @@
+# rgraph 2.0-4
+
+- Fix use of `sample_gnp()` in the vignette. Thanks @szhorvat!  (#38)
+
+
 # rgraph 2.0-3
 
 - Fix deprecation of some of the coercion methods in **Matrix** package (#33).
