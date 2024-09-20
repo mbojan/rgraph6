@@ -59,7 +59,7 @@ Generate a list of igraph objects:
 ``` r
 set.seed(666)
 igraph_list <- replicate(5, igraph::sample_gnp(10, 0.1, directed = FALSE),
-    simplify = FALSE
+  simplify = FALSE
 )
 ```
 
@@ -92,19 +92,19 @@ x
 # Parse to igraph objects (package igraph required)
 igraph_from_text(x)
 #> [[1]]
-#> IGRAPH 68725dc U--- 15 10 -- 
-#> + edges from 68725dc:
+#> IGRAPH 4a2f1fa U--- 15 10 -- 
+#> + edges from 4a2f1fa:
 #>  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15
 #> 
 #> [[2]]
-#> IGRAPH 4838f5e U--- 15 13 -- 
-#> + edges from 4838f5e:
+#> IGRAPH f21cde8 U--- 15 13 -- 
+#> + edges from f21cde8:
 #>  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13
 #> [11]  4--15 10--15 14--15
 #> 
 #> [[3]]
-#> IGRAPH 58caabc D--- 15 15 -- 
-#> + edges from 58caabc:
+#> IGRAPH 67f19fc D--- 15 15 -- 
+#> + edges from 67f19fc:
 #>  [1] 1-> 8 1->11 1->12 1->13 2->13 2->14 3->10 4-> 7 4-> 9 5-> 8 5->10 5->11
 #> [13] 5->13 6-> 8 9->14
 
@@ -176,12 +176,12 @@ library("dplyr")
 set.seed(666)
 
 d <- tibble::tibble(
-    g6 = replicate(
-        10,
-        igraph::sample_gnp(sample(3:12, 1, replace = TRUE), p = .5, directed = FALSE),
-        simplify = FALSE
-    ) %>%
-        as_graph6()
+  g6 = replicate(
+    10,
+    igraph::sample_gnp(sample(3:12, 1, replace = TRUE), p = .5, directed = FALSE),
+    simplify = FALSE
+  ) %>%
+    as_graph6()
 )
 d
 #> # A tibble: 10 × 1
@@ -205,14 +205,14 @@ simple CSV file!
 
 ``` r
 d %>%
-    dplyr::mutate(
-        igraphs = igraph_from_text(g6),
-        vc = purrr::map_dbl(igraphs, igraph::vcount),
-        ec = purrr::map_dbl(igraphs, igraph::ecount),
-        density = purrr::map_dbl(igraphs, igraph::edge_density)
-    ) %>%
-    dplyr::select(-igraphs) %>%
-    write.csv(row.names = FALSE)
+  dplyr::mutate(
+    igraphs = igraph_from_text(g6),
+    vc = purrr::map_dbl(igraphs, igraph::vcount),
+    ec = purrr::map_dbl(igraphs, igraph::ecount),
+    density = purrr::map_dbl(igraphs, igraph::edge_density)
+  ) %>%
+  dplyr::select(-igraphs) %>%
+  write.csv(row.names = FALSE)
 #> "g6","vc","ec","density"
 #> "FSOT_",7,7,0.333333333333333
 #> "JYNALTg{fE?",11,26,0.472727272727273
