@@ -1,9 +1,14 @@
-# rgraph 2.0-4
+# rgraph6 2.0-5
+
+- Catch-up with **igraph** 2.0.0 deprecations (#45).
+
+
+# rgraph6 2.0-4
 
 - Fix use of `sample_gnp()` in the vignette. Thanks @szhorvat!  (#38)
 
 
-# rgraph 2.0-3
+# rgraph6 2.0-3
 
 - Fix deprecation of some of the coercion methods in **Matrix** package (#33).
 - Update the vignette such that we don't expect `igraph::vcount()` to return an integer (#34, #35).
