@@ -8,8 +8,8 @@
 <title>Examples of the use of the 'rgraph6' package • rgraph6</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Examples of the use of the 'rgraph6' package">
 </head>
 <body>
@@ -66,7 +66,12 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">g_directed</span> <span class="op">&lt;-</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/sample_gnm.html" class="external-link">sample_gnm</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">12</span>, directed<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">g_undirected</span> <span class="op">&lt;-</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/as.directed.html" class="external-link">as.undirected</a></span><span class="op">(</span><span class="va">g_directed</span><span class="op">)</span></span>
+<span><span class="va">g_undirected</span> <span class="op">&lt;-</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/as.undirected.html" class="external-link">as.undirected</a></span><span class="op">(</span><span class="va">g_directed</span><span class="op">)</span></span>
+<span><span class="co">## Warning: `as.undirected()` was deprecated in igraph 2.1.0.</span></span>
+<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Please use `as_undirected()` instead.</span></span>
+<span><span class="co">## <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">## <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">## <span style="color: #555555;">generated.</span></span></span>
 <span><span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/igraph_options.html" class="external-link">igraph_options</a></span><span class="op">(</span>vertex.color<span class="op">=</span><span class="st">"white"</span>, vertex.label.color<span class="op">=</span><span class="st">"black"</span>,</span>
 <span>                       edge.color<span class="op">=</span><span class="st">"black"</span>, edge.arrow.size<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">g_directed</span><span class="op">)</span></span></code></pre></div>
@@ -163,19 +168,19 @@ will give:</p>
 <span><span class="co"># Parse to igraph objects (package igraph required)</span></span>
 <span><span class="fu"><a href="../reference/igraph_from_text.html">igraph_from_text</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">## [[1]]</span></span>
-<span><span class="co">## IGRAPH b13c5e6 U--- 15 10 -- </span></span>
-<span><span class="co">## + edges from b13c5e6:</span></span>
+<span><span class="co">## IGRAPH 3c5588e U--- 15 10 -- </span></span>
+<span><span class="co">## + edges from 3c5588e:</span></span>
 <span><span class="co">##  [1]  1-- 7  1--11  2-- 7  2--11  2--12  2--15  5-- 9  7--10  8--15 13--15</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## [[2]]</span></span>
-<span><span class="co">## IGRAPH 942e86c U--- 15 13 -- </span></span>
-<span><span class="co">## + edges from 942e86c:</span></span>
+<span><span class="co">## IGRAPH 0f1f4df U--- 15 13 -- </span></span>
+<span><span class="co">## + edges from 0f1f4df:</span></span>
 <span><span class="co">##  [1]  2-- 7  2-- 9  4--10  6--10  6--12  7--12 11--12  5--13  6--13 10--13</span></span>
 <span><span class="co">## [11]  4--15 10--15 14--15</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## [[3]]</span></span>
-<span><span class="co">## IGRAPH 16182be D--- 15 15 -- </span></span>
-<span><span class="co">## + edges from 16182be:</span></span>
+<span><span class="co">## IGRAPH 2dd1af5 D--- 15 15 -- </span></span>
+<span><span class="co">## + edges from 2dd1af5:</span></span>
 <span><span class="co">##  [1] 1-&gt; 8 1-&gt;11 1-&gt;12 1-&gt;13 2-&gt;13 2-&gt;14 3-&gt;10 4-&gt; 7 4-&gt; 9 5-&gt; 8 5-&gt;10 5-&gt;11</span></span>
 <span><span class="co">## [13] 5-&gt;13 6-&gt; 8 9-&gt;14</span></span>
 <span></span>
