@@ -119,7 +119,7 @@ as_sparse6.igraph <- function(object, ...) {
   stopifnot(!igraph::is_directed(object))
   
   if (requireNamespace("Matrix", quietly = TRUE)) {
-    A <- igraph::as_adj(object,type = "upper",sparse = TRUE)
+    A <- igraph::as_adjacency_matrix(object,type = "upper",sparse = TRUE)
     B <- as(A, "TsparseMatrix")
     el <- cbind(B@j,B@i)+1
   } else{
