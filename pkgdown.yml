@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   rgraph6: rgraph6.html
-last_built: 2025-04-16T14:54Z
+last_built: 2025-04-17T16:47Z
 urls:
   reference: http://mbojan.github.io/rgraph6/reference
   article: http://mbojan.github.io/rgraph6/articles
